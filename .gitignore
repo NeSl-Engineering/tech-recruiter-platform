@@ -2,4 +2,4 @@
 .env
 *venv*
 *pycache*
-
+db.sqlite3

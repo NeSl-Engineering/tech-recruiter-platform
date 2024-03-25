@@ -10,7 +10,10 @@ class Category(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=120)
-    price = models.DecimalField(decimal_places=2)
+    price = models.DecimalField(
+        max_digits=15,
+        decimal_places=2
+    )
     start_time = models.DateField(null=True)
     end_time = models.DateField(null=True)
     is_infinite = models.BooleanField(default=True)

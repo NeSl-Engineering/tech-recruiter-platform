@@ -1,9 +1,8 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class User(AbstractUser):
-    __tablename__ = 'users'
     username = models.CharField(max_length=60, unique=True)
     password = models.TextField()
     email = models.EmailField(unique=True)
@@ -12,9 +11,11 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
+    class Meta:
+        db_table = 'users'
+
 
 class Profile(models.Model):
-    __tablename__ = 'profiles'
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE
@@ -23,4 +24,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=60)
     profile_photo = models.ImageField(upload_to='users/profiles')
     telegram_id = models.CharField(max_length=120)
+
+    class Meta:
+        db_table = 'profiles'
 

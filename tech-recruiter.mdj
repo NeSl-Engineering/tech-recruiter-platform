@@ -5925,7 +5925,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGORkdcUFbdADM="
 							},
-							"name": "telegram_id"
+							"name": "telegram_id",
+							"type": ""
 						}
 					]
 				},
@@ -6036,7 +6037,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGORknRVlwz2mA="
 							},
-							"name": "cover_image"
+							"name": "cover_image",
+							"type": ""
 						}
 					]
 				},
@@ -6347,7 +6349,8 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAGORm37zV4H7mA="
-								}
+								},
+								"navigable": "navigable"
 							}
 						}
 					],

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "users",
     "courses",
     "blog"
+    "views",
 ]
 
 MIDDLEWARE = [

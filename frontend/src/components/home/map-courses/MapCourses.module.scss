@@ -1,0 +1,76 @@
+.MapCourses {
+	@apply bg-lightGray py-14 mb-28;
+	h1 {
+		@apply mb-10 font-bold w-60p;
+		font-size: 39px;
+		line-height: 47px;
+	}
+
+	.rowWrapper {
+		position: relative;
+		margin-left: calc(50% - 609px);
+		overflow: hidden;
+		border-radius: 8px;
+		// &::before {
+		// 	content: '';
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	height: 100%;
+		// 	width: 20px;
+		// 	background-color: #000;
+		// 	opacity: 0.2;
+		// 	filter: blur(15px);
+		// }
+	}
+
+	.row {
+		display: flex;
+		gap: 20px;
+		overflow-x: auto;
+	}
+
+	.item {
+		flex: 1 0 21.4%;
+		height: 390px;
+		padding: 25px;
+		background-color: #fff;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		overflow: hidden;
+		&::after {
+			content: '';
+			background-color: rgba(145, 145, 145, 0.05);
+			width: 326px;
+			height: 326px;
+			position: absolute;
+			bottom: -103px;
+			right: -103px;
+			border-radius: 50%;
+			pointer-events: none
+		}
+
+		.step {
+			@apply text-2xl font-bold text-gray mb-3;
+		}
+
+		.title {
+			@apply text-2xl font-bold text-blue-400 mb-3 flex-auto;
+			line-height: 29px;
+		}
+
+		.footer {
+			.availability {
+				@apply text-base font-normal text-gray mb-2;
+			}
+
+			.buttons {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+		}
+	}
+}

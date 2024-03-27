@@ -1,0 +1,20 @@
+.ChooseCourse {
+	@apply mb-28;
+	h1 {
+		@apply mb-10 font-bold w-60p;
+		font-size: 39px;
+		line-height: 47px;
+	}
+
+	.buttons {
+		display: flex;
+		gap: 10px;
+
+		.button {
+			@apply text-base  transition rounded-full font-light text-white px-7 py-2 bg-gray hover:opacity-80;
+			&.active {
+				@apply bg-cyan-400;
+			}
+		}
+	}
+}

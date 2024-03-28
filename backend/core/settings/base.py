@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "blog",
     "views",
     "api",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

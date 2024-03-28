@@ -6,6 +6,7 @@ class User(AbstractUser):
     username = models.CharField(max_length=60, unique=True)
     password = models.TextField()
     email = models.EmailField(unique=True)
+    date_joined = models.DateTimeField()
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'

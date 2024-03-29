@@ -1,0 +1,61 @@
+.contacts {
+	.row {
+		@apply bg-lightGray rounded-lg mb-28;
+		padding: 40px 100px 40px 40px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.left {
+		padding: 24px 0;
+		max-width: 465px;
+		h1 {
+			font-size: 39px;
+			line-height: 47px;
+			font-weight: 700;
+			margin-bottom: 16px;
+		}
+
+		p {
+			@apply text-base;
+			line-height: 21.6px;
+		}
+	}
+
+	.right {
+		max-width: 392px;
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			.tickWrapper {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+
+				.notActiveTick {
+					cursor: pointer;
+				}
+
+				.activeTick {
+					display: none;
+					cursor: pointer;
+				}
+
+				&.active {
+					.activeTick {
+						display: block;
+					}
+					.notActiveTick {
+						display: none;
+					}
+				}
+			}
+
+			h3 {
+				@apply text-base font-normal;
+				color: #212121;
+			}
+		}
+	}
+}

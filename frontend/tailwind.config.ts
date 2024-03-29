@@ -122,6 +122,7 @@ const config: Config = {
 				gray: '#919191',
 				gray50: '#A7A7A7',
 				lightGray: '#E2E9F2',
+				grayMedium:'#4D4D4D',
 				yellow: {
 					50: '#FFFAE6',
 					100: '#FFF5CC',

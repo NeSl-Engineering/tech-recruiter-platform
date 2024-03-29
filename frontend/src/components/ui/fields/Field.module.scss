@@ -1,0 +1,13 @@
+.inputWrapper {
+	.input {
+		@apply text-grayMedium font-medium py-4 px-5 rounded-4 bg-white font-normal  w-full text-base transition;
+		border: 1px solid transparent;
+		height: 56px;
+		&:focus {
+			border: 1px solid #919191;
+		}
+		&::placeholder {
+			@apply text-gray text-base;
+		}
+	}
+}

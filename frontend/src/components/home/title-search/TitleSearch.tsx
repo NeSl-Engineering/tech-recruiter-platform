@@ -6,7 +6,6 @@ const TitleSearch = () => {
 		<div className={styles.titleSearch}>
 			<div className='__container'>
 				<h1>Tech-recruiter - Академия по обучению IT-рекрутеров 👌🏼 </h1>
-
 				<div className={styles.searchWrapper}>
 					<input
 						type='search'

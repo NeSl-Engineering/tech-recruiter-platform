@@ -1,5 +1,6 @@
 .button {
-	@apply rounded-4 border-transparent p-3 text-base font-bold text-white transition hover:opacity-80 bg-blue-400;
+	@apply rounded-4 border-transparent p-3 text-base font-bold text-white  hover:opacity-80 bg-blue-400;
+	transition: 0.3s all ease-in-out;
 	border: 1px solid;
 
 	&.widthFull {
@@ -8,7 +9,7 @@
 	&.cyanButton {
 		@apply bg-cyan-400 rounded-full font-light px-7 py-2;
 	}
-	
+
 	&.blueTransparent {
 		@apply bg-transparent text-blue-400 border-blue-400;
 		&:hover {

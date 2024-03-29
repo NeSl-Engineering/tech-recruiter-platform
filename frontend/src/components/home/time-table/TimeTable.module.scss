@@ -1,0 +1,63 @@
+.TimeTable {
+	@apply mb-28;
+
+	h1 {
+		@apply mb-10 font-bold w-60p;
+		font-size: 39px;
+		line-height: 47px;
+	}
+
+	.buttons {
+		display: flex;
+		gap: 10px;
+		margin-bottom: 40px;
+
+		.button {
+			@apply text-base  rounded-full font-light text-white px-7 py-2 bg-gray hover:opacity-80;
+			transition: 0.3s all ease-in-out;
+			&.active {
+				@apply bg-cyan-400;
+			}
+		}
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+	.item {
+		padding: 10px 20px 10px 10px;
+		border-right: 1px solid #919191;
+		border-bottom: 1px solid #919191;
+		height: 140px;
+		&:nth-child(6n) {
+			border-right: transparent;
+		}
+		&:nth-last-child(-n + 6) {
+			border-bottom: transparent;
+		}
+		.dateActive {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			margin-bottom: 2px;
+			@apply bg-red-350;
+			h3 {
+				font-size: 15px;
+				font-weight: 700;
+				@apply text-lightGray mb-0;
+			}
+		}
+		h3 {
+			@apply text-xl font-bold text-gray mb-2;
+		}
+
+		h2 {
+			@apply text-base text-blue-400 font-normal;
+			line-height: 21.6px;
+		}
+	}
+}

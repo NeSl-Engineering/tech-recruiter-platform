@@ -1,0 +1,83 @@
+.CommunityTelegram {
+	@apply mb-28;
+
+	.titleBlock {
+		max-width: 540px;
+		margin: 0 auto;
+		margin-bottom: 40px;
+		h1 {
+			@apply mb-3 font-bold;
+			font-size: 39px;
+			line-height: 47px;
+			text-align: center;
+		}
+
+		p {
+			@apply text-base text-center;
+			line-height: 22px;
+		}
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
+
+	.item {
+		padding: 30px;
+		border-radius: 8px;
+		@apply bg-cyan-50;
+		position: relative;
+		overflow: hidden;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -200px;
+			right: -200px;
+			z-index: 1;
+			width: 433px;
+			height: 433px;
+			background-color: rgba(255, 255, 255, 0.4);
+			border-radius: 50%;
+			pointer-events: none;
+		}
+
+		&:first-child {
+			@apply bg-red-50;
+		}
+
+		h2 {
+			@apply text-2xl font-bold;
+			line-height: 29px;
+			margin-bottom: 26px;
+		}
+
+		ul {
+			@apply flex flex-col gap-4 relative z-10;
+			&:not(:last-child) {
+				margin-bottom: 30px;
+			}
+		}
+
+		li {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			span {
+				font-size: 20px;
+				&:last-child {
+					font-size: 15px;
+					line-height: 18px;
+					font-weight: 700;
+				}
+			}
+		}
+
+		.button {
+			max-width: 70%;
+			position: relative;
+			z-index: 2;
+		}
+	}
+}

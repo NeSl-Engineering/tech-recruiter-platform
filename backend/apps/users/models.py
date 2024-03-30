@@ -6,11 +6,12 @@ class User(AbstractUser):
     username = models.CharField(max_length=60, unique=True)
     password = models.TextField()
     email = models.EmailField(unique=True)
-    date_joined = models.DateTimeField()
+    date_joined = models.DateTimeField(auto_now_add=True)
     is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     class Meta:
         db_table = 'users'

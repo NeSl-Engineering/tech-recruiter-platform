@@ -1,7 +1,6 @@
-from django.db import models
+from courses.models import LessonMaterial, LessonVideo
 from django.contrib.auth import get_user_model
-
-from courses.models import LessonVideo, LessonMaterial
+from django.db import models
 
 
 class VideoView(models.Model):

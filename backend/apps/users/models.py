@@ -24,8 +24,16 @@ class Profile(models.Model):
     )
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
-    profile_photo = models.ImageField(upload_to='users/profiles')
-    telegram_id = models.CharField(max_length=120)
+    profile_photo = models.ImageField(
+        upload_to='users/profiles',
+        null=True,
+        blank=True
+    )
+    telegram_nickname = models.CharField(
+        max_length=120,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         db_table = 'profiles'

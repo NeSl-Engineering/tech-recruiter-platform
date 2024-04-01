@@ -41,11 +41,9 @@ class RegistrationSerializer(serializers.Serializer):
     telegram_nickname = serializers.CharField(required=False)
 
     def validate(self, attrs):
-        print(attrs)
         return attrs
 
     def create(self, validated_data):
-        print(validated_data)
         user = User(
             username=validated_data.get('username'),
             email=validated_data.get('email'),

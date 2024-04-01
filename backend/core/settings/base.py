@@ -143,6 +143,7 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_TIEMOUT = os.getenv('EMAIL_TIEMOUT')
 
+OTP_EXPIRE_TIME = 60
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

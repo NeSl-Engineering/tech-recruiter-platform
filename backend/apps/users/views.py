@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser
 from rest_framework.routers import Response
@@ -16,7 +17,13 @@ class RegistrationAPIView(APIView):
         )
         if serializer.is_valid():
             user, profile  = serializer.create(serializer.validated_data)
-        # send otp to user.email
+            # send otp to user.email
+            send_mail(
+                "Subject",
+                "Message",
+                "nazar@gmail.com",
+                [user.email]
+            )
             return Response({'status': 200})
         else:
             return Response(

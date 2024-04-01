@@ -27,6 +27,6 @@ class RegistrationAPIView(APIView):
             return Response({'status': 200})
         else:
             return Response(
-                serializer.error_messages,
+                serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST
             )

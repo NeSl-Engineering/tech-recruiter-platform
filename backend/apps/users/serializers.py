@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
+from django.db.models.fields import validators
 from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 
 from .models import Profile
 
@@ -32,16 +34,27 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class RegistrationSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    email = serializers.EmailField()
+    username = serializers.CharField(
+        validators=[
+            UniqueValidator(
+                queryset=User.objects.all(),
+                message='User with such username already exists'
+            )
+        ]
+    )
+    email = serializers.EmailField(
+        validators=[
+            UniqueValidator(
+                queryset=User.objects.all(),
+                message='User with such email already exists'
+            )
+        ]
+    )
     password = serializers.CharField()
     first_name = serializers.CharField()
     last_name = serializers.CharField()
     profile_photo = serializers.ImageField(required=False)
     telegram_nickname = serializers.CharField(required=False)
-
-    def validate(self, attrs):
-        return attrs
 
     def create(self, validated_data):
         user = User(

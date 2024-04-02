@@ -6,7 +6,7 @@ from rest_framework.routers import Response
 from rest_framework.views import APIView
 
 from .otp import OTP
-from .serializers import RegistrationSerializer
+from .serializers import EmailVerificationSerializer, RegistrationSerializer
 
 
 class RegistrationAPIView(APIView):
@@ -14,9 +14,7 @@ class RegistrationAPIView(APIView):
     parser_classes = (MultiPartParser, )
 
     def post(self, request):
-        serializer = self.serializer_class(
-            data=request.data,
-        )
+        serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             user, profile  = serializer.create(serializer.validated_data)
             # send otp to user.email
@@ -36,9 +34,22 @@ class RegistrationAPIView(APIView):
                 [user.email]
             )
             return Response({'status': 200})
-        else:
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+class EmailVerificationAPIView(APIView):
+    serializer_class = EmailVerificationSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.verify_user()
+            return Response({'status': 200})
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 

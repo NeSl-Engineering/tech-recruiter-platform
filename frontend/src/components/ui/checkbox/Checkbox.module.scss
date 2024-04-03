@@ -1,0 +1,30 @@
+.Checkbox {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	user-select: none;
+	&:hover {
+		h3 {
+			text-decoration: underline;
+		}
+	}
+
+	.notActiveTick {
+		cursor: pointer;
+	}
+
+	.activeTick {
+		display: none;
+		cursor: pointer;
+	}
+
+	&.active {
+		.activeTick {
+			display: block;
+		}
+		.notActiveTick {
+			display: none;
+		}
+	}
+}

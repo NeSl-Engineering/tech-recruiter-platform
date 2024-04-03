@@ -1,15 +1,14 @@
 'use client'
 
 import { Button } from '@/components/ui/buttons/Button'
+import Checkbox from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
-import IconUI from '@/components/ui/icon/Icon'
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import { useState } from 'react'
 import styles from './Contacts.module.scss'
 
 const Contacts = () => {
-	const [isTickOpen, setIsTickOpen] = useState(false)
-
+	const [isCheckbox, setIsCheckbox] = useState(false)
 	return (
 		<div className={styles.contacts}>
 			<Transition>
@@ -30,21 +29,11 @@ const Contacts = () => {
 								<Field id='1' placeholder='Имя' />
 								<Field id='1' placeholder='Почта' />
 								<Field id='1' placeholder='Номер телефона' />
-								<div
-									className={`${styles.tickWrapper} ${
-										isTickOpen && styles.active
-									}`}
-								>
-									<div onClick={() => setIsTickOpen(current => !current)}>
-										<div className={styles.notActiveTick}>
-											<IconUI icon='tickNotAccept' />
-										</div>
-										<div className={styles.activeTick}>
-											<IconUI icon='tickAccept' />
-										</div>
-									</div>
-									<h3>Я соглашаюсь на обработку персональных данных</h3>
-								</div>
+								<Checkbox
+									isTickOpen={isCheckbox}
+									text='Я соглашаюсь на обработку персональных данных'
+									handleChange={() => setIsCheckbox(value => !value)}
+								/>
 								<Button>Оставить заявку</Button>
 							</form>
 						</div>

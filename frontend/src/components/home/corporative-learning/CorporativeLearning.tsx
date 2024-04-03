@@ -1,4 +1,4 @@
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import { CORPORATIVE } from './CorparativeLearning.data'
 import styles from './CorporativeLearning.module.scss'
 

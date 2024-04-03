@@ -16,6 +16,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			whiteButton,
 			whiteTransparent,
 			widthFull,
+			disabled,
 			className,
 			onClick
 		},
@@ -34,6 +35,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 					whiteTransparent: whiteTransparent,
 					widthFull: widthFull
 				})}`}
+				disabled={disabled}
 				ref={ref}
 			>
 				{children}

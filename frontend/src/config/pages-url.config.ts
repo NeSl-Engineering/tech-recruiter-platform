@@ -1,5 +1,4 @@
 class MAIN {
-	private root = '/i'
 
 	HOME = '/'
 	AGENCY = '/agency'
@@ -8,6 +7,8 @@ class MAIN {
 	MASTER_CLASSES = '/masterclass'
 	BLOG = '/blog'
 	CONTACTS = '/contacts'
+	// licnyy kabinet pages
+
 }
 
 export const MAIN_PAGES = new MAIN()

@@ -9,9 +9,9 @@ export default function Transition({
 }) {
 	return (
 		<motion.div
-			initial={{ y: 30, opacity: 0 }}
+			initial={{ y: 25, opacity: 0 }}
 			whileInView={{ y: 0, opacity: 1 }}
-			transition={{ ease: 'easeInOut', duration: 1.5 }}
+			transition={{ ease: 'easeInOut', duration: 1.4 }}
 			viewport={{ once: true }}
 		>
 			{children}

@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { EnumTokens } from './services/auth-token.service'
+// import { LK_PAGES } from './config/lk-pages-url.config'
+// import { EnumTokens } from './services/auth-token.service'
 
 export async function middleware(request: NextRequest, response: NextResponse) {
-	const { url, cookies } = request
+	// const { url, cookies } = request
 
-	const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value
+	// const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value
 
-	const isAuthPage = url.includes('/auth')
+	// const isAuthPage = url.includes('/login')
 
 	// if (isAuthPage && refreshToken) {
-	// 	return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, url))
+	// 	return NextResponse.redirect(new URL(LK_PAGES.HOME, url))
 	// }
 
 	// if (isAuthPage) {
@@ -18,12 +19,12 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 	// }
 
 	// if (!refreshToken) {
-	// 	return NextResponse.redirect(new URL('/auth', request.url))
+	// 	return NextResponse.redirect(new URL('/login', request.url))
 	// }
 
 	// return NextResponse.next()
 }
 
 export const config = {
-	matcher: ['/i/:path*', '/auth/:path']
+	matcher: ['/licnyy-kabinet/:path*', '/login/:path']
 }

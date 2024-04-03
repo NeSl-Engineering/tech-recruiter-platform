@@ -1,7 +1,7 @@
 'use client'
 
 import IconUI from '@/components/ui/icon/Icon'
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import Image from 'next/image'
 import { useState } from 'react'
 import styles from './ChooseCourse.module.scss'

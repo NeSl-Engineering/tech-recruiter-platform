@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+	mode: 'jit',
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -122,7 +123,10 @@ const config: Config = {
 				gray: '#919191',
 				gray50: '#A7A7A7',
 				lightGray: '#E2E9F2',
-				grayMedium:'#4D4D4D',
+				grayMedium: '#4D4D4D',
+				grayAdmin: {
+					50: '#F8F8F8'
+				},
 				yellow: {
 					50: '#FFFAE6',
 					100: '#FFF5CC',

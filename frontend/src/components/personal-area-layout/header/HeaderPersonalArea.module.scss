@@ -1,3 +1,40 @@
 .header {
-	
+	@apply mb-[50px];
+	.row {
+		@apply flex justify-end;
+	}
+
+	.profile {
+		@apply flex items-center;
+	}
+
+	.img {
+		@apply w-[7vh] h-[7vh] rounded-[50%] relative mr-3;
+	}
+
+	.content {
+		@apply mr-10;
+	}
+
+	h2 {
+		@apply text-xl text-black font-bold;
+		line-height: 24px;
+	}
+
+	p {
+		@apply text-base text-gray font-normal relative inline-block;
+		line-height: 16px;
+		&::after {
+			content: '';
+			position: absolute;
+			right: -16px;
+			top: 50%;
+			transform: translateY(-50%);
+			@apply bg-cyan-400 w-[8px] h-[8px]  rounded-[50%];
+		}
+	}
+
+	.buttons {
+		@apply flex items-center gap-3 text-gray;
+	}
 }

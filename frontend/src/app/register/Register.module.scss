@@ -1,0 +1,87 @@
+.indicators {
+	@apply flex gap-[60px] relative z-10 mb-[32px];
+	.indicator {
+		@apply w-[60px] h-[60px] flex justify-center items-center font-bold text-2xl rounded-[50%] bg-lightGray relative;
+		line-height: 29px;
+		box-shadow: 0px 5px 40px 0px #002c5a08;
+		transition: 0.3s all;
+		&:not(:last-child) {
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				transform: translateY(-50%);
+				width: 60px;
+				height: 4px;
+				@apply bg-lightGray;
+				transition: 0.3s all;
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				transform: translateY(-50%);
+				width: 0;
+				height: 4px;
+				@apply bg-cyan-400;
+				transition: 0.3s all;
+				z-index: 2;
+			}
+		}
+
+		&.active {
+			background-color: #fff;
+		}
+
+		&.firstCompleted {
+			&:first-child {
+				@apply bg-cyan-400 text-white;
+				&:not(:last-child) {
+					&::after {
+						content: '';
+						width: 60px;
+					}
+				}
+			}
+		}
+		&.secondCompleted {
+			&:nth-child(1),
+			&:nth-child(2) {
+				@apply bg-cyan-400 text-white;
+				&:not(:last-child) {
+					&::after {
+						width: 60px;
+					}
+				}
+			}
+		}
+		&.thirdCompleted {
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3) {
+				@apply bg-cyan-400 text-white;
+				&:not(:last-child) {
+					&::after {
+						width: 60px;
+					}
+				}
+			}
+
+			&.lastCompleted {
+				&:nth-child(1),
+				&:nth-child(2),
+				&:nth-child(3),
+				&:nth-child(4) {
+					background-color: #009da2 !important;
+					&:not(:last-child) {
+						&::after {
+							width: 60px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

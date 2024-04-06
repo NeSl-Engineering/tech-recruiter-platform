@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/buttons/Button'
-import Transition from '@/components/ui/Transition'
 import Link from 'next/link'
 import styles from './SubscribeLink.module.scss'
+import Transition from '@/components/ui/transitions/Transition'
 
 const SubscribeLink = () => {
 	return (

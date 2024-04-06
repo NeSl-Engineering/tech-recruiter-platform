@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/buttons/Button'
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import { MapCoursesData } from './MapCourses.data'
 import styles from './MapCourses.module.scss'
 

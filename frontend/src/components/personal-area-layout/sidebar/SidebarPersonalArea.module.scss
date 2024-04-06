@@ -1,0 +1,41 @@
+.sidebar {
+	@apply bg-white py-10 px-5;
+
+	.logoWrapper {
+		@apply pb-[30px] relative;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: -20px;
+			width: calc(100% + 40px);
+			height: 1px;
+			@apply bg-blue-50;
+		}
+
+		.logo {
+			@apply w-85p h-[40px] relative mx-auto block;
+		}
+	}
+
+	nav {
+		@apply mt-8 h-[77vh] overflow-y-auto;
+	}
+
+	ul {
+		@apply flex flex-col gap-[15px];
+		.link {
+			@apply text-gray  hover:text-blue-400 text-[18px] font-medium flex gap-2 items-center py-[14px] px-2.5;
+			transition: all 0.3s ease-in-out;
+			span {
+			}
+
+			h3 {
+				@apply flex-auto;
+			}
+		}
+		.linkActive {
+			@apply text-blue-400;
+		}
+	}
+}

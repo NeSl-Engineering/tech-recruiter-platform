@@ -1,5 +1,5 @@
 import IconUI from '@/components/ui/icon/Icon'
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import styles from './TitleSearch.module.scss'
 
 const TitleSearch = () => {

@@ -1,4 +1,4 @@
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import Image from 'next/image'
 import styles from './FavouriteCompanies.module.scss'
 

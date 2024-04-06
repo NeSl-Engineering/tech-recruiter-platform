@@ -1,6 +1,6 @@
 'use client'
 
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import { useState } from 'react'
 import { buttonTimeTable, TIMETABLE } from './TimeTable.data'
 import styles from './TimeTable.module.scss'

@@ -7,6 +7,7 @@ export interface ButtonProps {
 	notActive?: Boolean
 	deleteButton?: Boolean
 	widthFull?: Boolean
+	disabled?: boolean | undefined
 	className?: string
 	onClick?: (e: any) => void
 }

@@ -1,4 +1,4 @@
-import Transition from '@/components/ui/Transition'
+import Transition from '@/components/ui/transitions/Transition'
 import { OurCompanyData } from './OurCompany.data'
 import styles from './OurCompany.module.scss'
 

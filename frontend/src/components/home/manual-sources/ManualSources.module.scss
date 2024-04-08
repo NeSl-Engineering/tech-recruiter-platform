@@ -1,0 +1,34 @@
+.ManualSources {
+	@apply mb-28;
+	.row {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		gap: 20px;
+		@apply bg-lightGray rounded-lg;
+	}
+
+	.left {
+		padding: 40px 0 40px 40px;
+		h1 {
+			font-size: 39px;
+			font-weight: 700;
+			margin-bottom: 32px;
+		}
+
+		.buttons {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 12px;
+			max-width: 70%;
+		}
+	}
+
+	.right {
+		padding: 20px 60px 0 0;
+		.img {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

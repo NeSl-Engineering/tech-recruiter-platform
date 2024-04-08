@@ -1,8 +1,11 @@
 .PersonalArea {
 	display: grid;
-	grid-template-columns: 0.21fr 0.74fr;
+	grid-template-columns: 0.21fr 0.72fr;
 	gap: 40px;
 	@apply bg-grayAdmin-50;
 	height: 100%;
 	font-family: 'Formular';
+	.wrapper {
+		@apply pt-6 pb-7;
+	}
 }

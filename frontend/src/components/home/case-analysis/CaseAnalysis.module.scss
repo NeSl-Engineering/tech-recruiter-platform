@@ -1,17 +1,11 @@
 .CaseAnalysis {
-	position: relative;
-	z-index: 1;
-	width: 100%;
-	margin-bottom: 60px;
+	@apply mb-[60px] w-full z-[1] relative;
 
 	.row {
+		@apply bg-lightGray rounded-lg relative hidden gap-5;
 		display: grid;
 		grid-template-columns: 1.2fr 1fr;
-		gap: 20px;
 		padding: 44px 40px;
-		@apply bg-lightGray rounded-lg;
-		position: relative;
-		overflow: hidden;
 		&::after {
 			content: '';
 			position: absolute;
@@ -26,21 +20,20 @@
 
 	.left {
 		.titleBlock {
-			margin-bottom: 60px;
+			@apply mb-[60px];
 			h4 {
-				font-size: 15px;
-				margin-bottom: 8px;
+				@apply text-[15px] mb-2 font-bold;
 			}
 
 			h1 {
-				font-size: 39px;
-				font-weight: 700;
+				@apply text-[39px] font-bold;
+				line-height: 47px;
 			}
 		}
 
 		.bottom {
 			h2 {
-				@apply text-2xl mb-4 font-bold;
+				@apply text-2xl mb-4 font-bold text-gray;
 			}
 
 			ul {
@@ -48,26 +41,19 @@
 			}
 
 			li {
-				@apply text-base;
+				@apply text-base font-normal;
 			}
 
 			p {
-				font-size: 15px;
-				font-weight: 700;
+				@apply text-[15px] font-bold text-red-350;
 			}
 		}
 	}
 
 	.right {
-		display: flex;
-		align-items: flex-end;
-		justify-content: flex-end;
+		@apply flex justify-end items-center;
 		.toBuy {
-			display: flex;
-			flex-direction: column;
-			gap: 8px;
-			position: relative;
-			z-index: 2;
+			@apply flex flex-col gap-2 relative z-10;
 
 			h2 {
 				@apply text-cyan-400 text-center mb-1;

@@ -16,7 +16,7 @@ const SuccessFormRegister = ({ pushNextIndex }: IFormRegister) => {
 	useEffect(() => {
 		setTimeout(() => {
 			router.push('/licnyy-kabinet')
-		}, 3000)
+		}, 5000)
 	}, [])
 
 	const onSubmit: SubmitHandler<any> = data => {

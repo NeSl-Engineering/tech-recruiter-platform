@@ -1,0 +1,92 @@
+.LogReg {
+	width: 100%;
+	height: 100vh;
+	background: #f8f8f8;
+	overflow: hidden;
+
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+		position: relative;
+		&::before {
+			content: '';
+			background: linear-gradient(
+				rgba(5, 126, 255, 0.44) 0%,
+				rgba(44, 137, 236, 0.043) 94.59%
+			);
+			filter: blur(80px);
+			position: absolute;
+			rotate: -6deg;
+			z-index: 0;
+			width: 90vw;
+			height: 30vh;
+			top: 55%;
+			left: 50%;
+			transform: translateX(-50%);
+			pointer-events: none;
+		}
+
+		.logo {
+			@apply mb-6 relative w-[263px] h-[60px];
+		}
+
+		.titleBlock {
+			@apply mb-8;
+
+			h1 {
+				@apply mb-3 text-[55px] font-bold;
+				text-align: center;
+				line-height: 67px;
+			}
+
+			p {
+				@apply text-gray text-base w-70p mx-auto text-center;
+			}
+		}
+	}
+}
+.box {
+	@apply w-27p mb-20 relative z-10;
+	form {
+		@apply bg-white p-6 rounded-[10px] flex flex-col gap-4;
+		.row3 {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 8px;
+		}
+		.content {
+			@apply flex flex-col gap-2;
+			.img {
+				@apply relative w-[60px] h-[60px];
+			}
+			h1 {
+				@apply text-2xl font-bold;
+				line-height: 29px;
+			}
+
+			p {
+				@apply text-base font-normal text-gray;
+				line-height: 21.6px;
+			}
+		}
+		.pText {
+			font-size: 16px;
+			line-height: 21px;
+			color: #191d23;
+			text-align: center;
+			span {
+				&:hover {
+					a {
+						text-decoration: underline;
+					}
+				}
+				a {
+					@apply text-cyan-400 transition;
+				}
+			}
+		}
+	}
+}

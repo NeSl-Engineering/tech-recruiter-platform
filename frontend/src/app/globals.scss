@@ -1,0 +1,12 @@
+@import '../assets/scss/null.scss';
+@import '../assets/scss/fonts.scss';
+
+[class*='__container'] {
+	max-width: 1270px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}

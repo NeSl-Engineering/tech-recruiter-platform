@@ -1,0 +1,89 @@
+.inputWrapper {
+	position: relative;
+	.labelWrapper {
+		@apply mb-2 flex justify-between;
+		label {
+			font-size: 15px;
+			line-height: 18px;
+			font-weight: 700;
+		}
+		h3 {
+			@apply text-cyan-400 text-lg font-normal transition cursor-pointer;
+			line-height: 24px;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.appendIcon {
+		position: absolute;
+		right: 1px;
+		top: 50%;
+		transform: translateY(-50%);
+		padding: 20px 20px 20px 10px;
+		height: 54px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #fff;
+		border-radius: 4px;
+	}
+
+	.inputBlock {
+		position: relative;
+		cursor: pointer;
+	}
+
+	.input {
+		@apply text-grayMedium font-medium py-4 px-5 rounded-4 bg-white font-normal  w-full text-base transition;
+		border: 1px solid transparent;
+		height: 56px;
+		&:focus {
+			border: 1px solid #919191;
+		}
+		&::placeholder {
+			@apply text-gray text-base;
+		}
+
+		&.error {
+			color: #ff424e !important;
+			border: 1px solid #ff424e !important;
+			&::placeholder {
+				color: #ff424e !important;
+			}
+			&:focus {
+				border: 1px solid #ff424e !important;
+			}
+		}
+
+		&.isShake {
+			animation: 0.2s invalid forwards;
+		}
+
+		&.standardStyle {
+			border: 1px solid #919191;
+			&:focus {
+				@apply border-blue-400;
+			}
+		}
+	}
+}
+
+@keyframes invalid {
+	0% {
+		transform: translateX(0px);
+	}
+	25% {
+		transform: translateX(5px);
+	}
+	50% {
+		transform: translateX(0px);
+	}
+	75% {
+		transform: translateX(-5px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}

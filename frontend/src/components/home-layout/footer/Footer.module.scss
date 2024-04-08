@@ -1,0 +1,81 @@
+.footer {
+	@apply bg-primary text-white pt-14 pb-10;
+	.row {
+		@apply flex justify-between gap-0.5 mb-5;
+	}
+
+	.about {
+		flex: 0 1 30%;
+	}
+
+	.logo {
+		position: relative;
+		width: 175px;
+		height: 40px;
+		display: block;
+		margin-bottom: 30px;
+	}
+
+	.list {
+		p {
+			@apply font-light mb-2;
+		}
+	}
+
+	.mail {
+		margin-top: 24px;
+		font-weight: 700;
+		display: block;
+		transition: 0.2s all ease 0s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	.right {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 90px;
+		.listWrapper {
+			.title {
+				font-size: 20px;
+				font-weight: 700;
+				margin-bottom: 12px;
+			}
+			ul {
+				li {
+					a {
+						font-size: 18px;
+						font-weight: 300;
+						transition: 0.2s all ease 0s;
+						margin-bottom: 12px;
+						display: block;
+						&:hover {
+							opacity: 0.8;
+						}
+					}
+				}
+			}
+		}
+	}
+	.social {
+		.title {
+			font-size: 15px;
+			font-weight: 700;
+			margin-bottom: 8px;
+		}
+
+		.rowSocial {
+			display: flex;
+			align-items: center;
+			gap: 22px;
+			a {
+				cursor: pointer;
+				transition: 0.2s all;
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+}

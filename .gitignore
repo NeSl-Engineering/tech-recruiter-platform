@@ -1,5 +1,7 @@
 *node_modules*
 .env
+.env.db
+.env.front
 *venv*
 *pycache*
 db.sqlite3

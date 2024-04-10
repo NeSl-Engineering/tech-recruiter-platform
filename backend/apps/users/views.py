@@ -34,6 +34,10 @@ class RegistrationAPIView(APIView):
 class OTPResendAPIView(APIView):
     serializer_class = OTPResendSerializer
 
+    @swagger_auto_schema(
+        request_body=OTPResendSerializer(),
+        responses={200: OTPResendSerializer()}
+    )
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
@@ -48,6 +52,10 @@ class OTPResendAPIView(APIView):
 class EmailVerificationAPIView(APIView):
     serializer_class = EmailVerificationSerializer
 
+    @swagger_auto_schema(
+        request_body=EmailVerificationSerializer(),
+        responses={200: EmailVerificationSerializer()}
+    )
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():

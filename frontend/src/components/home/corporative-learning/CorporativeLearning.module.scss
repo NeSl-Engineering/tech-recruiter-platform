@@ -1,0 +1,47 @@
+.CorporativeLearning {
+	@apply mb-28;
+	position: relative;
+	&::before {
+		content: '';
+		background: linear-gradient(
+			90deg,
+			rgba(5, 126, 255, 0.18) 0%,
+			rgba(44, 137, 236, 0.09) 94.59%
+		);
+		filter: blur(60px);
+		position: absolute;
+		z-index: 0;
+		width: 60%;
+		height: 140px;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		pointer-events: none;
+	}
+	h1 {
+		@apply mb-10 font-bold w-43p;
+		font-size: 39px;
+		line-height: 47px;
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+
+	.item {
+		@apply bg-blue-50 rounded-lg;
+		padding: 15px;
+
+		.img {
+			font-size: 65px;
+			@apply mb-5;
+		}
+
+		h2 {
+			@apply text-xl font-bold;
+			line-height: 24px;
+		}
+	}
+}

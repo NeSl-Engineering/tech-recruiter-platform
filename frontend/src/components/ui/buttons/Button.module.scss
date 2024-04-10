@@ -1,0 +1,38 @@
+.button {
+	@apply rounded-4 border-transparent p-3 text-base font-bold text-white  hover:opacity-80 bg-blue-400;
+	transition: 0.3s all ease-in-out;
+	border: 1px solid;
+	&:active {
+		transform: scale(1.02);
+	}
+
+	&.widthFull {
+		@apply w-full;
+	}
+	&.cyanButton {
+		@apply bg-cyan-400 rounded-full font-light px-7 py-2;
+	}
+
+	&.blueTransparent {
+		@apply bg-transparent text-blue-400 border-blue-400;
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.08);
+		}
+	}
+
+	&:disabled {
+		@apply bg-gray cursor-no-drop;
+	}
+
+	&.notActive {
+		@apply bg-gray;
+	}
+
+	&.whiteButton {
+		@apply bg-white text-blue-400;
+	}
+
+	&.whiteTransparent {
+		@apply bg-transparent border-white;
+	}
+}

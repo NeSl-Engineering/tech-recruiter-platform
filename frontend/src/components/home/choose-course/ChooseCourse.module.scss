@@ -1,0 +1,84 @@
+.ChooseCourse {
+	@apply mb-28;
+
+	h1 {
+		@apply mb-10 font-bold w-60p;
+		font-size: 39px;
+		line-height: 47px;
+	}
+
+	.buttons {
+		display: flex;
+		gap: 10px;
+		margin-bottom: 20px;
+
+		.button {
+			@apply text-base rounded-full font-light text-white px-7 py-2 bg-gray hover:opacity-80;
+			transition: 0.3s all ease-in-out;
+
+			&.active {
+				@apply bg-cyan-400;
+			}
+		}
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+
+		.item {
+			@apply bg-white rounded-lg p-5;
+
+			.image {
+				height: 295px;
+				position: relative;
+				margin-bottom: 16px;
+			}
+
+			.content {
+				margin-bottom: 18px;
+			}
+
+			h2 {
+				@apply mb-3 font-bold;
+				font-size: 20px;
+			}
+
+			p {
+				@apply text-gray text-base;
+				line-height: 21.6px;
+			}
+
+			.footer {
+				@apply flex justify-between items-center;
+			}
+
+			h4 {
+				@apply text-2xl text-cyan-400 font-bold;
+			}
+
+			.details {
+				@apply flex gap-1 cursor-pointer;
+				&:hover {
+					span {
+						@apply text-blue-400;
+						&:last-child {
+							rotate: 0deg;
+						}
+					}
+				}
+			}
+
+			span {
+				font-size: 18px;
+				line-height: 24px;
+				@apply font-normal;
+				transition: all 0.3s ease-in-out;
+				&:last-child {
+					rotate: 45deg;
+				}
+			}
+		}
+	}
+}

@@ -5,11 +5,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView
 )
 
+from blog.views import PostViewSet
 from users.views import RegistrationAPIView
 from .views import schema_view
 
 router = routers.DefaultRouter()
-
+router.register('posts', PostViewSet, 'posts')
 
 urlpatterns = [
     path('docs', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
@@ -17,3 +18,6 @@ urlpatterns = [
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/register/', RegistrationAPIView.as_view(), name='register_user'),
 ]
+
+urlpatterns += router.urls
+

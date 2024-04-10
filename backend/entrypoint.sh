@@ -2,4 +2,5 @@
 
 python manage.py flush --no-input
 python manage.py migrate
-gunicorn core.wsgi:application -c --reload --bind 0.0.0.0:8000
+python manage.py collectstatic --no-input
+gunicorn core.wsgi:application --reload --bind 0.0.0.0:8000

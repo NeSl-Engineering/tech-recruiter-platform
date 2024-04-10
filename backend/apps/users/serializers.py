@@ -1,9 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.db.models.fields import validators
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
+from rest_framework.validators import UniqueValidator, ValidationError
 
 from .models import Profile
+from .otp import OTP
 
 User = get_user_model()
 
@@ -71,5 +72,49 @@ class RegistrationSerializer(serializers.Serializer):
             telegram_nickname=validated_data.get('telegram_nickname')
         )
         profile.save()
+        OTP.send_email(user.email, profile.first_name, profile.last_name)
         return user, profile
+
+
+class EmailVerificationSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    otp = serializers.CharField()
+
+    def validate_email(self, value):
+        user = User.objects.filter(email=value)
+        if not user.exists():
+            raise ValidationError('User with such email doesn\'t exist')
+        if user.first().is_active:
+            raise ValidationError('This email was already validated')
+        return value
+
+    def validate_otp(self, value):
+        if not OTP.validate_password(self.initial_data['email'], value):
+            raise ValidationError('OTP is not valid or was already expired')
+        return value
+
+    def verify_user(self):
+        user = User.objects.get(email=self.validated_data['email'])
+        user.is_active = True
+        user.save()
+
+
+class OTPResendSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate_email(self, value):
+        user = User.objects.filter(email=value)
+        if not user.exists():
+            raise ValidationError('User with such email doesn\'t exist')
+        if user.first().is_active:
+            raise ValidationError('This email was already validated')
+        self.user = user[0]
+        return value
+
+    def create(self, validated_data):
+        OTP.send_email(
+            self.user.email,
+            self.user.profile.first_name,
+            self.user.profile.last_name
+        )
 

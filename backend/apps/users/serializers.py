@@ -72,6 +72,7 @@ class RegistrationSerializer(serializers.Serializer):
             telegram_nickname=validated_data.get('telegram_nickname')
         )
         profile.save()
+        OTP.send_email(user.email, profile.first_name, profile.last_name)
         return user, profile
 
 
@@ -96,4 +97,24 @@ class EmailVerificationSerializer(serializers.Serializer):
         user = User.objects.get(email=self.validated_data['email'])
         user.is_active = True
         user.save()
+
+
+class OTPResendSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate_email(self, value):
+        user = User.objects.filter(email=value)
+        if not user.exists():
+            raise ValidationError('User with such email doesn\'t exist')
+        if user.first().is_active:
+            raise ValidationError('This email was already validated')
+        self.user = user
+        return value
+
+    def create(self, validated_data):
+        OTP.send_email(
+            self.user.email,
+            self.user.profile.first_name,
+            self.user.profile.last_name
+        )
 

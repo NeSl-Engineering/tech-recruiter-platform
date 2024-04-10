@@ -6,7 +6,7 @@ from rest_framework.routers import Response
 from rest_framework.views import APIView
 
 from .otp import OTP
-from .serializers import EmailVerificationSerializer, RegistrationSerializer
+from .serializers import EmailVerificationSerializer, OTPResendSerializer, RegistrationSerializer
 
 
 class RegistrationAPIView(APIView):
@@ -17,23 +17,21 @@ class RegistrationAPIView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             user, profile  = serializer.create(serializer.validated_data)
-            # send otp to user.email
-            context = {
-                'otp': OTP.get_password(user.email),
-                'first_name': profile.first_name,
-                'last_name': profile.last_name
-            }
-            message = render_to_string(
-                'users/email_activation_message.html',
-                context 
-            )
-            send_mail(
-                "Email Activation",
-                message,
-                "nazar@gmail.com",
-                [user.email]
-            )
             return Response({'status': 200})
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+class OTPResendAPIView(APIView):
+    serializer_class = OTPResendSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+            return Response(serializer.data)
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
@@ -47,7 +45,7 @@ class EmailVerificationAPIView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.verify_user()
-            return Response({'status': 200})
+            return Response(serializer.data)
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST

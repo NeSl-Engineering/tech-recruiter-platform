@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from api.permissions import IsAdminUserOrReadOnly
+from .models import Post
+from .serializers import PostSerializer
+
+
+class PostViewSet(ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
+

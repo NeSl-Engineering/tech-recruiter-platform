@@ -1,0 +1,44 @@
+.OtpInput {
+	display: flex;
+	gap: 10px;
+	&_focus {
+	}
+	&_error {
+		animation: 0.2s invalid forwards;
+		border-color: var(--red);
+		background-color: var(--red-500);
+	}
+
+	input {
+		width: 100%;
+		height: 56px;
+		background-color: transparent;
+		font-size: 24px;
+		text-align: center;
+		line-height: 16px;
+		padding: 6px;
+		color: #0030322b;
+		border: 1.2px solid #0030322b;
+		transition: var(--transition);
+		border-radius: 6px;
+		&.empty {
+			border: 1.2px solid red;
+		}
+		&:focus {
+			border: 1.2px solid;
+			@apply border-blue-400;
+			color: #000;
+		}
+		&::placeholder {
+			color: #0030322b;
+		}
+
+		&[type='number'] {
+			-moz-appearance: textfield;
+		}
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+		}
+	}
+}

@@ -1,0 +1,7 @@
+.HomeLayout {
+	@apply min-h-screen flex flex-col;
+
+	.main {
+		@apply overflow-x-hidden flex-auto;
+	}
+}

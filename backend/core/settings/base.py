@@ -44,12 +44,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "users",
     "courses",
     "blog",
     "views",
     "api",
+
     "rest_framework",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -135,9 +138,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = '/home/app/web/staticfiles'
 
 MEDIA_URL =  '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = 'home/app/web/mediafiles'
 
 # Email message configs
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
@@ -157,6 +161,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 

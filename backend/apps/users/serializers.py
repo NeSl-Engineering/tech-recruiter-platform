@@ -108,7 +108,7 @@ class OTPResendSerializer(serializers.Serializer):
             raise ValidationError('User with such email doesn\'t exist')
         if user.first().is_active:
             raise ValidationError('This email was already validated')
-        self.user = user
+        self.user = user[0]
         return value
 
     def create(self, validated_data):

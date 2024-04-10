@@ -3,12 +3,12 @@
 ## How to run
 
 *Only if running the first time*
-```bash
-touch .env
-echo "SECRET_KEY=<your_secret_key>"
-touch .env.front
-touch .env.db
-```
+Remove `example` from from next filenames:
+* example.env
+* example.env.front
+* example.env.db
+
+Fill out the data in them
 
 ```bash
 docker compose up -d

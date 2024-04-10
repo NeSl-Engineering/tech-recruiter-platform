@@ -1,6 +1,8 @@
 import base64
 
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 import pyotp
 
@@ -10,6 +12,34 @@ class OTP:
     Utility class for working with
     one-time-passwords (aka OTP)
     '''
+
+    @classmethod
+    def send_email(
+        cls,
+        email: str,
+        first_name: str,
+        last_name: str
+    ):
+        '''
+
+        '''
+        context = {
+            'otp': OTP.get_password(email),
+            'first_name': first_name,
+            'last_name': last_name
+        }
+        message = render_to_string(
+            'users/email_activation_message.html',
+            context 
+        )
+        send_mail(
+            "Email Activation",
+            message,
+            "nazar@gmail.com",
+            [email]
+        )
+
+
     @classmethod
     def get_password(cls, email: str) -> str:
         '''

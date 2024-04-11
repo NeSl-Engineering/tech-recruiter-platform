@@ -7,8 +7,10 @@ const PersonalAreaLayout = ({ children }: { children: React.ReactNode }) => {
 		<div className={styles.PersonalArea}>
 			<SidebarPersonalArea />
 			<div className={styles.wrapper}>
-				<HeaderPersonalArea />
-				<div className={styles.body}>{children}</div>
+				<div className={styles.bodyWrap}>
+					<HeaderPersonalArea />
+					<div className={styles.body}>{children}</div>
+				</div>
 			</div>
 		</div>
 	)

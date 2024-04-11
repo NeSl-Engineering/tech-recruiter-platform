@@ -1,17 +1,15 @@
 import { PERSONAL_AREA_NAME, SITE_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
-import PersonalArea from './PersonalArea'
+import React from 'react'
 
 export const metadata: Metadata = {
 	title: `Главная ${PERSONAL_AREA_NAME}`
 }
 
-const PersonalAreaPage = () => {
+const TrainingPlanPage = () => {
 	return (
-		<>
-			<PersonalArea />
-		</>
+		<div>TrainingPlanPage</div>
 	)
 }
 
-export default PersonalAreaPage
+export default TrainingPlanPage

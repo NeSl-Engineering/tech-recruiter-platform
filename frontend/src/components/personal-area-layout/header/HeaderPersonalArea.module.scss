@@ -1,3 +1,37 @@
 .header {
-	
+	@apply flex justify-end items-center;
+	.profile {
+		@apply flex items-center;
+	}
+	.img {
+		@apply w-[70px] h-[70px] relative mr-3;
+	}
+
+	.content {
+		@apply mr-10;
+		h1 {
+			@apply mb-1 text-xl font-bold;
+			line-height: 24px;
+		}
+
+		span {
+			@apply text-base text-gray font-normal relative;
+			&::after {
+				content: '';
+				display: inline-block;
+				position: absolute;
+				top: 50%;
+				right: -16px;
+				transform: translateY(-50%);
+				@apply bg-cyan-400;
+				border-radius: 50%;
+				width: 8px;
+				height: 8px;
+			}
+		}
+	}
+
+	.icons {
+		@apply text-gray flex gap-3;
+	}
 }

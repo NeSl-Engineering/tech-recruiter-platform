@@ -1,0 +1,40 @@
+.PersonalArea {
+	.title {
+		@apply font-bold text-[39px] mb-4;
+		line-height: 47px;
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
+
+	.ourCourses {
+		@apply mb-[60px];
+	}
+
+	.demoAccess {
+		@apply mb-10;
+	}
+
+	.haveQuestion {
+		background: linear-gradient(87.72deg, #e2e9f2 0%, #cfe4ff 99.92%);
+		@apply flex justify-between items-center gap-[50px] p-[30px] rounded-lg;
+		.content {
+		}
+
+		.titleContent {
+			@apply text-[39px] font-bold mb-8;
+			line-height: 47px;
+		}
+
+		.buttonWrapper {
+			width: 45%;
+		}
+
+		.img {
+			@apply relative w-[238px] h-[238px];
+		}
+	}
+}

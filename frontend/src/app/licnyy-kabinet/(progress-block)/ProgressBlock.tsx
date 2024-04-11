@@ -1,6 +1,7 @@
+// import ProgressBar from '@/components/ui/progress-bar/ProgressBar'
+import { Button } from '@/components/ui/buttons/Button'
 import ProgressBar from '@/components/ui/progress-bar/ProgressBar'
 import styles from './ProgressBlock.module.scss'
-import { Button } from '@/components/ui/buttons/Button'
 
 interface props {
 	title: string
@@ -12,8 +13,8 @@ const ProgressBlock = (props: props) => {
 			<h1 className={styles.title}>{props.title}</h1>
 			<ProgressBar />
 			<div className={styles.buttons}>
-				<Button>Открыть демо-главу</Button>
-				<Button blueTransparent>Купить полный доступ</Button>
+				<Button blueTransparent>Открыть демо-главу</Button>
+				<Button>Купить полный доступ</Button>
 			</div>
 		</div>
 	)

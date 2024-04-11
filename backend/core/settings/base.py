@@ -34,10 +34,15 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = [
+    'http://*.127.0.0.1',
+    'http://localhost:8000',
+    'http://0.0.0.0:8000'
+]
 
 # Application definition
 INSTALLED_APPS = [
+    "jet",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -53,6 +58,7 @@ INSTALLED_APPS = [
 
     "rest_framework",
     "drf_yasg",
+
 ]
 
 MIDDLEWARE = [

@@ -43,7 +43,6 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache /wheels/*
 
 # copy entrypoint.sh
-COPY ./backend/entrypoint.sh .
 
 # copy project
 COPY ./backend $APP_HOME
@@ -53,7 +52,3 @@ RUN chown -R app:app $APP_HOME
 
 # change to the app user
 USER app
-
-RUN chmod +x  $APP_HOME/entrypoint.sh
-# run entrypoint.prod.sh
-ENTRYPOINT ["/home/app/web/entrypoint.sh"]

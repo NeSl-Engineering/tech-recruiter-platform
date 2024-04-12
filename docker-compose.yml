@@ -43,6 +43,35 @@ services:
       - /app/.next
     depends_on:
       - api
+  celery:
+    build:
+      context: ./
+      dockerfile: ./backend/celery.dockerfile
+    command: celery --app=core worker --loglevel=info
+    volumes:
+      - ./backend:/home/app/web
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - redis
+
+  redis:
+    image: redis:7-alpine
+
+  celery-flower:
+    build:
+      context: ./
+      dockerfile: ./backend/celery.dockerfile
+    command: celery flower -A core --port=5555
+    ports:
+      - 5555:5555
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - redis
+      - celery
 
 volumes:
   postgres_data:

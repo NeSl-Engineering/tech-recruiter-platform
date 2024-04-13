@@ -58,7 +58,7 @@ INSTALLED_APPS = [
 
     "rest_framework",
     "drf_yasg",
-
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -170,4 +170,9 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
+
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER')
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 

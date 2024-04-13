@@ -7,3 +7,4 @@
 db.sqlite3
 backend/media
 backend/static
+celerybeat-schedule

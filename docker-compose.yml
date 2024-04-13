@@ -13,6 +13,7 @@ services:
       - ./.env
     depends_on:
       - db
+      - redis
   db:
     image: postgres:15
     volumes:
@@ -56,9 +57,6 @@ services:
       - api
       - redis
 
-  redis:
-    image: redis:7-alpine
-
   celery-flower:
     build:
       context: ./
@@ -71,7 +69,22 @@ services:
     depends_on:
       - api
       - redis
-      - celery
+
+  celery-beat:
+    build:
+      context: ./
+      dockerfile: ./backend/celery.dockerfile
+    command: celery --app=core beat --loglevel=info
+    volumes:
+      - ./backend:/home/app/web
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - redis
+
+  redis:
+    image: redis:7-alpine
 
 volumes:
   postgres_data:

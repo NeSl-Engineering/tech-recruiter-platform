@@ -1,3 +1,4 @@
+from sys import base_prefix
 from blog.views import PostViewSet
 from django.urls import path
 from rest_framework import routers
@@ -5,16 +6,22 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView
 )
+
 from users.views import (
     EmailVerificationAPIView,
     OTPResendAPIView,
     RegistrationAPIView
 )
-
+from courses.views import (
+    CategoryViewSet,
+    CourseViewSet
+)
 from .views import schema_view
 
 router = routers.DefaultRouter()
 router.register('posts', PostViewSet, 'posts')
+router.register('course-categories', CategoryViewSet, 'course-categories')
+router.register('courses', CourseViewSet, 'courses')
 
 urlpatterns = [
     path('docs', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

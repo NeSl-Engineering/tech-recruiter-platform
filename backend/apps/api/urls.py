@@ -1,3 +1,4 @@
+from blog.views import PostViewSet
 from django.urls import path
 from rest_framework import routers
 from rest_framework_simplejwt.views import (
@@ -5,11 +6,11 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView
 )
 from users.views import (
-    RegistrationAPIView,
     EmailVerificationAPIView,
-    OTPResendAPIView
+    OTPResendAPIView,
+    RegistrationAPIView
 )
-from blog.views import PostViewSet
+
 from .views import schema_view
 
 router = routers.DefaultRouter()

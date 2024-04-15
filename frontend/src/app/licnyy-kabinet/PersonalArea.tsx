@@ -1,11 +1,20 @@
 import { Button } from '@/components/ui/buttons/Button'
+import { Field } from '@/components/ui/fields/Field'
 import Image from 'next/image'
-import ProgressBlock from './(progress-block)/ProgressBlock'
+import ProgressBlock from '../../components/personal-layout/progress-block/ProgressBlock'
 import styles from './PersonalArea.module.scss'
 
 const PersonalArea = () => {
 	return (
 		<div className={styles.PersonalArea}>
+			<div className={styles.searchWrapper}>
+				<div className={styles.searchItem}>
+					<Field id='1' placeholder='Найти курс' />
+					<div className={styles.searchButton}>
+						<Button cyanButton>Найти</Button>
+					</div>
+				</div>
+			</div>
 			<div className={styles.ourCourses}>
 				<h1 className={styles.title}>Мои курсы</h1>
 				<div className={styles.row}>

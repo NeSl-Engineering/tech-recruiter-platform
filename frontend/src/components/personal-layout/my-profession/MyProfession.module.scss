@@ -1,0 +1,16 @@
+.myProfession {
+	@apply flex justify-between items-center bg-white p-[25px] rounded-[10px];
+	.left {
+		.subTitle {
+			@apply text-[15px] font-bold text-gray mb-1;
+		}
+		.title {
+			@apply text-2xl font-bold mb-8;
+		}
+	}
+
+	.right {
+		@apply flex flex-col gap-3;
+		flex: 0 1 27%;
+	}
+}

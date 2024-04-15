@@ -1,6 +1,6 @@
-import { PERSONAL_AREA_NAME, SITE_NAME } from '@/constants/seo.constants'
+import { PERSONAL_AREA_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
-import React from 'react'
+import TrainingPlan from './TrainingPlan'
 
 export const metadata: Metadata = {
 	title: `Главная ${PERSONAL_AREA_NAME}`
@@ -8,7 +8,9 @@ export const metadata: Metadata = {
 
 const TrainingPlanPage = () => {
 	return (
-		<div>TrainingPlanPage</div>
+		<>
+			<TrainingPlan />
+		</>
 	)
 }
 

@@ -1,0 +1,63 @@
+.PresentationModule {
+	.row {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	.left {
+		@apply p-5 rounded-[10px] bg-white flex flex-col;
+		.title {
+			@apply text-[15px] font-bold leading-4 mb-1;
+		}
+
+		.list {
+			@apply mb-4;
+		}
+
+		.item {
+			@apply flex justify-between items-center py-2 transition rounded-4 cursor-pointer border-b border-solid border-blue-50;
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.05);
+			}
+			.name {
+			}
+
+			.icon {
+				@apply w-[30px] h-[30px] bg-blue-50 rounded-[50%] flex justify-center items-center;
+			}
+		}
+	}
+
+	.right {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: 20px;
+		.item {
+			@apply flex justify-center items-center relative;
+			&:hover {
+				.icon {
+					@apply top-[4px] right-[4px];
+				}
+			}
+			&:first-child {
+				@apply bg-blue-50;
+			}
+			&:nth-child(2) {
+				@apply bg-yellow-400 bg-opacity-[20%];
+				grid-row: 2 span;
+			}
+			&:last-child {
+				@apply bg-red-50;
+			}
+			.title {
+				@apply font-bold text-[15px] max-w-[80%] mx-auto text-center;
+			}
+
+			.icon {
+				@apply absolute top-[10px] right-[10px];
+				transition: 0.3s all;
+			}
+		}
+	}
+}

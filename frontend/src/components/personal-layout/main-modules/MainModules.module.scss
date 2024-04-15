@@ -1,0 +1,62 @@
+.MainModules {
+	@apply bg-white rounded-[10px] p-[25px];
+	.title {
+		@apply font-bold text-2xl mb-1 leading-7;
+	}
+
+	.description {
+		@apply font-normal text-base leading-5 text-gray mb-4;
+	}
+
+	.list {
+		@apply flex flex-col gap-4;
+	}
+
+	.item {
+		@apply bg-[#F6F6F7] p-5 rounded-md cursor-pointer;
+		transition: 0.3s all;
+		&:hover {
+			transform: scale(1.02);
+		}
+		&:first-child {
+			.numeration {
+				@apply bg-blue-400;
+			}
+		}
+		.link {
+			@apply flex justify-between items-center;
+		}
+
+		.left {
+			@apply flex items-center gap-3;
+		}
+
+		.numeration {
+			@apply w-[26px] h-[26px] flex justify-center items-center text-[14px] font-normal text-blue-50 bg-gray rounded-[50%];
+		}
+
+		.content {
+		}
+
+		.itemTitle {
+			@apply text-xl leading-5 font-bold mb-[2px];
+		}
+
+		.author {
+			@apply font-normal text-base leading-5 text-gray;
+		}
+
+		.right {
+			@apply flex items-center gap-10;
+			flex: 0 1 23%;
+
+			.progressBarWrapper {
+				@apply w-full;
+			}
+
+			.icon {
+				@apply bg-blue-50 text-blue-400 rounded-[50%] w-[26px] h-[26px] flex justify-center items-center;
+			}
+		}
+	}
+}

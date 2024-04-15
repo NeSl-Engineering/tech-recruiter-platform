@@ -28,7 +28,11 @@ class Course(models.Model):
 
 class Module(models.Model):
     title = models.CharField(max_length=120)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='modules'
+    )
     is_demo = models.BooleanField(default=False)
     ordinal_number = models.IntegerField()
 
@@ -56,5 +60,4 @@ class LessonMaterial(models.Model):
     class Meta:
         db_table = 'lesson_materials'
         verbose_name_plural = 'Материалы к урокам'
-
 

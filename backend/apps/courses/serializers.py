@@ -1,6 +1,19 @@
 from rest_framework import serializers
 
-from .models import Category, Course
+from .models import (
+    Category,
+    Course,
+    Module,
+    LessonVideo,
+    LessonMaterial
+)
+
+
+class ModuleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Module
+        exclude = ('course',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -11,6 +24,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    modules = ModuleSerializer(many=True)
     
     class Meta:
         model = Course

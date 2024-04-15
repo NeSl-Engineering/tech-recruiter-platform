@@ -10,6 +10,7 @@ class VideoView(models.Model):
 
     class Meta:
         db_table = 'video_views'
+        verbose_name_plural = 'Просмотры видеоуроков'
 
 
 class MaterialView(models.Model):
@@ -19,4 +20,5 @@ class MaterialView(models.Model):
 
     class Meta:
         db_table = 'material_views'
+        verbose_name_plural = 'Просмотры материалов по урокам'
 

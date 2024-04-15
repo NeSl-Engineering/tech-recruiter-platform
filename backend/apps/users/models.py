@@ -16,6 +16,7 @@ class User(AbstractUser):
 
     class Meta:
         db_table = 'users'
+        verbose_name_plural = 'Пользователи'
 
 
 class Profile(models.Model):
@@ -38,4 +39,5 @@ class Profile(models.Model):
 
     class Meta:
         db_table = 'profiles'
+        verbose_name_plural = 'Профили'
 

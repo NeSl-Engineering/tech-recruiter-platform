@@ -18,7 +18,11 @@ class Course(models.Model):
     start_time = models.DateField(null=True, blank=True)
     end_time = models.DateField(null=True, blank=True)
     is_infinite = models.BooleanField(default=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='courses'
+    )
     cover_image = models.ImageField(upload_to='courses')
 
     class Meta:
@@ -43,7 +47,11 @@ class Module(models.Model):
 
 class LessonVideo(models.Model):
     file = models.FileField()
-    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    module = models.ForeignKey(
+        Module,
+        on_delete=models.CASCADE,
+        related_name='videos'
+    )
     ordinal_number = models.IntegerField()
     length = models.FloatField()
 
@@ -54,9 +62,14 @@ class LessonVideo(models.Model):
 
 class LessonMaterial(models.Model):
     file = models.FileField()
-    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    module = models.ForeignKey(
+        Module,
+        on_delete=models.CASCADE,
+        related_name='materials'
+    )
     ordinal_number = models.IntegerField()
 
     class Meta:
         db_table = 'lesson_materials'
         verbose_name_plural = 'Материалы к урокам'
+

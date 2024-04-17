@@ -60,4 +60,3 @@ class LessonMaterial(models.Model):
     class Meta:
         db_table = 'lesson_materials'
         verbose_name_plural = 'Материалы к урокам'
-

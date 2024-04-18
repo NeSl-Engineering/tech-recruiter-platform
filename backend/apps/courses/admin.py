@@ -9,7 +9,7 @@ class CourseAdminConfig(admin.ModelAdmin):
 
     def cover(self, instance):
         return mark_safe(f'''
-        <img src="{instance.cover_image.url}" height=100 />
+        <img src="{instance.cover_image.url}" height=80 />
         ''')
 
 

@@ -85,6 +85,7 @@ class LessonVideo(models.Model):
     module = models.ForeignKey(
         Module,
         on_delete=models.CASCADE,
+        related_name='videos'
         verbose_name='Модуль'
     )
     ordinal_number = models.IntegerField(verbose_name='Порядковый номер')
@@ -101,6 +102,7 @@ class LessonMaterial(models.Model):
     module = models.ForeignKey(
         Module,
         on_delete=models.CASCADE,
+        related_name='materials',
         verbose_name='Модуль'
     )
     ordinal_number = models.IntegerField(verbose_name='Порядковый номер')

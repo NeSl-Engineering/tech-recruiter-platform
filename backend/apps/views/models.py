@@ -4,8 +4,16 @@ from django.db import models
 
 
 class VideoView(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    video = models.ForeignKey(LessonVideo, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name='video_views'
+    )
+    video = models.ForeignKey(
+        LessonVideo,
+        on_delete=models.CASCADE,
+        related_name='views' 
+    )
     date_seen = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -14,8 +22,16 @@ class VideoView(models.Model):
 
 
 class MaterialView(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    material = models.ForeignKey(LessonMaterial, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name='material_views'
+    )
+    material = models.ForeignKey(
+        LessonMaterial,
+        on_delete=models.CASCADE,
+        related_name='views'
+    )
     date_seen = models.DateTimeField(auto_now_add=True)
 
     class Meta:

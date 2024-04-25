@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "courses",
     "blog",
     "views",
+    "enrolls",
     "api",
 
     "rest_framework",

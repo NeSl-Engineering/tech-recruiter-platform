@@ -1,0 +1,26 @@
+.ProgressBar {
+	.row {
+		@apply flex justify-between mb-1;
+	}
+
+	.title {
+		@apply text-sm font-normal ;
+		line-height: 18px;
+	}
+
+	.number {
+		@apply font-normal text-blue-400 text-sm;
+	}
+
+	.progress {
+		@apply w-full h-2 bg-blue-900 rounded-3xl relative;
+		&::after {
+			content: '';
+			@apply absolute bg-blue-400 z-10 h-full;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			width: 70%;
+		}
+	}
+}

@@ -1,5 +1,11 @@
 *node_modules*
 .env
+.env.db
+.env.front
 *venv*
 *pycache*
-
+db.sqlite3
+backend/*media*
+backend/*static*
+backend/home
+celerybeat-schedule

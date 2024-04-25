@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: ./backend/backend.dockerfile
+    volumes:
+      - ./backend/:/home/app/web
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.env.db
+    ports:
+      - 8001:5432
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - 8000:80
+    depends_on:
+      - api
+      - front
+  front:
+    build:
+      context: ./frontend
+      dockerfile: frontend.dockerfile
+    env_file:
+      - ./.env.front
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - api
+  celery:
+    build:
+      context: ./
+      dockerfile: ./backend/celery.dockerfile
+    command: celery --app=core worker --loglevel=info
+    volumes:
+      - ./backend:/home/app/web
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - redis
+
+  celery-flower:
+    build:
+      context: ./
+      dockerfile: ./backend/celery.dockerfile
+    command: celery flower -A core --port=5555
+    ports:
+      - 5555:5555
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - redis
+
+  celery-beat:
+    build:
+      context: ./
+      dockerfile: ./backend/celery.dockerfile
+    command: celery --app=core beat --loglevel=info
+    volumes:
+      - ./backend:/home/app/web
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - redis
+
+  redis:
+    image: redis:7-alpine
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+

@@ -9,7 +9,23 @@ from .models import (
 )
 
 
+class LessonVideoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LessonVideo
+        exclude = ('module',)
+
+
+class LessonMaterialSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LessonMaterial
+        exclude = ('module',)
+
+
 class ModuleSerializer(serializers.ModelSerializer):
+    videos = LessonVideoSerializer(many=True)
+    materials = LessonMaterialSerializer(many=True)
 
     class Meta:
         model = Module
@@ -29,3 +45,4 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = '__all__'
+

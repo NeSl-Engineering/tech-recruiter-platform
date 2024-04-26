@@ -1,6 +1,6 @@
-import MainModules from '@/components/personal-layout/main-modules/MainModules'
-import MyProfession from '@/components/personal-layout/my-profession/MyProfession'
-import PresentationModule from '@/components/personal-layout/presentation-module/PresentationModule'
+import MainModules from '@/components/personal-area/main-modules/MainModules'
+import MyProfession from '@/components/personal-area/my-profession/MyProfession'
+import PresentationModule from '@/components/personal-area/presentation-module/PresentationModule'
 import styles from './TrainingPlan.module.scss'
 
 const TrainingPlan = () => {

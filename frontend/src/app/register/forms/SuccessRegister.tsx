@@ -3,14 +3,9 @@ import { Button } from '@/components/ui/buttons/Button'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
 import { IFormRegister } from './form-register.types'
 
 const SuccessFormRegister = ({ pushNextIndex }: IFormRegister) => {
-	const { register, handleSubmit, reset } = useForm<any>({
-		mode: 'onChange'
-	})
-
 	const router = useRouter()
 
 	useEffect(() => {
@@ -19,16 +14,8 @@ const SuccessFormRegister = ({ pushNextIndex }: IFormRegister) => {
 		}, 5000)
 	}, [])
 
-	const onSubmit: SubmitHandler<any> = data => {
-		const { password, ...rest } = data
-		// mutate({
-		// 	...rest,
-		// 	password: password || undefined
-		// })
-		pushNextIndex()
-	}
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={pushNextIndex}>
 			<div className={stylesLayout.content}>
 				<div className={stylesLayout.img}>
 					<Image src='/success-register.svg' alt='success' fill />

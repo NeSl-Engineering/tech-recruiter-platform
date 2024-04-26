@@ -11,6 +11,10 @@ export interface InputFieldProps {
 	forgotPassword?: boolean
 	standardStyle?: boolean
 	prevIcon?: boolean
-	appendIcon?: boolean
+	appendIcon?: string
 	maxLength?: number
+	passwordEye?: boolean
+	isPasswordIcon?: boolean
+	errorsMessage?: string
+	handlePasswordClick?: () => void
 }

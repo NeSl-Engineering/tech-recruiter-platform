@@ -52,6 +52,11 @@ class Profile(models.Model):
         max_length=60,
         verbose_name='Фамилия'
     )
+    birth_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='Дата рождения',
+    )
     profile_photo = models.ImageField(
         upload_to='users/profiles',
         null=True,

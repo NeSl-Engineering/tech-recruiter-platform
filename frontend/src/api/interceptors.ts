@@ -8,19 +8,18 @@ import { authService } from '@/services/auth.service'
 import { errorCatch } from './error'
 
 const options: CreateAxiosDefaults = {
-	baseURL: 'http://10.192.5.65:1234/api/v2',
-	// baseURL: 'http://216.250.12.77/api/v2',
+	baseURL: 'localhost:8000/api',
 	headers: {
 		'Content-Type': 'application/json',
-		Authorization: getAccessToken()
+		// Authorization: getAccessToken()
 	}
 }
 
 const optionsFile: CreateAxiosDefaults = {
-	baseURL: 'http://10.192.5.65:1234/api/v2',
+	baseURL: 'localhost:8000/api',
 	headers: {
 		'Content-Type': 'multipart/form-data',
-		Authorization: getAccessToken()
+		// Authorization: getAccessToken()
 	}
 }
 

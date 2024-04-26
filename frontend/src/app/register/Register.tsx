@@ -2,7 +2,7 @@
 import LogRegLayout from '@/components/logreg-layout/LogRegLayout'
 import stylesLayout from '@/components/logreg-layout/LogRegLayout.module.scss'
 import { useRouter } from 'next/navigation'
-import { SyntheticEvent, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Register.module.scss'
 
 import { Button } from '@/components/ui/buttons/Button'
@@ -20,7 +20,14 @@ import { INDICATORS } from './register.data'
 const Register = () => {
 	const router = useRouter()
 	const [isActive, setIsActive] = useState('1')
-	const { register, handleSubmit, reset } = useForm<IAuthRegister>({
+	const {
+		register,
+		handleSubmit,
+		reset,
+		watch,
+		setValue,
+		formState: { errors }
+	} = useForm<IAuthRegister>({
 		mode: 'onChange'
 	})
 
@@ -34,13 +41,38 @@ const Register = () => {
 		}
 	})
 
-	const handleClick = (e: SyntheticEvent) => {
-		e.preventDefault()
-		setIsActive('2')
+	const value1 = watch('day')
+	const value2 = watch('month')
+	const value3 = watch('year')
+
+	const combineValues = (): string => {
+		// Combine values using your desired logic (e.g., concatenation)
+		const combined = `${value1} ${value2} ${value3}`
+		return combined
+	}
+
+	useEffect(() => {
+		setValue('birthDate', combineValues())
+	}, [value1, value2, value3, setValue, combineValues])
+
+	const password = watch('password')
+
+	const [passwordEye, setPasswordEye] = useState(false)
+	const [confirmPasswordEye, setConfirmPasswordEye] = useState(false)
+
+	const handlePasswordClick = () => {
+		setPasswordEye(!passwordEye)
+	}
+
+	const handleConfirmPasswordClick = () => {
+		setConfirmPasswordEye(!confirmPasswordEye)
 	}
 
 	const onSubmit: SubmitHandler<IAuthRegister> = data => {
-		mutateRegister(data)
+		const { day, month, year, confirmPassword, ...rest } = data
+		const dto = { ...(rest || undefined) }
+		mutateRegister(dto)
+		setIsActive('4')
 	}
 
 	return (
@@ -69,7 +101,7 @@ const Register = () => {
 			</div>
 			<div className={stylesLayout.box}>
 				<TransitionX>
-					<form onSubmit={handleSubmit(onSubmit)}>
+					<form>
 						{isActive === '1' ? (
 							<>
 								<Field
@@ -77,23 +109,42 @@ const Register = () => {
 									label='Имя'
 									placeholder='Имя...'
 									standardStyle
-									{...register('first_name')}
+									{...register('first_name', {
+										required: 'Укажите имя!'
+									})}
+									errorsMessage={
+										errors.first_name && errors.first_name?.message
+									}
+									state={errors.first_name && 'error'}
 								/>
+								{errors.first_name && <>{errors.first_name.root}</>}
 								<Field
 									id='last_name'
-									label='фамилия'
+									label='Фамилия'
 									placeholder='фамилия...'
 									standardStyle
-									{...register('last_name')}
+									{...register('last_name', {
+										required: 'Укажите фамилию!'
+									})}
+									errorsMessage={errors.last_name && errors.last_name?.message}
+									state={errors.last_name && 'error'}
 								/>
+								{errors.last_name && <>{errors.last_name.root}</>}
 								<Field
 									id='email'
-									label='Email Address'
-									placeholder='Email Address'
+									label='Почта'
+									placeholder='example@gmail.com'
 									standardStyle
-									{...register('email')}
+									{...register('email', {
+										required: 'Укажите почту!'
+									})}
+									errorsMessage={errors.email && errors.email?.message}
+									state={errors.email && 'error'}
 								/>
-								<Button onClick={e => handleClick(e)}>Продолжить</Button>
+								{errors.email && <>{errors.email.root}</>}
+								<Button onClick={handleSubmit(() => setIsActive('2'))}>
+									Продолжить
+								</Button>
 							</>
 						) : isActive === '2' ? (
 							<>
@@ -104,75 +155,116 @@ const Register = () => {
 										placeholder='ДД'
 										standardStyle
 										maxLength={2}
-										{...register('birthDate')}
+										{...register('day', {
+											required: 'Укажите день'
+										})}
+										errorsMessage={errors.day && errors.day?.message}
+										state={errors.day && 'error'}
 									/>
+									{errors.day && <>{errors.day.root}</>}
 									<Field
 										id='month'
 										label='Месяц'
 										placeholder='ММ'
 										standardStyle
 										maxLength={2}
-										{...register('birthDate')}
+										{...register('month', {
+											required: 'Укажите месяц'
+										})}
+										errorsMessage={errors.month && errors.month?.message}
+										state={errors.month && 'error'}
 									/>
+									{errors.month && <>{errors.month.root}</>}
 									<Field
 										id='year'
 										label='Год'
 										placeholder='ГГ'
 										standardStyle
 										maxLength={4}
-										{...register('birthDate')}
+										{...register('year', {
+											required: 'Укажите год'
+										})}
+										errorsMessage={errors.year && errors.year?.message}
+										state={errors.year && 'error'}
 									/>
+									{errors.year && <>{errors.year.root}</>}
 								</div>
 								<Field
 									id='username'
 									label='Имя пользователья'
 									placeholder='John'
 									standardStyle
-									{...register('username')}
+									{...register('username', {
+										required: 'Укажите имя пользователья'
+									})}
+									errorsMessage={errors.username && errors.username?.message}
+									state={errors.username && 'error'}
 								/>
+								{errors.username && <>{errors.username.root}</>}
 								<Field
 									id='telegram'
 									label='Ваш телеграм'
 									placeholder='@tekeogly'
 									standardStyle
 									{...register('telegram_nickname')}
-									// state='error'
-									// isShake
 								/>
-								<Button onClick={() => setIsActive('3')}>Продолжить</Button>
+								<Button onClick={handleSubmit(() => setIsActive('3'))}>
+									Продолжить
+								</Button>
 							</>
-						) : isActive === '3' ? (
-							<>
-								<Field
-									id='password'
-									label='Пароль'
-									placeholder='Пароль'
-									standardStyle
-									type='password'
-									appendIcon
-									{...register('password')}
-								/>
-								<Field
-									id='password'
-									label='Повторите пароль'
-									placeholder='Повторите пароль'
-									standardStyle
-									type='password'
-									appendIcon
-									{...register('password')}
-									// state='error'
-									// isShake
-								/>
-								<Button onClick={() => setIsActive('4')}>Продолжить</Button>
-							</>
-						) : isActive === '4' ? (
-							<FourthFormRegister pushNextIndex={() => setIsActive('5')} />
 						) : (
+							isActive === '3' && (
+								<>
+									<Field
+										id='password'
+										label='Пароль'
+										placeholder='Пароль'
+										standardStyle
+										isPasswordIcon
+										type={passwordEye === false ? 'password' : 'text'}
+										passwordEye={passwordEye}
+										handlePasswordClick={handlePasswordClick}
+										{...register('password', {
+											required: 'Укажите пароль!'
+										})}
+										errorsMessage={errors.password && errors.password?.message}
+										state={errors.password && 'error'}
+									/>
+									{errors.password && <>{errors.password.root}</>}
+									<Field
+										id='confirmPassword'
+										label='Повторите пароль'
+										placeholder='Повторите пароль'
+										standardStyle
+										isPasswordIcon
+										type={confirmPasswordEye === false ? 'password' : 'text'}
+										passwordEye={confirmPasswordEye}
+										handlePasswordClick={handleConfirmPasswordClick}
+										{...register('confirmPassword', {
+											required: 'Укажите пароль подтверждения!',
+											validate: value =>
+												value === password || 'Пароли не совпадают!'
+										})}
+										errorsMessage={
+											errors.confirmPassword && errors.confirmPassword?.message
+										}
+										state={errors.confirmPassword && 'error'}
+									/>
+									{errors.confirmPassword && <>{errors.confirmPassword.root}</>}
+									<Button onClick={handleSubmit(onSubmit)}>Продолжить</Button>
+								</>
+							)
+						)}
+					</form>
+					{isActive === '4' ? (
+						<FourthFormRegister pushNextIndex={() => setIsActive('5')} />
+					) : (
+						isActive === '5' && (
 							<SuccessFormRegister
 								pushNextIndex={() => router.push('/licnyy-kabinet')}
 							/>
-						)}
-					</form>
+						)
+					)}
 				</TransitionX>
 			</div>
 		</LogRegLayout>

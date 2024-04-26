@@ -7,11 +7,15 @@ export interface IAuthRegister {
 	username: string
 	email: string
 	password: string
+	confirmPassword?: string
 	first_name: string
 	last_name: string
 	profile_photo: string
 	telegram_nickname: string
 	birthDate: string
+	day?: string
+	month?: string
+	year?: string
 }
 
 export interface IUser {

@@ -26,6 +26,11 @@ class Profile(models.Model):
     )
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
+    birth_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='Дата рождения'
+    )
     profile_photo = models.ImageField(
         upload_to='users/profiles',
         null=True,

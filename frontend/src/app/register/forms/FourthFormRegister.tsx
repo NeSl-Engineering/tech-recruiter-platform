@@ -1,14 +1,12 @@
 import stylesLayout from '@/components/logreg-layout/LogRegLayout.module.scss'
 import { Button } from '@/components/ui/buttons/Button'
 import OtpInput from '@/components/ui/otp-input/OtpInput'
+import TransitionX from '@/components/ui/transitions/TransitionX'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { IFormRegister } from './form-register.types'
-import TransitionX from '@/components/ui/transitions/TransitionX'
 
-const FourthFormRegister = ({
-	pushNextIndex
-}: IFormRegister) => {
+const FourthFormRegister = ({ pushNextIndex }: IFormRegister) => {
 	const { register, handleSubmit, reset } = useForm<any>({
 		mode: 'onChange'
 	})
@@ -27,7 +25,7 @@ const FourthFormRegister = ({
 	}
 
 	const onSubmit: SubmitHandler<any> = data => {
-		const { password, ...rest } = data
+		// const { password, ...rest } = data
 		// mutate({
 		// 	...rest,
 		// 	password: password || undefined
@@ -45,7 +43,7 @@ const FourthFormRegister = ({
 					</p>
 				</div>
 				<OtpInput value={otpValue} otp={otp} />
-				<Button>Подтвердить</Button>
+				<Button onClick={handleSubmit(onSubmit)}>Подтвердить</Button>
 				<Button blueTransparent>Отравить код заново</Button>
 			</form>
 		</TransitionX>

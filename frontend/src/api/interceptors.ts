@@ -8,24 +8,25 @@ import { authService } from '@/services/auth.service'
 import { errorCatch } from './error'
 
 const options: CreateAxiosDefaults = {
-	baseURL: 'http://localhost:4200/api',
+	baseURL: 'http://10.192.5.65:1234/api/v2',
+	// baseURL: 'http://216.250.12.77/api/v2',
 	headers: {
-		'Content-Type': 'application/json'
-	},
-	withCredentials: true
+		'Content-Type': 'application/json',
+		Authorization: getAccessToken()
+	}
+}
+
+const optionsFile: CreateAxiosDefaults = {
+	baseURL: 'http://10.192.5.65:1234/api/v2',
+	headers: {
+		'Content-Type': 'multipart/form-data',
+		Authorization: getAccessToken()
+	}
 }
 
 const axiosClassic = axios.create(options)
+const axiosWithFile = axios.create(optionsFile)
 const axiosWithAuth = axios.create(options)
-
-axiosWithAuth.interceptors.request.use(config => {
-	const accessToken = getAccessToken()
-
-	if (config?.headers && accessToken)
-		config.headers.Authorization = `Bearer ${accessToken}`
-
-	return config
-})
 
 axiosWithAuth.interceptors.response.use(
 	config => config,
@@ -51,4 +52,4 @@ axiosWithAuth.interceptors.response.use(
 	}
 )
 
-export { axiosClassic, axiosWithAuth }
+export { axiosClassic, axiosWithAuth, axiosWithFile }

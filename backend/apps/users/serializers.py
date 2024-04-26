@@ -16,6 +16,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = [
             'first_name',
             'last_name',
+            'birth_date',
             'profile_photo',
             'telegram_id'
         ]
@@ -54,6 +55,7 @@ class RegistrationSerializer(serializers.Serializer):
     password = serializers.CharField()
     first_name = serializers.CharField()
     last_name = serializers.CharField()
+    birth_date = serializers.DateField(required=False)
     profile_photo = serializers.ImageField(required=False)
     telegram_nickname = serializers.CharField(required=False)
 
@@ -68,6 +70,7 @@ class RegistrationSerializer(serializers.Serializer):
             user=user,
             first_name=validated_data.get('first_name'),
             last_name=validated_data.get('last_name'),
+            birth_date=validated_data.get('birth_date'),
             profile_photo = validated_data.get('profile_photo'),
             telegram_nickname=validated_data.get('telegram_nickname')
         )

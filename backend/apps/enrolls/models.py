@@ -22,10 +22,15 @@ class Enroll(models.Model):
         null=True,
     )
     created_at = models.DateTimeField(
-        verbose_name='Была создана'
+        verbose_name='Была создана',
+        auto_now_add=True
     )
    
     class Meta:
         db_table = 'enrolls'
+        verbose_name = 'Запись на курс'
         verbose_name_plural = 'Записи на курсы'
+
+    def __str__(self):
+        return f'Курс: {self.course}; Пользователь: {self.user}'
 

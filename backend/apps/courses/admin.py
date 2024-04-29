@@ -4,8 +4,14 @@ from django.utils.safestring import mark_safe
 from .models import Category, Course, LessonMaterial, LessonVideo, Module
 
 
+class ModuleAdminInline(admin.TabularInline):
+    model = Module
+    extra = 0
+
+
 class CourseAdminConfig(admin.ModelAdmin):
     list_display = ['title', 'price', 'cover']
+    inlines = [ModuleAdminInline, ]
 
     def cover(self, instance):
         return mark_safe(f'''

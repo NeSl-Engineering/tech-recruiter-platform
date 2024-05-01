@@ -10,7 +10,7 @@ const SuccessFormRegister = ({ pushNextIndex }: IFormRegister) => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			// router.push('/licnyy-kabinet')
+			router.push('/login')
 		}, 5000)
 	}, [])
 

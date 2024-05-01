@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { Toaster } from 'sonner'
 
 import { SITE_NAME } from '@/constants/seo.constants'
+import { Toaster } from 'react-hot-toast'
 import './globals.scss'
 import { Providers } from './providers'
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 			<body>
 				<Providers>
 					{children}
-					<Toaster theme='dark' position='bottom-right' duration={1500} />
+					<Toaster position='top-right' />
 				</Providers>
 			</body>
 		</html>

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import styles from './OtpInput.module.scss'
 
 interface Props {
-	otp: { [key: number]: any }
+	otp: string
 	value: (val: any, index: number) => void
 }
 
@@ -70,7 +70,6 @@ const OtpInput: React.FC<Props> = ({ otp, value }) => {
 		<div ref={containerRef} className={styles.OtpInput}>
 			{Object.values(otp).map((n, index) => (
 				<input
-					key={index}
 					value={n}
 					type='text'
 					onKeyUp={e => handleEnter(e, index)}

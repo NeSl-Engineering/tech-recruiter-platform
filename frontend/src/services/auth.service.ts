@@ -1,4 +1,4 @@
-import { IAuthLogin, IAuthRegister, IAuthResponse } from '@/types/auth.types'
+import { IAuthLogin, IAuthRegister, IAuthResponse, IEmailVerify } from '@/types/auth.types'
 
 import { axiosClassic, axiosWithAuth, axiosWithFile } from '@/api/interceptors'
 
@@ -8,7 +8,19 @@ class AuthService {
 	private BASE_URL = '/auth'
 
 	async register(data: IAuthRegister): Promise<IAuthRegister> {
-		const response = await axiosWithFile.post(`${this.BASE_URL}/register`, data)
+		const response = await axiosWithFile.post(
+			`${this.BASE_URL}/register/`,
+			data
+		)
+
+		return response?.data.data
+	}
+
+	async verifyEmail(data: IEmailVerify): Promise<IEmailVerify> {
+		const response = await axiosClassic.post(
+			`${this.BASE_URL}/verify-email/`,
+			data
+		)
 
 		return response?.data.data
 	}

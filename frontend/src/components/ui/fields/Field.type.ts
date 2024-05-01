@@ -8,6 +8,7 @@ export interface InputFieldProps {
 	disabled?: boolean
 	type?: string
 	isNumber?: boolean
+	numberThousand?: boolean
 	forgotPassword?: boolean
 	standardStyle?: boolean
 	prevIcon?: boolean
@@ -17,4 +18,5 @@ export interface InputFieldProps {
 	isPasswordIcon?: boolean
 	errorsMessage?: string
 	handlePasswordClick?: () => void
+	onFocus?: () => void
 }

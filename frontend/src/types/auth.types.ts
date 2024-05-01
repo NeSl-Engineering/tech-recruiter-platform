@@ -12,10 +12,15 @@ export interface IAuthRegister {
 	last_name: string
 	profile_photo: string
 	telegram_nickname: string
-	birthDate: string
+	birth_date: string
 	day?: string
 	month?: string
 	year?: string
+}
+
+export interface IEmailVerify {
+	email: string
+	otp: string
 }
 
 export interface IUser {

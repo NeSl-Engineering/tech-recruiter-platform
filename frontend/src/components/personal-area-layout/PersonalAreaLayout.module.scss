@@ -1,11 +1,17 @@
 .PersonalArea {
 	display: grid;
-	grid-template-columns: 0.21fr 0.72fr;
+	grid-template-columns: 0.21fr 1fr;
 	gap: 40px;
 	@apply bg-grayAdmin-50;
 	height: 100%;
 	font-family: 'Formular';
 	.wrapper {
-		@apply pt-6 pb-7;
+		@apply pt-6 pb-7 overflow-y-auto;
+		&::-webkit-scrollbar-thumb {
+			@apply bg-blue-400;
+		}
+		.bodyWrap {
+			max-width: 90%;
+		}
 	}
 }

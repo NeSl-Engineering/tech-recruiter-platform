@@ -23,6 +23,11 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 			prevIcon,
 			appendIcon,
 			maxLength,
+			passwordEye,
+			isPasswordIcon,
+			errorsMessage,
+			numberThousand,
+			handlePasswordClick,
 			...rest
 		},
 		ref
@@ -45,25 +50,47 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 						id={id}
 						placeholder={placeholder}
 						maxLength={maxLength}
+						onKeyDown={event => {
+							if (
+								isNumber &&
+								!/[0-9]/.test(event.key) &&
+								event.key !== 'Backspace' &&
+								event.key !== 'Tab' &&
+								event.key !== 'Enter' &&
+								event.key !== 'ArrowLeft' &&
+								event.key !== 'ArrowRight'
+							) {
+								event.preventDefault()
+							}
+						}}
 						className={`${cx({
 							input: true,
 							standardStyle: standardStyle,
-							isShake: isShake
-						})} ${
-							disabled === true
-								? '!border-none !bg-gray-100 dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]'
-								: state === 'error'
-								? styles.error
-								: ''
-						}`}
+							isShake: isShake,
+							error: state
+						})}`}
 						{...rest}
 					/>
+					{isPasswordIcon && (
+						<>
+							{passwordEye ? (
+								<div className={styles.appendIcon}>
+									<IconUI icon='eye' onClick={handlePasswordClick} />
+								</div>
+							) : (
+								<div className={styles.appendIcon}>
+									<IconUI icon='eyeClose' onClick={handlePasswordClick} />
+								</div>
+							)}
+						</>
+					)}
 					{appendIcon && (
 						<div className={styles.appendIcon}>
-							<IconUI icon='eye' />
+							<IconUI icon={appendIcon} />
 						</div>
 					)}
 				</div>
+				<div className={styles.errorMessage}>{errorsMessage}</div>
 			</div>
 		)
 	}

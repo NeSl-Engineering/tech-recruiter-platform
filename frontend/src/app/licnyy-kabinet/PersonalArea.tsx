@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import Image from 'next/image'
-import ProgressBlock from '../../components/personal-layout/progress-block/ProgressBlock'
+import ProgressBlock from '../../components/personal-area/progress-block/ProgressBlock'
 import styles from './PersonalArea.module.scss'
 
 const PersonalArea = () => {

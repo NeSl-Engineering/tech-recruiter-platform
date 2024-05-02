@@ -11,7 +11,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import OtpFormRegister from './forms/OtpFormRegister'
 import SuccessFormRegister from './forms/SuccessRegister'
 import { INDICATORS } from './register.data'
@@ -76,6 +76,8 @@ const Register = () => {
 
 	return (
 		<LogRegLayout text='Зарегистрируйте аккаунт в нашей платформы и становитесь лучше с каждым днем!'>
+			<Toaster position='top-right' />
+
 			<div className={styles.indicators}>
 				{INDICATORS.map((indicator, index: any) => (
 					<div

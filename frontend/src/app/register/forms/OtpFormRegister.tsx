@@ -1,3 +1,5 @@
+'use client'
+
 import stylesLayout from '@/components/logreg-layout/LogRegLayout.module.scss'
 import { Button } from '@/components/ui/buttons/Button'
 import OtpInputEx from '@/components/ui/otp-input/OtpInputEx'
@@ -7,9 +9,8 @@ import { IEmailVerify } from '@/types/auth.types'
 import { useMutation } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-
+import toast, { Toaster } from 'react-hot-toast'
 import { IFormRegister } from './form-register.types'
-import toast from 'react-hot-toast'
 
 const FourthFormRegister = ({ pushNextIndex, itemProp }: IFormRegister) => {
 	const {
@@ -48,6 +49,8 @@ const FourthFormRegister = ({ pushNextIndex, itemProp }: IFormRegister) => {
 
 	return (
 		<TransitionX>
+			<Toaster position='top-right' />
+
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className={stylesLayout.content}>
 					<h1>Код подтверждение</h1>

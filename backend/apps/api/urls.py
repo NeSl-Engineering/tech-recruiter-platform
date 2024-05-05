@@ -1,6 +1,4 @@
-from sys import base_prefix
-from blog.views import PostViewSet
-from django.urls import path
+from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -8,6 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
+from blog.views import PostViewSet
 from users.views import (
     EmailVerificationAPIView,
     OTPResendAPIView,
@@ -32,6 +31,7 @@ urlpatterns = [
     path('auth/register/', RegistrationAPIView.as_view(), name='register_user'),
     path('auth/resend-otp/', OTPResendAPIView.as_view(), name='resend-otp'),
     path('auth/verify-email/', EmailVerificationAPIView.as_view(), name='verify_email'),
+    path('auth/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ]
 
 urlpatterns += router.urls

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "api",
 
     "rest_framework",
+    "django_rest_passwordreset",
     "drf_yasg",
     "django_celery_beat",
 ]
@@ -201,3 +202,6 @@ CELERY_TIMEZONE = "Europe/Moscow"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
+DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
+    "CLASS": "django_rest_passwordreset.tokens.RandomNumberTokenGenerator"
+}

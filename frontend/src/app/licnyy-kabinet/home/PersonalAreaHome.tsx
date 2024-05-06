@@ -1,10 +1,10 @@
+import ProgressBlock from '@/components/personal-area/progress-block/ProgressBlock'
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import Image from 'next/image'
-import ProgressBlock from '../../components/personal-area/progress-block/ProgressBlock'
-import styles from './PersonalArea.module.scss'
+import styles from './PersonalAreaHome.module.scss'
 
-const PersonalArea = () => {
+const PersonalAreaHome = () => {
 	return (
 		<div className={styles.PersonalArea}>
 			<div className={styles.searchWrapper}>
@@ -40,7 +40,7 @@ const PersonalArea = () => {
 						<Button widthFull>Написать в телеграм</Button>
 					</div>
 				</div>
-				<div className={styles.img}>
+				<div className={styles.qrCode}>
 					<Image src='/qr-code.svg' alt='qrCode' fill />
 				</div>
 			</div>
@@ -48,4 +48,4 @@ const PersonalArea = () => {
 	)
 }
 
-export default PersonalArea
+export default PersonalAreaHome

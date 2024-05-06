@@ -3,6 +3,10 @@ export interface IAuthLogin {
 	password: string
 }
 
+export interface IResendOtp {
+	email: string
+}
+
 export interface IAuthRegister {
 	username: string
 	email: string
@@ -33,10 +37,8 @@ export interface IUser {
 }
 
 export interface IAuthResponse {
-	data: {
 		access: string
 		refresh: string
-	}
 }
 
 

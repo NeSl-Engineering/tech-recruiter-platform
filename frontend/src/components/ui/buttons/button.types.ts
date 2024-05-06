@@ -8,6 +8,7 @@ export interface ButtonProps {
 	deleteButton?: Boolean
 	widthFull?: Boolean
 	disabled?: boolean | undefined
+	disabledTransparent?: boolean | undefined
 	className?: string
 	onClick?: (e: any) => void
 }

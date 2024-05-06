@@ -34,6 +34,7 @@
 	.haveQuestion {
 		background: linear-gradient(87.72deg, #e2e9f2 0%, #cfe4ff 99.92%);
 		@apply flex justify-between items-center gap-[50px] p-[30px] rounded-lg;
+
 		.content {
 		}
 
@@ -46,7 +47,7 @@
 			width: 45%;
 		}
 
-		.img {
+		.qrCode {
 			@apply relative w-[238px] h-[238px];
 		}
 	}

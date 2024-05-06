@@ -20,6 +20,7 @@ import styles from './Register.module.scss'
 const Register = () => {
 	const router = useRouter()
 	const [isActive, setIsActive] = useState('1')
+
 	const {
 		register,
 		handleSubmit,
@@ -80,20 +81,22 @@ const Register = () => {
 
 			<div className={styles.indicators}>
 				{INDICATORS.map((indicator, index: any) => (
+					// 	indicator.index
+					// 	? indicator.index === '1'
+					// 	? () => setIsActive('2')
+					// 	: indicator.index === '2'
+					// 	? () => setIsActive('3')
+					// 	: indicator.index === '3'
+					// 	? () => setIsActive('4')
+					// 	: e => e.preventDefault()
+					// 	: e => e.preventDefault()
 					<div
 						key={index}
-						// onClick={
-						// 	indicator.index
-						// 	? indicator.index === '1'
-						// 	? () => setIsActive('2')
-						// 	: indicator.index === '2'
-						// 	? () => setIsActive('3')
-						// 	: indicator.index === '3'
-						// 	? () => setIsActive('4')
-						// 	: e => e.preventDefault()
-						// 	: e => e.preventDefault()
-
-						// }
+						onClick={
+							indicator.index === '4'
+								? () => setIsActive('4')
+								: e => e.preventDefault()
+						}
 						className={`${styles.indicator} ${
 							isActive
 								? isActive === indicator.index
@@ -274,8 +277,8 @@ const Register = () => {
 											label='Пароль'
 											placeholder='Пароль'
 											standardStyle
-											isPasswordIcon
 											type={passwordEye === false ? 'password' : 'text'}
+											isPasswordIcon
 											passwordEye={passwordEye}
 											handlePasswordClick={handlePasswordClick}
 											{...register('password', {

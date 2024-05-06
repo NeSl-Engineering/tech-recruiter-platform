@@ -20,8 +20,18 @@
 		}
 	}
 
-	&:disabled {
+	&.disabled {
 		@apply bg-gray cursor-no-drop;
+		&:active {
+			transform: scale(1);
+		}
+	}
+
+	&.disabledTransparent {
+		@apply border border-solid border-gray text-gray cursor-no-drop hover:bg-transparent;
+		&:active {
+			transform: scale(1);
+		}
 	}
 
 	&.notActive {

@@ -7,7 +7,7 @@ import Checkbox from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
 import TransitionHalfSec from '@/components/ui/transitions/TransitionOpacity'
 import { authService } from '@/services/auth.service'
-import { IAuthLogin } from '@/types/auth.types'
+import { IAuthLogin } from '@/types/types'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -18,6 +18,8 @@ import toast, { Toaster } from 'react-hot-toast'
 const Login = () => {
 	const [isCheckbox, setIsCheckbox] = useState(false)
 	const [isPasswordEye, setIsPasswordEye] = useState(false)
+	const [isError, setIsError] = useState(false)
+	const [isShake, setIsShake] = useState(false)
 	const router = useRouter()
 	const {
 		register,
@@ -32,6 +34,17 @@ const Login = () => {
 	const { mutate: mutateLogin } = useMutation({
 		mutationKey: ['login'],
 		mutationFn: (data: IAuthLogin) => authService.login(data),
+		onError() {
+			toast.error('Не правильный пароль или э-мейл!')
+			setIsError(true)
+			setIsShake(true)
+			setTimeout(() => {
+				setIsShake(false)
+			}, 1000)
+			setTimeout(() => {
+				setIsError(false)
+			}, 4000)
+		},
 		onSuccess() {
 			toast.success('Успешно зашли!')
 			router.push('/licnyy-kabinet/home')
@@ -59,7 +72,7 @@ const Login = () => {
 						<Field
 							id=''
 							label='Э-мейл'
-							placeholder='Имя'
+							placeholder='example@gmail.com'
 							standardStyle
 							{...register('email', {
 								required: 'Укажите почту!',
@@ -69,7 +82,8 @@ const Login = () => {
 								}
 							})}
 							errorsMessage={errors.email && errors.email?.message}
-							state={errors.email && 'error'}
+							isShake={isShake}
+							state={errors.email || (isError && 'error')}
 						/>
 						{errors.email && errors.email.type && <>{errors.email.root}</>}
 						<Field
@@ -90,7 +104,8 @@ const Login = () => {
 								}
 							})}
 							errorsMessage={errors.password && errors.password?.message}
-							state={errors.password && 'error'}
+							isShake={isShake}
+							state={errors.password || (isError === true && 'error')}
 						/>
 						{errors.password && <>{errors.password.root}</>}
 						<Checkbox

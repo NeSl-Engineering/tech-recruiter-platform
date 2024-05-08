@@ -4,7 +4,7 @@ import {
 	IAuthResponse,
 	IEmailVerify,
 	IResendOtp
-} from '@/types/auth.types'
+} from '@/types/types'
 
 import { axiosClassic, axiosWithFile } from '@/api/interceptors'
 
@@ -49,7 +49,7 @@ class AuthService {
 
 	async getNewTokens() {
 		const response = await axiosClassic.post<IAuthResponse>(
-			`${this.BASE_URL}/token/refresh`
+			`${this.BASE_URL}/token/refresh/`
 		)
 
 		if (response.data.refresh) saveTokenStorage(response.data.refresh)

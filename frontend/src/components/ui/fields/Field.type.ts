@@ -3,7 +3,7 @@ export interface InputFieldProps {
 	label?: string
 	placeholder: string
 	variant?: string
-	state?: 'error' | 'success'
+	state?: boolean | 'error' | 'success' | any
 	isShake?: Boolean
 	disabled?: boolean
 	type?: string

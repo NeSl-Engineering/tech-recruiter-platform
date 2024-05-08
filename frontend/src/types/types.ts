@@ -3,8 +3,18 @@ export interface IAuthLogin {
 	password: string
 }
 
+export interface IConfirmPassword {
+	password: string
+	confirmPassword?: string
+	token: string
+}
+
 export interface IResendOtp {
 	email: string
+}
+
+export interface IValidateToken {
+	token: string
 }
 
 export interface IAuthRegister {
@@ -37,8 +47,6 @@ export interface IUser {
 }
 
 export interface IAuthResponse {
-		access: string
-		refresh: string
+	access: string
+	refresh: string
 }
-
-

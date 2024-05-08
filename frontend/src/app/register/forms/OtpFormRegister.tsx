@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/buttons/Button'
 import OtpInputEx from '@/components/ui/otp-input/OtpInputEx'
 import TransitionX from '@/components/ui/transitions/TransitionX'
 import { authService } from '@/services/auth.service'
-import { IEmailVerify, IResendOtp } from '@/types/auth.types'
+import { IEmailVerify, IResendOtp } from '@/types/types'
 import { useMutation } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -61,15 +61,12 @@ const FourthFormRegister = ({ pushNextIndex, itemProp }: IFormRegister) => {
 			setValue('email', itemProp)
 			setResendOtpValue('email', itemProp)
 		}
+
 		const interval = setInterval(() => {
 			setTimer((prevTimer: number) => {
 				if (prevTimer === 0) {
-					clearInterval(interval)
 					setIsDisabled(false)
-					setTimer(10)
-					if (timer === 10) {
-						setTimer(timer - 1)
-					}
+					setTimer(120)
 				}
 				return prevTimer - 1
 			})

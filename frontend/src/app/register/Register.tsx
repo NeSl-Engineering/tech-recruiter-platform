@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import TransitionX from '@/components/ui/transitions/TransitionX'
 import { authService } from '@/services/auth.service'
-import { IAuthRegister } from '@/types/auth.types'
+import { IAuthRegister } from '@/types/types'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -78,7 +78,6 @@ const Register = () => {
 	return (
 		<LogRegLayout text='Зарегистрируйте аккаунт в нашей платформы и становитесь лучше с каждым днем!'>
 			<Toaster position='top-right' />
-
 			<div className={styles.indicators}>
 				{INDICATORS.map((indicator, index: any) => (
 					// 	indicator.index

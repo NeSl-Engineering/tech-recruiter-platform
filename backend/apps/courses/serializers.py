@@ -32,14 +32,22 @@ class ModuleSerializer(serializers.ModelSerializer):
         exclude = ('course',)
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Category
+        model = Course
         fields = '__all__'
 
 
-class CourseSerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
+    courses = CourseSerializer(many=True)
+
+    class Meta:
+        model = Category
+        fields = ['id', 'title', 'courses']
+
+
+class CourseWithModulesSerializer(serializers.ModelSerializer):
     modules = ModuleSerializer(many=True)
     
     class Meta:

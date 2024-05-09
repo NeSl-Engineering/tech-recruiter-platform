@@ -24,7 +24,7 @@ router.register('course-categories', CategoryViewSet, 'course-categories')
 router.register('courses', CourseViewSet, 'courses')
 
 urlpatterns = [
-    path('docs', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),

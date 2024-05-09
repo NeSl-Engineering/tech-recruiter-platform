@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models.fields import validators
+from django.contrib.auth import password_validation
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator, ValidationError
 
@@ -18,7 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'last_name',
             'birth_date',
             'profile_photo',
-            'telegram_id'
+            'telegram_nickname'
         ]
 
 
@@ -58,6 +59,13 @@ class RegistrationSerializer(serializers.Serializer):
     birth_date = serializers.DateField(required=False)
     profile_photo = serializers.ImageField(required=False)
     telegram_nickname = serializers.CharField(required=False)
+
+    def validate_password(self, value):
+        try:
+            password_validation.validate_password(value)
+        except Exception as exc:
+            raise ValidationError(str(exc))
+        return value
 
     def create(self, validated_data):
         user = User(

@@ -39,7 +39,8 @@ class Course(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        verbose_name='Категория'
+        verbose_name='Категория',
+        related_name='courses'
     )
     cover_image = models.ImageField(
         upload_to='courses',

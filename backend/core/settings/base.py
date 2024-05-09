@@ -205,3 +205,6 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
     "CLASS": "django_rest_passwordreset.tokens.RandomNumberTokenGenerator"
 }
+
+ACCESS_TOKEN_LIFETIME = 60 * 60 * 48
+

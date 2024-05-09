@@ -10,7 +10,8 @@ from blog.views import PostViewSet
 from users.views import (
     EmailVerificationAPIView,
     OTPResendAPIView,
-    RegistrationAPIView
+    RegistrationAPIView,
+    ProfileAPIView
 )
 from courses.views import (
     CategoryViewSet,
@@ -32,6 +33,7 @@ urlpatterns = [
     path('auth/resend-otp/', OTPResendAPIView.as_view(), name='resend-otp'),
     path('auth/verify-email/', EmailVerificationAPIView.as_view(), name='verify_email'),
     path('auth/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('profile/', ProfileAPIView.as_view(), name='profile'),
 ]
 
 urlpatterns += router.urls

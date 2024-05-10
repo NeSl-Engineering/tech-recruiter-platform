@@ -1,36 +1,61 @@
-import { IAuthForm, IAuthResponse } from '@/types/auth.types'
+import {
+	IAuthLogin,
+	IAuthRegister,
+	IAuthResponse,
+	IEmailVerify,
+	IResendOtp
+} from '@/types/types'
 
-import { axiosClassic } from '@/api/interceptors'
+import { axiosClassic, axiosWithFile } from '@/api/interceptors'
 
-import { removeFromStorage, saveTokenStorage } from './auth-token.service'
+import { saveTokenStorage } from './auth-token.service'
 
-export const authService = {
-	async main(type: 'login' | 'register', data: IAuthForm) {
-		const response = await axiosClassic.post<IAuthResponse>(
-			`/auth/${type}`,
+class AuthService {
+	private BASE_URL = '/auth'
+
+	async register(data: IAuthRegister): Promise<IAuthRegister> {
+		const response = await axiosWithFile.post(
+			`${this.BASE_URL}/register/`,
 			data
 		)
 
-		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+		return response?.data.data
+	}
 
-		return response
-	},
+	async verifyEmail(data: IEmailVerify): Promise<IEmailVerify> {
+		const response = await axiosClassic.post(
+			`${this.BASE_URL}/verify-email/`,
+			data
+		)
+
+		return response?.data.data
+	}
+
+	async login(data: IAuthLogin): Promise<IAuthLogin> {
+		const response = await axiosClassic.post(`${this.BASE_URL}/token/`, data)
+		if (response.data.access) saveTokenStorage(response.data.access)
+
+		return response.data
+	}
+
+	async resendOtp(data: IResendOtp): Promise<IResendOtp> {
+		const response = await axiosClassic.post(
+			`${this.BASE_URL}/resend-otp/`,
+			data
+		)
+
+		return response?.data.data
+	}
 
 	async getNewTokens() {
 		const response = await axiosClassic.post<IAuthResponse>(
-			'/auth/login/access-token'
+			`${this.BASE_URL}/token/refresh/`
 		)
 
-		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
-
-		return response
-	},
-
-	async logout() {
-		const response = await axiosClassic.post<boolean>('/auth/logout')
-
-		if (response.data) removeFromStorage()
+		if (response.data.refresh) saveTokenStorage(response.data.refresh)
 
 		return response
 	}
 }
+
+export const authService = new AuthService()

@@ -6,3 +6,6 @@ class UsersConfig(AppConfig):
     name = "users"
     verbose_name = 'Авторизация'
 
+    def ready(self):
+        import users.signals
+

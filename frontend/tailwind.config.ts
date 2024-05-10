@@ -125,7 +125,8 @@ const config: Config = {
 				lightGray: '#E2E9F2',
 				grayMedium: '#4D4D4D',
 				grayAdmin: {
-					50: '#F8F8F8'
+					50: '#F8F8F8',
+					100: '#F6F6F7'
 				},
 				yellow: {
 					50: '#FFFAE6',

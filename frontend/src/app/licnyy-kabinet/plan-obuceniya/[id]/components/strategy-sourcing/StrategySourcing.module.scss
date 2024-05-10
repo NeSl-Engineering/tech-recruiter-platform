@@ -1,0 +1,84 @@
+.StrategySourcing {
+	@apply bg-white rounded-[6px] p-[25px];
+	.title {
+		@apply text-2xl font-bold mb-1;
+	}
+
+	.description {
+		@apply text-base font-normal mb-4 text-gray;
+	}
+
+	.list {
+		@apply flex flex-col gap-4;
+		.item {
+			@apply bg-grayAdmin-100 rounded-[6px] overflow-hidden;
+			&.open {
+				.subList {
+					@apply opacity-100 pointer-events-auto h-[360px] p-5 pt-2 pb-[26px];
+					transition: height 0.3s;
+				}
+			}
+			&.seen {
+				.itemRow {
+					@apply bg-success;
+					.numeration {
+						@apply text-success bg-white;
+					}
+					.titleItem {
+						@apply text-white;
+					}
+					.icon {
+						@apply bg-white text-success;
+					}
+				}
+			}
+		}
+
+		.itemRow {
+			@apply flex items-center p-5 cursor-pointer transition;
+			&:hover {
+				// background-color: rgba(0, 0, 0, 0.05);
+				opacity: 0.9;
+			}
+		}
+
+		.numeration {
+			@apply mr-3 w-[26px] h-[26px] rounded-[50%] bg-blue-400 flex justify-center items-center text-white text-sm;
+		}
+
+		.titleItem {
+			@apply text-xl font-bold flex-auto;
+		}
+
+		.icon {
+			@apply bg-lightGray w-[26px] h-[26px] rounded-[50%] flex justify-center items-center;
+			svg {
+				@apply w-[16px] h-[16px];
+			}
+		}
+	}
+
+	.subList {
+		@apply h-[0] opacity-0 pointer-events-none p-0 cursor-pointer;
+		transition: height 0.3s;
+		.subItem {
+			@apply w-45p;
+		}
+
+		.video {
+			@apply mb-5 cursor-pointer;
+			transition: 0.2s all;
+			&:hover {
+				transform: scale(1.01);
+			}
+			img,
+			video {
+				@apply w-full;
+			}
+		}
+
+		.buttonWrapper {
+			@apply w-35p;
+		}
+	}
+}

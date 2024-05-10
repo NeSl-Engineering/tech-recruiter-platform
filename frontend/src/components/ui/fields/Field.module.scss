@@ -68,6 +68,10 @@
 			}
 		}
 	}
+
+	.errorMessage {
+		@apply text-red-350 text-xs font-bold;
+	}
 }
 
 @keyframes invalid {

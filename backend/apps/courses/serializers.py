@@ -32,6 +32,25 @@ class ModuleSerializer(serializers.ModelSerializer):
         exclude = ('course',)
 
 
+class ClientModuleSerializer(serializers.ModelSerializer):
+    videos = LessonVideoSerializer(many=True)
+    materials = LessonMaterialSerializer(many=True)
+    is_seen = serializers.BooleanField()
+    is_open = serializers.BooleanField()
+                                                    
+    class Meta:
+        model = Module
+        fields = [
+            'title',
+            'is_demo',
+            'ordinal_number',
+            'is_seen',
+            'is_open',
+            'videos',
+            'materials',
+        ]
+
+
 class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -50,6 +69,14 @@ class CategorySerializer(serializers.ModelSerializer):
 class CourseWithModulesSerializer(serializers.ModelSerializer):
     modules = ModuleSerializer(many=True)
     
+    class Meta:
+        model = Course
+        fields = '__all__'
+
+
+class ClientCourseSerializer(serializers.ModelSerializer):
+    modules = ClientModuleSerializer(many=True)
+
     class Meta:
         model = Course
         fields = '__all__'

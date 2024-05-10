@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "api",
 
     "rest_framework",
+    "django_rest_passwordreset",
     "drf_yasg",
     "django_celery_beat",
 ]
@@ -182,7 +183,7 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_TIEMOUT = os.getenv('EMAIL_TIEMOUT')
 
-OTP_EXPIRE_TIME = 60
+OTP_EXPIRE_TIME = 60 * 2
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -200,4 +201,10 @@ CELERY_BROKER_URL = os.getenv('CELERY_BROKER')
 CELERY_TIMEZONE = "Europe/Moscow"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
+    "CLASS": "django_rest_passwordreset.tokens.RandomNumberTokenGenerator"
+}
+
+ACCESS_TOKEN_LIFETIME = 60 * 60 * 48
 

@@ -8,7 +8,7 @@ import { MENU_LK } from './menu.data'
 import styles from './SidebarPersonalArea.module.scss'
 
 const SidebarPersonalArea = () => {
-	const router = usePathname()
+	const pathname = usePathname()
 
 	return (
 		<aside className={styles.sidebar}>
@@ -24,7 +24,9 @@ const SidebarPersonalArea = () => {
 							<Link
 								href={item.link}
 								className={`${
-									router === item.link
+									pathname === item.link
+										? styles.linkActive + ' ' + styles.link
+										: ''
 										? styles.linkActive + ' ' + styles.link
 										: styles.link
 								}`}

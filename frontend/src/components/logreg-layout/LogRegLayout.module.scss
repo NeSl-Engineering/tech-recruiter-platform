@@ -49,7 +49,10 @@
 	}
 }
 .box {
-	@apply w-27p mb-20 relative z-10;
+	@apply w-27p mb-10 relative z-10;
+	&.box2 {
+		@apply w-23p;
+	}
 	form {
 		@apply bg-white p-6 rounded-[10px] flex flex-col gap-4;
 		.row3 {

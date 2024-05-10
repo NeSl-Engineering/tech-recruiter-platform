@@ -15,7 +15,8 @@ from users.views import (
 )
 from courses.views import (
     CategoryViewSet,
-    CourseViewSet
+    CourseViewSet,
+    ModuleViewSet
 )
 from .views import schema_view
 
@@ -23,6 +24,7 @@ router = routers.DefaultRouter()
 router.register('posts', PostViewSet, 'posts')
 router.register('course-categories', CategoryViewSet, 'course-categories')
 router.register('courses', CourseViewSet, 'courses')
+router.register('modules', ModuleViewSet, 'modules')
 
 urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

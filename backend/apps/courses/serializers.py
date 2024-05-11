@@ -65,19 +65,3 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ['id', 'title', 'courses']
 
-
-class CourseWithModulesSerializer(serializers.ModelSerializer):
-    modules = ModuleSerializer(many=True)
-    
-    class Meta:
-        model = Course
-        fields = '__all__'
-
-
-class ClientCourseSerializer(serializers.ModelSerializer):
-    modules = ClientModuleSerializer(many=True)
-
-    class Meta:
-        model = Course
-        fields = '__all__'
-

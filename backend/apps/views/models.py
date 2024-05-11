@@ -19,6 +19,9 @@ class VideoView(models.Model):
     class Meta:
         db_table = 'video_views'
         verbose_name_plural = 'Просмотры видеоуроков'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'video'], name='single_video_view')
+        ]
 
 
 class MaterialView(models.Model):
@@ -37,4 +40,7 @@ class MaterialView(models.Model):
     class Meta:
         db_table = 'material_views'
         verbose_name_plural = 'Просмотры материалов по урокам'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'material'], name='single_material_view')
+        ]
 

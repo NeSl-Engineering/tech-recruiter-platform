@@ -18,6 +18,10 @@ from courses.views import (
     CourseViewSet,
     ModuleViewSet
 )
+from views.views import (
+    VideoViewViewSet,
+    MaterialViewViewSet
+)
 from .views import schema_view
 
 router = routers.DefaultRouter()
@@ -25,6 +29,8 @@ router.register('posts', PostViewSet, 'posts')
 router.register('course-categories', CategoryViewSet, 'course-categories')
 router.register('courses', CourseViewSet, 'courses')
 router.register('modules', ModuleViewSet, 'modules')
+router.register('video-views', VideoViewViewSet, 'video_views')
+router.register('material-views', MaterialViewViewSet, 'material_views')
 
 urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

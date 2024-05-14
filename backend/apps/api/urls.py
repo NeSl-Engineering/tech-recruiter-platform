@@ -18,7 +18,7 @@ from courses.views import (
     CourseViewSet,
     ModuleViewSet
 )
-from .views import schema_view
+from .views import schema_view, SearchAPIView
 
 router = routers.DefaultRouter()
 router.register('posts', PostViewSet, 'posts')
@@ -36,6 +36,7 @@ urlpatterns = [
     path('auth/verify-email/', EmailVerificationAPIView.as_view(), name='verify_email'),
     path('auth/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
     path('profile/', ProfileAPIView.as_view(), name='profile'),
+    path('search/', SearchAPIView.as_view(), name='search'),
 ]
 
 urlpatterns += router.urls

@@ -80,6 +80,9 @@ class Module(models.Model):
         verbose_name = 'Модуль'
         verbose_name_plural = 'Модули'
 
+    def __str__(self):
+        return f'{self.course}: {self.title}'
+
 
 class LessonVideo(models.Model):
     file = models.FileField(verbose_name='Файл')
@@ -97,6 +100,9 @@ class LessonVideo(models.Model):
         verbose_name = 'Видеоурок'
         verbose_name_plural = 'Видеоуроки'
 
+    def __str__(self):
+        return f'{self.module} video: {self.ordinal_number}'
+
 
 class LessonMaterial(models.Model):
     file = models.FileField(verbose_name='Файл')
@@ -112,4 +118,7 @@ class LessonMaterial(models.Model):
         db_table = 'lesson_materials'
         verbose_name = 'Материал к урокам'
         verbose_name_plural = 'Материалы к урокам'
+
+    def __str__(self):
+        return f'{self.module} material: {self.ordinal_number}'
 

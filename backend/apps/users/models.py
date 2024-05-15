@@ -36,7 +36,9 @@ class User(AbstractUser):
         db_table = 'users'
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
-
+    
+    def __str__(self):
+        return self.email
 
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -61,7 +63,8 @@ class Profile(models.Model):
         upload_to='users/profiles',
         null=True,
         blank=True,
-        verbose_name='Фото профиля'
+        verbose_name='Фото профиля',
+        default='default_profile.png'
     )
     telegram_nickname = models.CharField(
         max_length=120,
@@ -74,4 +77,8 @@ class Profile(models.Model):
         db_table = 'profiles'
         verbose_name = 'Профиль'
         verbose_name_plural = 'Профили'
+    
+    def __str__(self):
+        return f'{self.user}: {self.first_name} {self.last_name}'
+
 

@@ -79,6 +79,12 @@ class Module(models.Model):
         db_table = 'modules'
         verbose_name = 'Модуль'
         verbose_name_plural = 'Модули'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['course', 'ordinal_number'],
+                name='unique_course_module_order'
+            )
+        ]
 
 
 class LessonVideo(models.Model):

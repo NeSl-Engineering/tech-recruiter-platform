@@ -24,12 +24,10 @@ class LessonMaterialSerializer(serializers.ModelSerializer):
 
 
 class ModuleSerializer(serializers.ModelSerializer):
-    videos = LessonVideoSerializer(many=True)
-    materials = LessonMaterialSerializer(many=True)
 
     class Meta:
         model = Module
-        exclude = ('course',)
+        fields = '__all__'
 
 
 class ClientModuleSerializer(serializers.ModelSerializer):

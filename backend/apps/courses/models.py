@@ -79,6 +79,15 @@ class Module(models.Model):
         db_table = 'modules'
         verbose_name = 'Модуль'
         verbose_name_plural = 'Модули'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['course', 'ordinal_number'],
+                name='unique_course_module_order'
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.course}: {self.title}'
 
 
 class LessonVideo(models.Model):
@@ -97,6 +106,9 @@ class LessonVideo(models.Model):
         verbose_name = 'Видеоурок'
         verbose_name_plural = 'Видеоуроки'
 
+    def __str__(self):
+        return f'{self.module} video: {self.ordinal_number}'
+
 
 class LessonMaterial(models.Model):
     file = models.FileField(verbose_name='Файл')
@@ -112,4 +124,7 @@ class LessonMaterial(models.Model):
         db_table = 'lesson_materials'
         verbose_name = 'Материал к урокам'
         verbose_name_plural = 'Материалы к урокам'
+
+    def __str__(self):
+        return f'{self.module} material: {self.ordinal_number}'
 

@@ -18,7 +18,7 @@ from courses.views import (
     CourseViewSet,
     ModuleViewSet
 )
-
+from orders.views import OrderViewSet, OrderNotificationAPIView
 from views.views import (
     VideoViewViewSet,
     MaterialViewViewSet
@@ -30,6 +30,7 @@ router.register('posts', PostViewSet, 'posts')
 router.register('course-categories', CategoryViewSet, 'course-categories')
 router.register('courses', CourseViewSet, 'courses')
 router.register('modules', ModuleViewSet, 'modules')
+router.register('orders', OrderViewSet, 'orders')
 router.register('video-views', VideoViewViewSet, 'video_views')
 router.register('material-views', MaterialViewViewSet, 'material_views')
 
@@ -42,6 +43,7 @@ urlpatterns = [
     path('auth/resend-otp/', OTPResendAPIView.as_view(), name='resend-otp'),
     path('auth/verify-email/', EmailVerificationAPIView.as_view(), name='verify_email'),
     path('auth/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('orders/notifications/', OrderNotificationAPIView.as_view(), name='order-notification'),
     path('profile/', ProfileAPIView.as_view(), name='profile'),
     path('search/', SearchAPIView.as_view(), name='search'),
 ]

@@ -24,12 +24,10 @@ class LessonMaterialSerializer(serializers.ModelSerializer):
 
 
 class ModuleSerializer(serializers.ModelSerializer):
-    videos = LessonVideoSerializer(many=True)
-    materials = LessonMaterialSerializer(many=True)
 
     class Meta:
         model = Module
-        exclude = ('course',)
+        fields = '__all__'
 
 
 class ClientModuleSerializer(serializers.ModelSerializer):
@@ -64,20 +62,4 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'title', 'courses']
-
-
-class CourseWithModulesSerializer(serializers.ModelSerializer):
-    modules = ModuleSerializer(many=True)
-    
-    class Meta:
-        model = Course
-        fields = '__all__'
-
-
-class ClientCourseSerializer(serializers.ModelSerializer):
-    modules = ClientModuleSerializer(many=True)
-
-    class Meta:
-        model = Course
-        fields = '__all__'
 

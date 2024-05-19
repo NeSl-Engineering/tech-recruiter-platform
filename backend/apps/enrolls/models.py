@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+
 from courses.models import Course
+from orders.models import Order
 
 
 User = get_user_model()
@@ -20,6 +22,13 @@ class Enroll(models.Model):
         related_name='enrolls',
         verbose_name='Курс',
         null=True,
+    )
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        verbose_name='Заказ'
     )
     created_at = models.DateTimeField(
         verbose_name='Была создана',

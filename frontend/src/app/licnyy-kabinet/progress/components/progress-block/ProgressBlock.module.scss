@@ -1,0 +1,15 @@
+.progressBlock {
+	@apply bg-white rounded-[10px] p-6;
+	.title {
+		@apply text-xl leading-6 font-bold mb-2;
+	}
+
+	.description {
+		@apply font-normal text-gray mb-6;
+		width: 40%;
+	}
+
+	.progresses {
+		@apply flex flex-col gap-6;
+	}
+}

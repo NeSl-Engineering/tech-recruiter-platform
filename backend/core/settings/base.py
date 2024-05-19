@@ -57,12 +57,14 @@ INSTALLED_APPS = [
     "views",
     "enrolls",
     "orders",
+    "lesson_tests",
     "api",
 
     "rest_framework",
     "django_rest_passwordreset",
     "drf_yasg",
     "django_celery_beat",
+    "nested_admin",
 ]
 
 MIDDLEWARE = [

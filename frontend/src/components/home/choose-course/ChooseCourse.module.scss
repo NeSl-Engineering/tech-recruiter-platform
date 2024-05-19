@@ -31,9 +31,7 @@
 			@apply bg-white rounded-lg p-5;
 
 			.image {
-				height: 295px;
-				position: relative;
-				margin-bottom: 16px;
+				@apply relative mb-4 h-[295px] bg-blue-50;
 			}
 
 			.content {

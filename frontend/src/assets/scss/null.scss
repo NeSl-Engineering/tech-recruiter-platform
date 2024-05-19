@@ -105,6 +105,8 @@ body {
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	font-size: 16px;
+	overflow-x: hidden;
+
 	@apply text-primary bg-red-900;
 	@media (max-width: 992px) {
 		font-size: 14px;

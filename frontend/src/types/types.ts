@@ -50,3 +50,36 @@ export interface IAuthResponse {
 	access: string
 	refresh: string
 }
+
+export interface IProfile {
+	first_name: string
+	last_name: string
+	username: string
+	password: string
+	telegram_nickname?: string
+	email?: string
+	profile_photo: string
+}
+
+export interface ICourse {
+	id?: number
+	title: string
+	price: string
+	start_time: string
+	end_time: string
+	is_infinite: boolean
+	cover_image: string
+	category: number
+}
+
+export interface ICourses {
+	id?: number
+	title: string
+	courses?: ICourse[]
+}
+
+export interface IChangePassword {
+	old_password: string
+	password: string
+	confirmPassword: string
+}

@@ -1,18 +1,18 @@
-import { PERSONAL_AREA_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
-import TrainingPlan from './TrainingPlan'
+import Progress from './Progress'
+import { PERSONAL_AREA_NAME } from '@/constants/seo.constants'
 
 export const metadata: Metadata = {
 	title: `Главная ${PERSONAL_AREA_NAME}`,
 	description: 'Планируйте свое обучение!'
 }
 
-const TrainingPlanPage = () => {
+const ProgressPage = () => {
 	return (
 		<>
-			<TrainingPlan />
+			<Progress />
 		</>
 	)
 }
 
-export default TrainingPlanPage
+export default ProgressPage

@@ -26,7 +26,7 @@ const SubscribeLink = () => {
 				<div className={styles.searchWrapper}>
 					<input
 						type='search'
-						placeholder='Найди свой курс'
+						placeholder='Введите почту...'
 						className={styles.input}
 					/>
 					<div className={styles.buttonSub}>

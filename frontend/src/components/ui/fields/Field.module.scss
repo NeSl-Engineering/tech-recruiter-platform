@@ -67,6 +67,16 @@
 				@apply border-blue-400;
 			}
 		}
+
+		&.placeholderBigText {
+			padding-top: 20px;
+			padding-bottom: 0;
+			font-size: 40px;
+
+			&::placeholder {
+				font-size: 40px;
+			}
+		}
 	}
 
 	.errorMessage {

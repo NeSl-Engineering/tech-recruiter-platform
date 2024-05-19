@@ -1,5 +1,6 @@
 import CaseAnalysis from '@/components/home/case-analysis/CaseAnalysis'
 import ChooseCourse from '@/components/home/choose-course/ChooseCourse'
+import { useCourses } from '@/components/home/choose-course/hooks/useCourses'
 import CommunityTelegram from '@/components/home/community-telegram/CommunityTelegram'
 import Contacts from '@/components/home/contacts/Contacts'
 import CorporativeLearning from '@/components/home/corporative-learning/CorporativeLearning'
@@ -13,13 +14,17 @@ import TitleSearch from '@/components/home/title-search/TitleSearch'
 import styles from './Home.module.scss'
 
 const Home = () => {
+	// const { dataCourses, isLoadingCourses, isErrorCourses, refetchCourses } =
+	// 	useCourses()
 	return (
 		<div className={styles.home}>
 			<TitleSearch />
 			<OurCompany />
 			<FavouriteCompanies />
 			<MapCourses />
-			<ChooseCourse />
+
+			<ChooseCourse  />
+
 			<TimeTable />
 			<CaseAnalysis />
 			<ManualSources />

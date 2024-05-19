@@ -18,5 +18,6 @@ export interface InputFieldProps {
 	isPasswordIcon?: boolean
 	errorsMessage?: string
 	handlePasswordClick?: () => void
+	placeholderBigText?: boolean
 	onFocus?: () => void
 }

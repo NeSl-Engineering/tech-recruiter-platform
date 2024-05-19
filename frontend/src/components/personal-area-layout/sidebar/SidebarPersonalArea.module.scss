@@ -2,7 +2,7 @@
 	@apply bg-white py-10 px-5;
 
 	.logoWrapper {
-		@apply pb-[30px] relative;
+		@apply pb-[24px] relative;
 		&::after {
 			content: '';
 			position: absolute;

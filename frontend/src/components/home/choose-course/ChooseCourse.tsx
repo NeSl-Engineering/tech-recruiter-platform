@@ -3,16 +3,34 @@
 import { BASE_IMAGE_URL } from '@/api/interceptors'
 import IconUI from '@/components/ui/icon/Icon'
 import Transition from '@/components/ui/transitions/Transition'
-import Image from 'next/image'
+import { coursesService } from '@/services/courses.service'
+import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import styles from './ChooseCourse.module.scss'
+import ChooseCourseButtonShimmer from './components/shimmers/ChooseCourseButtonShimmer'
+import ChooseCourseShimmer from './components/shimmers/ChooseCourseShimmer'
 import { useCourses } from './hooks/useCourses'
 
 const ChooseCourse = () => {
-	const [isActive, setIsActive] = useState('')
-	const [selected, setSelected] = useState<any>(null)
-	const { dataCourses, isLoadingCourses, isErrorCourses, refetchCourses } =
-		useCourses()
+	const [selected, setSelected] = useState<number>(1)
+	const { dataCourses, isLoadingCourses, refetchCourses } = useCourses()
+
+	const handleClick = (e: any) => {
+		setSelected(e.toString())
+
+		setTimeout(() => {
+			refetchId()
+		}, 0)
+	}
+
+	const {
+		data: dataId,
+		isLoading: isLoadingId,
+		refetch: refetchId
+	} = useQuery({
+		queryKey: ['choose-course'],
+		queryFn: () => coursesService.getCoursesId(selected?.toString())
+	})
 
 	return (
 		<div className={styles.ChooseCourse}>
@@ -20,51 +38,68 @@ const ChooseCourse = () => {
 				<div className='__container'>
 					<h1>Давайте выберем курс специально для вас</h1>
 					<div className={styles.buttons}>
-						{dataCourses?.map(item => (
-							<button
-								key={item?.id}
-								onClick={() => setSelected(item?.id)}
-								className={`${styles.button} ${
-									selected
-										? selected === item?.id
-											? styles.active
-											: ''
-										: item?.id === 1
-										? styles.active
-										: ''
-								}`}
-							>
-								{item.title}
-							</button>
-						))}
+						{isLoadingCourses ? (
+							<>
+								<ChooseCourseButtonShimmer />
+								<ChooseCourseButtonShimmer />
+								<ChooseCourseButtonShimmer />
+							</>
+						) : (
+							<>
+								{dataCourses?.map(item => (
+									<button
+										key={item?.id}
+										onClick={() => handleClick(item.id)}
+										className={`${styles.button} ${
+											item.id === Number(selected) ? styles.active : ''
+										}`}
+									>
+										{item.title}
+									</button>
+								))}
+							</>
+						)}
 					</div>
-					{dataCourses?.map((item, index) => (
-						<div className={styles.row} key={index}>
-							{item?.courses?.map((course, i) => (
-								<div key={i} className={styles.item}>
-									<div className={styles.image}>
-										<Image
-											src={`${BASE_IMAGE_URL}/${course.cover_image.slice(43)}`}
-											priority
-											fill
-											alt='course'
-										/>
-									</div>
-									<div className={styles.content}>
-										<h2>{course.title}</h2>
-										{/* <p>{course.description}</p> */}
-									</div>
-									<div className={styles.footer}>
-										<h4>{course.price}</h4>
-										<div className={styles.details}>
-											<span>Подробнее</span>
-											<IconUI icon='arrowRightTop' />
-										</div>
-									</div>
-								</div>
-							))}
-						</div>
-					))}
+					<div className={styles.row}>
+						{isLoadingId ? (
+							<>
+								<ChooseCourseShimmer />
+								<ChooseCourseShimmer />
+								<ChooseCourseShimmer />
+							</>
+						) : (
+							<>
+								{dataId?.courses?.length ? (
+									<>
+										{dataId.courses.map(course => (
+											<div key={course.id} className={styles.item}>
+												<div className={styles.image_default}>
+													<img
+														src={`${BASE_IMAGE_URL}/${course.cover_image.slice(
+															43
+														)}`}
+														alt={course.title}
+													/>
+												</div>
+												<div className={styles.content}>
+													<h2>{course.title}</h2>
+												</div>
+												<div className={styles.footer}>
+													<h4>{course.price} ₽</h4>
+													<div className={styles.details}>
+														<span>Подробнее</span>
+														<IconUI icon='arrowRightTop' />
+													</div>
+												</div>
+											</div>
+										))}
+									</>
+								) : (
+									'Пусто...'
+								)}
+							</>
+						)}
+					</div>
 				</div>
 			</Transition>
 		</div>

@@ -45,6 +45,9 @@
 		&::placeholder {
 			@apply text-gray text-base;
 		}
+		&:disabled {
+			@apply cursor-no-drop;
+		}
 
 		&.error {
 			color: #ff424e !important;

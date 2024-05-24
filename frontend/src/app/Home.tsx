@@ -14,17 +14,14 @@ import TitleSearch from '@/components/home/title-search/TitleSearch'
 import styles from './Home.module.scss'
 
 const Home = () => {
-	// const { dataCourses, isLoadingCourses, isErrorCourses, refetchCourses } =
-	// 	useCourses()
+
 	return (
 		<div className={styles.home}>
 			<TitleSearch />
 			<OurCompany />
 			<FavouriteCompanies />
 			<MapCourses />
-
 			<ChooseCourse  />
-
 			<TimeTable />
 			<CaseAnalysis />
 			<ManualSources />

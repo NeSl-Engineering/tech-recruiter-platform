@@ -1,5 +1,5 @@
 import { profileService } from '@/services/profile.service'
-import { IChangePassword, IProfile } from '@/types/types'
+import { IProfile } from '@/types/types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export function usePutProfile() {
@@ -7,7 +7,7 @@ export function usePutProfile() {
 
 	const { mutate: putProfile, isSuccess } = useMutation({
 		mutationKey: ['profile'],
-		mutationFn: (data: IChangePassword) => profileService.putProfile(data),
+		mutationFn: (data: IProfile) => profileService.putProfile(data),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['profile']

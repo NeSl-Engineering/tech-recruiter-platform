@@ -52,9 +52,9 @@ export interface IAuthResponse {
 }
 
 export interface IProfile {
-	first_name: string
-	last_name: string
-	username: string
+	first_name?: string
+	last_name?: string
+	username?: string
 	password: string
 	telegram_nickname?: string
 	email?: string

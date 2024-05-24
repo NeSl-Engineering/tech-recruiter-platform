@@ -6,7 +6,7 @@ import { Field } from '@/components/ui/fields/Field'
 import { LK_PAGES } from '@/config/lk-pages-url.config'
 import { IProfile } from '@/types/types'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import styles from './Profile.module.scss'
@@ -18,24 +18,24 @@ const Profile = () => {
 	const [avatar, setAvatar] = useState('')
 	const { putProfile, isSuccess } = usePutProfile()
 	const { data, isLoading, refetch } = useProfile()
-	console.log(data)
 
 	const {
 		register,
 		handleSubmit,
 		reset,
 		getValues,
+		setValue,
 		formState: { errors }
 	} = useForm<IProfile>({
 		mode: 'onChange'
 	})
 
-	// useEffect(() => {
-	// 	setAvatar(`${data?.avatar}`)
-	// 	setValue('fullName', data?.fullName)
-	// 	setValue('phoneNumber', data?.phoneNumber)
-	// 	setValue('role', data?.role)
-	// }, [data])
+	useEffect(() => {
+		setValue('first_name', data?.first_name)
+		setValue('last_name', data?.last_name)
+		setValue('username', data?.username)
+		setValue('telegram_nickname', data?.telegram_nickname)
+	}, [data])
 
 	const onSubmit: SubmitHandler<IProfile> = data => {
 		putProfile(data)
@@ -88,7 +88,9 @@ const Profile = () => {
 					placeholderBigText
 					disabled
 				/>
-				<Link href={LK_PAGES.CHANGE_PASSWORD} className={styles.changePassword}>Изменить пароль</Link>
+				<Link href={LK_PAGES.CHANGE_PASSWORD} className={styles.changePassword}>
+					Изменить пароль
+				</Link>
 				<Field
 					id='telegram_nickname'
 					label='Ваш телеграмм'

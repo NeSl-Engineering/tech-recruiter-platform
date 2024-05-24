@@ -9,6 +9,11 @@ class CoursesService {
 		return response.data
 	}
 
+	async getCoursesId(id: string): Promise<ICourses> {
+		const response = await axiosWithAuth.get(`${this.BASE_URL}/${id}`)
+		return response.data
+	}
+
 	// async deleteCourse(id: any): Promise<any> {
 	// 	const response = await axiosWithAuth.delete(`${this.BASE_URL}/${id}`)
 	// 	return response.data.data

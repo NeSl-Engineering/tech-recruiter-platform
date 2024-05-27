@@ -18,7 +18,9 @@ const BlogItems = () => {
 							твита, чтобы ощутить, будто бренд читает мысли. {' '}
 						</p>
 						<div className={styles.buttons}>
-							<button className={styles.button}>Маркетинг</button>
+							<button title='dowran' className={styles.button}>
+								Маркетинг
+							</button>
 							<button className={styles.button}>Сорсинг</button>
 						</div>
 					</div>

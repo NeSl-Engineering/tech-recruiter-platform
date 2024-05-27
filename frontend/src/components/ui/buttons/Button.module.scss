@@ -21,7 +21,7 @@
 	}
 
 	&.disabled {
-		@apply bg-gray cursor-no-drop;
+		@apply bg-gray font-normal;
 		&:active {
 			transform: scale(1);
 		}

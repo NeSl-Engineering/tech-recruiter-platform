@@ -5,6 +5,7 @@ import { useProfile } from '@/app/licnyy-kabinet/change-password/hooks/useProfil
 import { Button } from '@/components/ui/buttons/Button'
 import { EnumTokens } from '@/services/auth-token.service'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import styles from './Header.module.scss'
@@ -23,9 +24,9 @@ const Header = () => {
 		<header className={styles.header}>
 			<div className='__container'>
 				<nav className={styles.row}>
-					<div className={styles.logo}>
+					<Link href='/' className={styles.logo}>
 						<Image src='/logo.svg' alt='logo' priority fill />
-					</div>
+					</Link>
 					<MenuItem />
 					{accessToken ? (
 						<button

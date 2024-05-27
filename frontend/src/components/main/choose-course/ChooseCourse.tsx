@@ -12,8 +12,8 @@ import ChooseCourseShimmer from './components/shimmers/ChooseCourseShimmer'
 import { useCourses } from './hooks/useCourses'
 
 const ChooseCourse = () => {
-	const [selected, setSelected] = useState<number>(1)
 	const { dataCourses, isLoadingCourses, refetchCourses } = useCourses()
+	const [selected, setSelected] = useState<number>(1)
 
 	const handleClick = (e: any) => {
 		setSelected(e.toString())

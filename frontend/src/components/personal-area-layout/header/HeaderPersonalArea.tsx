@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import styles from './HeaderPersonalArea.module.scss'
+import { useProfile } from './hooks/useProfile'
 const HeaderPersonalArea = () => {
 	const router = useRouter()
 	const {
@@ -23,6 +24,8 @@ const HeaderPersonalArea = () => {
 		router.push('/login')
 	}
 
+	const { data, isLoading } = useProfile()
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.profile}>
@@ -30,7 +33,9 @@ const HeaderPersonalArea = () => {
 					<Image src='/profile.svg' alt='profile' fill />
 				</div>
 				<div className={styles.content}>
-					<h1>Emir Hudayberdiyew</h1>
+					<h1>
+						{data?.first_name} {data?.last_name}
+					</h1>
 					<span>Онлайн</span>
 				</div>
 				<div className={styles.icons}>

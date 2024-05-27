@@ -19,6 +19,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			disabled,
 			disabledTransparent,
 			className,
+			radius,
+			py,
 			onClick
 		},
 		ref
@@ -37,10 +39,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 					widthFull: widthFull,
 					disabled: disabled,
 					disabledTransparent: disabledTransparent
-
 				})}`}
 				disabled={disabled || disabledTransparent}
 				ref={ref}
+				style={{ borderRadius: radius, paddingBottom: py, paddingTop: py }}
 			>
 				{children}
 			</button>

@@ -10,5 +10,7 @@ export interface ButtonProps {
 	disabled?: boolean | undefined
 	disabledTransparent?: boolean | undefined
 	className?: string
+	radius?: string
+	py?: string
 	onClick?: (e: any) => void
 }

@@ -50,10 +50,21 @@ class ClientModuleSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    is_paid = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = (
+            'id',
+            'title',
+            'price',
+            'start_time',
+            'end_time',
+            'is_infinite',
+            'cover_image',
+            'category',
+            'is_paid'
+        )
 
 
 class CategorySerializer(serializers.ModelSerializer):

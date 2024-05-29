@@ -23,4 +23,5 @@ class LessonTestAdminConfig(nested_admin.NestedModelAdmin):
 
 
 admin.site.register(LessonTest, LessonTestAdminConfig)
+admin.site.register(Answer)
 

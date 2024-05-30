@@ -18,6 +18,7 @@ from courses.views import (
     CourseViewSet,
     ModuleViewSet
 )
+from lessons.views import LessonViewSet
 from lesson_tests.views import LessonTestViewSet, AnswerViewSet
 from orders.views import OrderViewSet, OrderNotificationAPIView
 from .views import schema_view, SearchAPIView
@@ -27,6 +28,7 @@ router.register('answers', AnswerViewSet, 'answers')
 router.register('posts', PostViewSet, 'posts')
 router.register('course-categories', CategoryViewSet, 'course-categories')
 router.register('courses', CourseViewSet, 'courses')
+router.register('lessons', LessonViewSet, 'lessons')
 router.register('lesson-tests', LessonTestViewSet, 'lesson-tests')
 router.register('modules', ModuleViewSet, 'modules')
 router.register('orders', OrderViewSet, 'orders')

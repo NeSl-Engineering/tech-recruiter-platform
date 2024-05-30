@@ -20,10 +20,6 @@ from courses.views import (
 )
 from lesson_tests.views import LessonTestViewSet, AnswerViewSet
 from orders.views import OrderViewSet, OrderNotificationAPIView
-from views.views import (
-    VideoViewViewSet,
-    MaterialViewViewSet
-)
 from .views import schema_view, SearchAPIView
 
 router = routers.DefaultRouter()
@@ -34,8 +30,6 @@ router.register('courses', CourseViewSet, 'courses')
 router.register('lesson-tests', LessonTestViewSet, 'lesson-tests')
 router.register('modules', ModuleViewSet, 'modules')
 router.register('orders', OrderViewSet, 'orders')
-router.register('video-views', VideoViewViewSet, 'video_views')
-router.register('material-views', MaterialViewViewSet, 'material_views')
 
 urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

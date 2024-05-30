@@ -53,8 +53,8 @@ INSTALLED_APPS = [
 
     "users",
     "courses",
+    "lessons",
     "blog",
-    "views",
     "enrolls",
     "orders",
     "lesson_tests",

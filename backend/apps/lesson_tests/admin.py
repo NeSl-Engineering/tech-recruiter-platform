@@ -18,7 +18,7 @@ class QuestionInline(nested_admin.NestedStackedInline):
 
 
 class LessonTestAdminConfig(nested_admin.NestedModelAdmin):
-    list_display = ['module']
+    list_display = ['lesson']
     inlines = [QuestionInline]
 
 

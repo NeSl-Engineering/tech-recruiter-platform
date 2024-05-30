@@ -1,17 +1,17 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from courses.models import Module
+from lessons.models import Lesson
 
 User = get_user_model()
 
 
 class LessonTest(models.Model):
-    module = models.OneToOneField(
-        Module,
+    lesson = models.OneToOneField(
+        Lesson,
         on_delete=models.CASCADE,
-        verbose_name='Модуль',
-        related_name='test'
+        related_name='test',
+        verbose_name='Урок'
     )
 
     class Meta:

@@ -3,14 +3,14 @@ import { Metadata } from 'next'
 import TrainingPlan from './TrainingPlan'
 
 export const metadata: Metadata = {
-	title: `Главная ${PERSONAL_AREA_NAME}`,
+	title: `Модули ${PERSONAL_AREA_NAME}`,
 	description: 'Планируйте свое обучение!'
 }
 
-const TrainingPlanPage = () => {
+const TrainingPlanPage = ({ params }: { params: { slug: any } }) => {
 	return (
 		<>
-			<TrainingPlan />
+			<TrainingPlan params={params} />
 		</>
 	)
 }

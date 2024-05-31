@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from '@/components/ui/buttons/Button'
 import IconUI from '@/components/ui/icon/Icon'
 import { LK_PAGES } from '@/config/lk-pages-url.config'
 import { useDropdown } from '@/hooks/useDropdown'
@@ -7,10 +8,17 @@ import { removeFromStorage } from '@/services/auth-token.service'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import SearchedData from './components/SearchedData/SearchedData'
 import styles from './HeaderPersonalArea.module.scss'
 import { useProfile } from './hooks/useProfile'
+import { useSearch } from './hooks/useSearch'
 const HeaderPersonalArea = () => {
 	const router = useRouter()
+	const [query, setQuery] = useState<string>('')
+	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
+	const [isSearchDropdown, setIsSearchDropdown] = useState(false)
+
 	const {
 		showDropdown,
 		closeDropdown,
@@ -25,9 +33,56 @@ const HeaderPersonalArea = () => {
 	}
 
 	const { data, isLoading } = useProfile()
+	const { dataSearch, isLoadingSearch, refetch } = useSearch(query)
 
+	// const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	// 	setSearchQuery(event.target.value)
+	// }
+
+	const handleKeyUp = (e: any) => {
+		setIsSearchDropdown(true)
+		if (e.target.value === '') {
+			setIsSearchDropdown(false)
+		}
+	}
+
+	useEffect(() => {
+		if (timeoutId) {
+			clearTimeout(timeoutId)
+		}
+
+		const newTimeoutId = setTimeout(() => {
+			refetch()
+		}, 2000)
+
+		setTimeoutId(newTimeoutId)
+
+		return () => clearTimeout(newTimeoutId)
+	}, [query, refetch])
+
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setQuery(event.target.value)
+	}
 	return (
 		<header className={styles.header}>
+			<div className={styles.searchWrapper}>
+				<div className={styles.searchItem}>
+					<input
+						placeholder='Найти курс'
+						value={query}
+						onChange={handleInputChange}
+						onKeyUp={(e: any) => {
+							handleKeyUp(e)
+						}}
+					/>
+					<div className={styles.searchButton}>
+						<Button cyanButton>Найти</Button>
+					</div>
+				</div>
+				{isSearchDropdown && (
+					<SearchedData data={dataSearch} isLoading={isLoadingSearch} />
+				)}
+			</div>
 			<div className={styles.profile}>
 				<div className={styles.img}>
 					<Image src='/profile.svg' alt='profile' fill />

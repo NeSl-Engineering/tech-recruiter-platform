@@ -1,8 +1,17 @@
+from autoslug import AutoSlugField
 from django.db import models
+from slugify import slugify
 
 
 class Category(models.Model):
     title = models.CharField(max_length=120)
+    slug = AutoSlugField(
+        populate_from='title',
+        slugify=slugify,
+        null=True,
+        blank=True,
+        default=None
+    )
 
     class Meta:
         db_table = 'categories'
@@ -13,10 +22,7 @@ class Category(models.Model):
 
 
 class Course(models.Model):
-    title = models.CharField(
-        max_length=120,
-        verbose_name='Название Курса'
-    )
+    title = models.CharField(max_length=120, verbose_name='Название Курса')
     price = models.DecimalField(
         max_digits=15,
         decimal_places=2,
@@ -46,6 +52,13 @@ class Course(models.Model):
         upload_to='courses',
         verbose_name='Обложка'
     )
+    slug = AutoSlugField(
+        populate_from='title',
+        slugify=slugify,
+        null=True,
+        blank=True,
+        default=None
+    )
 
     class Meta:
         db_table = 'courses'
@@ -73,6 +86,13 @@ class Module(models.Model):
     )
     ordinal_number = models.IntegerField(
         verbose_name='Порядковый номер'
+    )
+    slug = AutoSlugField(
+        populate_from='title',
+        slugify=slugify,
+        null=True,
+        blank=True,
+        default=None
     )
 
     class Meta:

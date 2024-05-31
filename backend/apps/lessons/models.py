@@ -10,6 +10,7 @@ class Lesson(models.Model):
         related_name='lessons',
         verbose_name='Модуль'
     )
+    title = models.TextField(max_length=120, null=True)
     video = models.FileField(upload_to='lessons', verbose_name='Видео')
     ordinal_number = models.PositiveIntegerField(verbose_name='Порядковый номер')
 

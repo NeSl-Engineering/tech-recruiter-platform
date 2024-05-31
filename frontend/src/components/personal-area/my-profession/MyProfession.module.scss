@@ -1,6 +1,7 @@
 .myProfession {
 	@apply flex justify-between items-center bg-white p-[25px] rounded-[10px];
 	.left {
+		flex: 0 1 35%;
 		.subTitle {
 			@apply text-[15px] font-bold text-gray mb-1;
 		}

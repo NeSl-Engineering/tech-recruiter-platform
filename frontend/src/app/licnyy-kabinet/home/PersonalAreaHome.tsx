@@ -1,34 +1,38 @@
+'use client'
+
 import ProgressBlock from '@/components/personal-area/progress-block/ProgressBlock'
 import { Button } from '@/components/ui/buttons/Button'
-import { Field } from '@/components/ui/fields/Field'
 import Image from 'next/image'
 import styles from './PersonalAreaHome.module.scss'
+import { useCourses } from './hooks/useCourses'
+import { useCoursesDemo } from './hooks/useCoursesDemo'
 
 const PersonalAreaHome = () => {
+	const { data, isLoading } = useCourses()
+	const { dataDemo, isLoadingDemo } = useCoursesDemo()
+
 	return (
 		<div className={styles.PersonalArea}>
-			<div className={styles.searchWrapper}>
-				<div className={styles.searchItem}>
-					<Field id='1' placeholder='Найти курс' />
-					<div className={styles.searchButton}>
-						<Button cyanButton>Найти</Button>
+			{data?.length ? (
+				<div className={styles.ourCourses}>
+					<h1 className={styles.title}>Мои курсы</h1>
+					<div className={styles.row}>
+						<>
+							{data?.map(item => (
+								<ProgressBlock key={item.id} data={item} />
+							))}
+						</>
 					</div>
 				</div>
-			</div>
-			<div className={styles.ourCourses}>
-				<h1 className={styles.title}>Мои курсы</h1>
-				<div className={styles.row}>
-					<ProgressBlock title='Продвинутый сорсинг' />
-					<ProgressBlock title='Продвинутый сорсинг' />
-				</div>
-			</div>
+			) : null}
 			<div className={styles.demoAccess}>
 				<h1 className={styles.title}>Демо доступы</h1>
 				<div className={styles.row}>
-					<ProgressBlock title='Продвинутый сорсинг' />
-					<ProgressBlock title='PRO Коммуникации 2.0' />
-					<ProgressBlock title='Продвинутый сорсинг' />
-					<ProgressBlock title='PRO Коммуникации 2.0' />
+					<>
+						{dataDemo?.map(item => (
+							<ProgressBlock key={item.id} data={item} />
+						))}
+					</>
 				</div>
 			</div>
 			<div className={styles.haveQuestion}>

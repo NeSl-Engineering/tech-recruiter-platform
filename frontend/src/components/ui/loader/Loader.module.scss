@@ -1,0 +1,7 @@
+.loader {
+	@apply flex justify-center items-center w-full h-full;
+	flex: 1 1 auto;
+	.loading {
+		@apply animate-spin h-5 w-5 text-black text-3xl;
+	}
+}

@@ -1,4 +1,4 @@
-import { coursesService } from '@/services/courses.service'
+import { courseCategoriesService } from '@/services/courses-categories.service'
 import { useQuery } from '@tanstack/react-query'
 
 export function useCourses() {
@@ -8,8 +8,8 @@ export function useCourses() {
 		refetch: refetchCourses,
 		isError: isErrorCourses
 	} = useQuery({
-		queryKey: ['courses'],
-		queryFn: () => coursesService.getCourses()
+		queryKey: ['course-categories'],
+		queryFn: () => courseCategoriesService.getCourseCategories()
 	})
 
 	return { dataCourses, isLoadingCourses, refetchCourses, isErrorCourses }

@@ -1,5 +1,5 @@
 import PresentationModuleId from '@/components/personal-area/training-plan-id-page/PresentationModule'
-import styles from './TrainingPlanId.module.scss'
+import styles from './ModulesLesson.module.scss'
 import StrategySourcing from './components/strategy-sourcing/StrategySourcing'
 
 const TrainingPlanId = () => {

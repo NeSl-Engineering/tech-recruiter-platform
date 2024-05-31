@@ -1,0 +1,61 @@
+.avatarWrapper {
+	@apply rounded-[50%];
+	.label {
+		@apply block text-primary font-bold mb-[10px] text-[15px];
+	}
+
+	.avatar {
+		@apply w-[140px] h-[140px] relative  rounded-[50%] cursor-pointer border border-dashed border-primary;
+		&::after {
+			content: '';
+			transition: 0.2s background;
+		}
+		&:hover {
+			&::after {
+				content: '';
+				@apply absolute top-0 left-0 w-full h-full rounded-[50%];
+				background: #000000b8;
+			}
+			.insideIcon {
+				svg {
+					@apply text-white;
+				}
+			}
+		}
+		&:active {
+			@apply transition rounded-[50%];
+			.insideIcon {
+				svg {
+					color: var(--primary);
+					@apply text-primary;
+				}
+			}
+		}
+
+		.insideIcon {
+			@apply absolute top-[50%] left-[50%] z-20;
+			transform: translate(-50%, -50%);
+			svg {
+				@apply h-[40px] w-[40px] transition text-primary;
+			}
+		}
+
+		&__image {
+			@apply w-full h-full flex justify-center items-center relative rounded-[50%];
+			img {
+				@apply w-full h-full object-cover rounded-[50%];
+			}
+		}
+		&__input {
+			@apply absolute bottom-0 right-0 w-full h-full;
+		}
+
+		&__inputBody {
+			@apply relative w-full h-full;
+
+			input {
+				@apply absolute left-0 top-0 h-full w-full opacity-0 z-20 cursor-pointer;
+			}
+		}
+	}
+}

@@ -1,5 +1,10 @@
 .header {
-	@apply flex justify-end items-center mb-8;
+	@apply flex justify-end items-center mb-8 relative pb-4;
+	&::after {
+		content: '';
+		@apply bg-blue-50 absolute h-[1px] bottom-0 left-[-40px] z-10;
+		width: calc(100% + 40px);
+	}
 	.profile {
 		@apply flex items-center;
 	}
@@ -33,5 +38,47 @@
 
 	.icons {
 		@apply text-gray flex gap-3;
+	}
+
+	.icon {
+		@apply cursor-pointer transition-all;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	.dropdownWrapper {
+		@apply relative;
+		.dropdown {
+			@apply absolute right-0 w-[210px] bg-white py-3 px-2 z-20 rounded-[10px];
+			top: calc(100% + 14px);
+		}
+
+		.list {
+			@apply flex flex-col gap-2;
+		}
+
+		.item {
+			@apply flex justify-between items-center transition px-2 py-1 rounded-4 bg-transparent;
+			&:hover {
+				@apply bg-blackOpacity-0.5;
+				.navigation {
+					transform: scale(1.1);
+				}
+			}
+		}
+
+		.title {
+			@apply text-base text-black font-normal;
+		}
+
+		.navigation {
+			@apply w-[27px] h-[27px] rounded-[50%] bg-lightGray flex justify-center items-center transition;
+			svg {
+				width: 18px;
+				height: 18px;
+				@apply text-blue-400;
+			}
+		}
 	}
 }

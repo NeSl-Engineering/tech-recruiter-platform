@@ -1,0 +1,14 @@
+.buttonGroup {
+	.row {
+		@apply flex gap-[10px] flex-wrap max-w-[50%] mx-auto mt-[50px] mb-[60px] justify-center;
+	}
+
+	.button {
+		@apply text-base rounded-full px-7 py-2 font-light text-white  bg-gray hover:opacity-80;
+		transition: 0.3s all ease-in-out;
+
+		&.active {
+			@apply bg-cyan-400;
+		}
+	}
+}

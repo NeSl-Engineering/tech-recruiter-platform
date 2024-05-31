@@ -8,6 +8,8 @@ class LK {
 	PROGRESS = `${this.root}/progress`
 	ANSWERS = `${this.root}/moi-otvety`
 	PROBLEMS = `${this.root}/problemy`
+	PROFILE = `${this.root}/profile`
+	CHANGE_PASSWORD = `${this.root}/change-password`
 }
 
 export const LK_PAGES = new LK()

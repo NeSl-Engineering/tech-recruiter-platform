@@ -47,7 +47,7 @@ const StrategySourcing = () => {
 								</div>
 							</li>
 							<div className={styles.buttonWrapper}>
-								<Button widthFull> Отправить домашнее задание </Button>
+								<Button widthFull> Пройти тесты </Button>
 							</div>
 						</ul>
 					</li>

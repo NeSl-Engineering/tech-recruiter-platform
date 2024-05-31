@@ -1,0 +1,23 @@
+.profile {
+	max-width: 70%;
+	.title {
+		@apply text-[39px] font-bold mb-6;
+	}
+
+	.form {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+		position: relative;
+		.changePassword {
+			@apply absolute text-cyan-400;
+			top: 28%;
+			right: -170px;
+			font-size: 18px;
+			font-weight: 400;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

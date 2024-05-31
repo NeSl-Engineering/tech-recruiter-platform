@@ -1,0 +1,46 @@
+.profileBlock {
+	@apply bg-white rounded-[10px] p-6;
+	.header {
+		@apply flex gap-3 items-center pb-5 border-b border-solid border-blue-50 mb-5;
+	}
+
+	.image {
+		@apply w-[70px] h-[70px] rounded-[50%] relative;
+		img {
+			@apply rounded-[50%];
+		}
+	}
+
+	.content {
+		.username {
+			@apply mb-1 text-xl leading-6 font-bold;
+		}
+
+		.status {
+			@apply text-gray font-normal flex  items-center gap-2;
+			span {
+				@apply block w-[8px] h-[8px] rounded-[50%] bg-cyan-400;
+			}
+		}
+	}
+
+	.body {
+		@apply mb-10 flex justify-between;
+	}
+
+	.watchedTime {
+		.time {
+			@apply text-xl leading-6 text-red-350 font-bold mb-1;
+		}
+	}
+
+	.text {
+		@apply text-base font-normal text-gray;
+	}
+
+	.openedModules {
+		.countModules {
+			@apply text-xl leading-6 text-cyan-400 font-bold mb-1;
+		}
+	}
+}

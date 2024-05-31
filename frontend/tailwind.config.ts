@@ -124,6 +124,9 @@ const config: Config = {
 				gray50: '#A7A7A7',
 				lightGray: '#E2E9F2',
 				grayMedium: '#4D4D4D',
+				blackOpacity: {
+					0.5: 'rgba(0, 0, 0, 0.05);'
+				},
 				grayAdmin: {
 					50: '#F8F8F8',
 					100: '#F6F6F7'

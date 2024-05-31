@@ -1,0 +1,58 @@
+.OurCompany {
+	@apply mt-28 mb-28;
+	h1 {
+		@apply text-gray font-bold text-center mb-3;
+		font-size: 20px;
+	}
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+		width: 68%;
+		margin: 0 auto;
+		.item {
+			@apply rounded-lg p-6 relative;
+			height: 175px;
+			border: 1px solid #a7a7a7;
+			overflow: hidden;
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: -30px;
+				right: -30px;
+				width: 74px;
+				height: 74px;
+				border-radius: 50%;
+			}
+			&:first-child {
+				&::after {
+					@apply bg-red-350;
+				}
+			}
+			&:nth-child(2) {
+				&::after {
+					@apply bg-blue-400;
+				}
+			}
+			&:nth-child(3) {
+				&::after {
+					@apply bg-yellow-400;
+				}
+			}
+			&:last-child {
+				&::after {
+					@apply bg-cyan-400;
+				}
+			}
+
+			h3 {
+				@apply text-2xl font-bold mb-2;
+			}
+
+			p {
+				@apply text-base;
+				line-height: 22px;
+			}
+		}
+	}
+}

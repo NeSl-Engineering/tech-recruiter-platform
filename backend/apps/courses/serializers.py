@@ -28,7 +28,8 @@ class CourseSerializer(serializers.ModelSerializer):
             'is_infinite',
             'cover_image',
             'category',
-            'is_paid'
+            'is_paid',
+            'slug'
         )
 
 
@@ -37,5 +38,5 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['id', 'title', 'courses']
+        fields = ['id', 'title', 'courses', 'slug']
 

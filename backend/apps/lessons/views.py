@@ -3,7 +3,7 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, permissions, status, exceptions
 from rest_framework.response import Response
 
-from courses.models import Course, Module
+from courses.models import Module
 from enrolls.models import Enroll
 from .models import Lesson
 from .serializers import LessonSerializer

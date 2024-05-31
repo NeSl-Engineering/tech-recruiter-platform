@@ -58,3 +58,11 @@ class ModuleViewSet(viewsets.ReadOnlyModelViewSet):
         modules = Module.objects.filter(course=course_id).all()
         return modules
 
+    @swagger_auto_schema(
+        manual_parameters=[
+            openapi.Parameter('course', 'query',  type=openapi.TYPE_INTEGER)
+        ]
+    )
+    def list(self, *args, **kwargs):
+        return super().list(*args, **kwargs)
+

@@ -18,27 +18,6 @@ const ProgressId = () => {
 							<IconUI icon='arrowRight' />
 						</div>
 					</Link>
-					<Link href='/licnyy-kabinet/home' className={styles.item}>
-						<div className={styles.sourcing}>
-							<h2 className={styles.titleSourcing}>Продвинутый сорсинг</h2>
-							<ProgressBar />
-						</div>
-						<div className={styles.navigation}>
-							<IconUI icon='arrowRight' />
-						</div>
-					</Link>
-				</ul>
-				<ul className={styles.list}>
-					<h1 className={styles.title}>Курсы</h1>
-					<Link href='/licnyy-kabinet/home' className={styles.item}>
-						<div className={styles.sourcing}>
-							<h2 className={styles.titleSourcing}>Продвинутый сорсинг</h2>
-							<ProgressBar />
-						</div>
-						<div className={styles.navigation}>
-							<IconUI icon='arrowRight' />
-						</div>
-					</Link>
 				</ul>
 			</section>
 		</div>

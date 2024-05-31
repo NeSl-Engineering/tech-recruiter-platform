@@ -3,10 +3,10 @@
 import { modulesService } from '@/services/modules.service'
 import { useQuery } from '@tanstack/react-query'
 
-export function useModule() {
+export function useModule(moduleId: string) {
 	const { data, isLoading, refetch, isError } = useQuery({
-		queryKey: ['module'],
-		queryFn: () => modulesService.getModules()
+		queryKey: ['module', moduleId],
+		queryFn: () => modulesService.getModules(moduleId)
 	})
 
 	return { data, isLoading, refetch, isError }

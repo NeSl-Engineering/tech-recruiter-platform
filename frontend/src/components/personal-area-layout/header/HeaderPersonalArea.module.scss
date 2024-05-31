@@ -1,5 +1,23 @@
 .header {
-	@apply flex justify-end items-center mb-8 relative pb-4;
+	@apply flex justify-between items-center mb-8 relative pb-4;
+
+	.searchWrapper {
+		flex: 0 1 50%;
+		position: relative;
+		.searchItem {
+			@apply w-70p relative;
+			input {
+				@apply text-grayMedium font-medium py-4 px-5 rounded-4 bg-white w-full text-base transition;
+				border: 1px solid transparent;
+				height: 56px;
+			}
+			.searchButton {
+				@apply absolute top-[50%] right-0;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
 	&::after {
 		content: '';
 		@apply bg-blue-50 absolute h-[1px] bottom-0 left-[-40px] z-10;

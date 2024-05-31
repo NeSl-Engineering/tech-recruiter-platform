@@ -2,7 +2,7 @@ class LK {
 	private root = '/licnyy-kabinet'
 
 	HOME = `${this.root}/home`
-	PLAN = `${this.root}/plan-obuceniya`
+	PLAN = `${this.root}/modules`
 	USEFUL = `${this.root}/poleznyy-blog`
 	ALL_COURSES = `${this.root}/vse-kursy`
 	PROGRESS = `${this.root}/progress`

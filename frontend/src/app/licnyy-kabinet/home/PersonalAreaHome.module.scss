@@ -1,16 +1,7 @@
 .PersonalArea {
 	@apply relative;
 
-	.searchWrapper {
-		@apply absolute -top-[118px] left-0 w-35p;
-		.searchItem {
-			@apply relative;
-			.searchButton {
-				@apply absolute top-[50%] right-0;
-				transform: translateY(-39%);
-			}
-		}
-	}
+	
 
 	.title {
 		@apply font-bold text-[39px] mb-4;

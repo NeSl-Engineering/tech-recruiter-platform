@@ -100,11 +100,13 @@ body {
 
 body {
 	line-height: 1;
-	// font-family: 'Formular';
+	font-family: 'Formular';
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	font-size: 16px;
+	overflow-x: hidden;
+
 	@apply text-primary bg-red-900;
 	@media (max-width: 992px) {
 		font-size: 14px;
@@ -120,7 +122,7 @@ body {
 input,
 button,
 textarea {
-	// font-family: 'Formular';
+	font-family: 'Formular';
 	font-size: 14px;
 }
 button {

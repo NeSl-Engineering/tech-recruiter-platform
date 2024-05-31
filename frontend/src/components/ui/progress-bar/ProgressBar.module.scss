@@ -1,15 +1,15 @@
 .ProgressBar {
 	.row {
-		@apply flex justify-between mb-1;
+		@apply flex justify-between mb-0.5;
 	}
 
 	.title {
-		@apply text-sm font-normal ;
+		@apply text-sm font-medium;
 		line-height: 18px;
 	}
 
 	.number {
-		@apply font-normal text-blue-400 text-sm;
+		@apply font-medium text-blue-400 text-sm;
 	}
 
 	.progress {

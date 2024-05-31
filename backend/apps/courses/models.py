@@ -106,36 +106,6 @@ class Module(models.Model):
             )
         ]
 
-
-class LessonVideo(models.Model):
-    file = models.FileField(verbose_name='Файл')
-    module = models.ForeignKey(
-        Module,
-        on_delete=models.CASCADE,
-        related_name='videos',
-        verbose_name='Модуль'
-    )
-    ordinal_number = models.IntegerField(verbose_name='Порядковый номер')
-    length = models.FloatField(verbose_name='Длительность')
-
-    class Meta:
-        db_table = 'lesson_videos'
-        verbose_name = 'Видеоурок'
-        verbose_name_plural = 'Видеоуроки'
-
-
-class LessonMaterial(models.Model):
-    file = models.FileField(verbose_name='Файл')
-    module = models.ForeignKey(
-        Module,
-        on_delete=models.CASCADE,
-        related_name='materials',
-        verbose_name='Модуль'
-    )
-    ordinal_number = models.IntegerField(verbose_name='Порядковый номер')
-
-    class Meta:
-        db_table = 'lesson_materials'
-        verbose_name = 'Материал к урокам'
-        verbose_name_plural = 'Материалы к урокам'
+    def __str__(self):
+        return f'{self.course}: {self.title}'
 

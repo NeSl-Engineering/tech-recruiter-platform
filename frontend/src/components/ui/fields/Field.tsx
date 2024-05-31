@@ -30,6 +30,7 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 			errorsMessage,
 			numberThousand,
 			handlePasswordClick,
+			placeholderBigText,
 			...rest
 		},
 		ref
@@ -69,6 +70,7 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 							input: true,
 							standardStyle: standardStyle,
 							isShake: isShake,
+							placeholderBigText: placeholderBigText,
 							error: state
 						})}`}
 						{...rest}

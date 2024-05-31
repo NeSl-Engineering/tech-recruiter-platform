@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 import sys
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -52,15 +53,18 @@ INSTALLED_APPS = [
 
     "users",
     "courses",
+    "lessons",
     "blog",
-    "views",
     "enrolls",
+    "orders",
+    "lesson_tests",
     "api",
 
     "rest_framework",
     "django_rest_passwordreset",
     "drf_yasg",
     "django_celery_beat",
+    "nested_admin",
 ]
 
 MIDDLEWARE = [
@@ -206,5 +210,19 @@ DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
     "CLASS": "django_rest_passwordreset.tokens.RandomNumberTokenGenerator"
 }
 
-ACCESS_TOKEN_LIFETIME = 60 * 60 * 48
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=2),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}
+
+TINKOFF_MAPI = {
+    'BASE_URL': os.getenv('TIKNOFF_MAPI_BASE_URL'),
+    'TERMINAL_KEY': os.getenv('TINKOFF_TERMINAL_KEY'),
+    'TERMINAL_PASSWORD': os.getenv('TINKOFF_TERMINAL_PASSWORD'),
+    'SUCCESS_URL': os.getenv('TINKOFF_SUCCESS_URL'),
+    'FAIL_URL': os.getenv('TINKOFF_FAIL_URL'),
+    'NOTIFICATION_URL': os.getenv('TINKOFF_NOTIFICATION_URL'),
+    'ORDER_DESCRIPTION': 'Благодарим вас за заказ! '
+        'Если у вас есть дополнительные вопросы, пожалуйста, свяжитесь с нами.'
+}
 

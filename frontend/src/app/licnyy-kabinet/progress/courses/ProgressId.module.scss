@@ -1,0 +1,37 @@
+.progressId {
+	.courses {
+		@apply w-60p bg-white rounded-[10px] pb-[30px];
+	}
+
+	.list {
+	}
+
+	.title {
+		@apply text-xl font-bold leading-6 text-gray pt-[30px] pl-[30px] mb-3;
+	}
+
+	.item {
+		@apply py-2 px-[30px] flex justify-between items-center cursor-pointer;
+		transition: all 0.2s;
+		&:hover {
+			@apply bg-blue-50;
+			.navigation {
+				transform: scale(1.2);
+			}
+		}
+		.sourcing {
+			flex: 0 1 65%;
+			.titleSourcing {
+				@apply text-[15px] font-bold mb-2;
+			}
+		}
+
+		.navigation {
+			@apply w-[26px] h-[26px] flex justify-center items-center bg-lightGray rounded-[50%];
+			transition: all 0.2s;
+			svg {
+				@apply w-[14px] h-[14px] text-blue-400;
+			}
+		}
+	}
+}

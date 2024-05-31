@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Category, Course, LessonMaterial, LessonVideo, Module
+from .models import Category, Course, Module
 
 
 class ModuleAdminInline(admin.TabularInline):
     model = Module
     extra = 0
+    ordering = ['ordinal_number']
 
 
 class CourseAdminConfig(admin.ModelAdmin):
@@ -19,9 +20,11 @@ class CourseAdminConfig(admin.ModelAdmin):
         ''')
 
 
+class ModuleAdminConfig(admin.ModelAdmin):
+    list_display = ['title', 'course', 'ordinal_number']
+
+
 admin.site.register(Category)
 admin.site.register(Course, CourseAdminConfig)
-admin.site.register(Module)
-admin.site.register(LessonVideo)
-admin.site.register(LessonMaterial)
+admin.site.register(Module, ModuleAdminConfig)
 

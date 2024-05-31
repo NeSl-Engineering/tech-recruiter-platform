@@ -1,0 +1,36 @@
+.blogItems {
+	@apply mb-[120px];
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
+
+	.item {
+		@apply rounded-lg p-5 relative;
+		box-shadow: 0px 10px 50px 0px #0d0b561a;
+	}
+
+	.image {
+		@apply h-[295px] relative mb-4;
+	}
+
+	.title {
+		@apply text-[39px] font-bold mb-3;
+	}
+
+	.description {
+		@apply mb-[18px] text-base font-normal text-gray;
+	}
+
+	.buttons {
+		@apply flex gap-1;
+	}
+
+	.button {
+		@apply py-2 px-[26px] bg-red-350 text-white rounded-full text-center;
+		&:nth-child(2) {
+			@apply bg-yellow-400;
+		}
+	}
+}

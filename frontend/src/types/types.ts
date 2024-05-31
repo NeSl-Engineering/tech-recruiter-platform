@@ -64,12 +64,12 @@ export interface IProfile {
 export interface ICourse {
 	id?: number
 	title: string
-	price: string
-	start_time: string
-	end_time: string
-	is_infinite: boolean
-	cover_image: string
-	category: number
+	price?: string
+	start_time?: string
+	end_time?: string
+	is_infinite?: boolean
+	cover_image?: string
+	category?: number
 }
 
 export interface ICourses {
@@ -82,4 +82,11 @@ export interface IChangePassword {
 	old_password: string
 	password: string
 	confirmPassword: string
+}
+
+export interface ILesson {
+	id: number
+	video: string
+	ordinal_number: number
+	module: number
 }

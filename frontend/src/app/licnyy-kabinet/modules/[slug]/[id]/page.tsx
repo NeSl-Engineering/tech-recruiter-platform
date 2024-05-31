@@ -1,4 +1,4 @@
-import TrainingPlanId from './TrainingPlanId'
+import TrainingPlanId from './ModulesLesson'
 
 const page = () => {
 	return (

@@ -10,7 +10,7 @@ export const MENU_LK: IMenuItemLK[] = [
 	},
 	{
 		icon: 'plan',
-		link: LK_PAGES.PLAN,
+		link: LK_PAGES.HOME,
 		name: 'План обучения',
 		arrow: false
 	},

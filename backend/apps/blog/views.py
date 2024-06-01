@@ -1,10 +1,9 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from api.permissions import IsAdminUserOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
 
-class PostViewSet(ModelViewSet):
+class PostViewSet(ReadOnlyModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAdminUserOrReadOnly]
+

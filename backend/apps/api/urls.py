@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
-from blog.views import PostViewSet
+from blog.views import PostViewSet, TagViewSet
 from users.views import (
     EmailVerificationAPIView,
     OTPResendAPIView,
@@ -26,6 +26,7 @@ from .views import schema_view, SearchAPIView
 router = routers.DefaultRouter()
 router.register('answers', AnswerViewSet, 'answers')
 router.register('posts', PostViewSet, 'posts')
+router.register('post-tags', TagViewSet, 'tags')
 router.register('course-categories', CategoryViewSet, 'course-categories')
 router.register('courses', CourseViewSet, 'courses')
 router.register('lessons', LessonViewSet, 'lessons')

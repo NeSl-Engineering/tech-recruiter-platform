@@ -52,15 +52,21 @@ class ModuleViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        course_id = self.request.GET.get('course')
-        if not course_id:
-            raise ValidationError(detail='No course id provided')
-        modules = Module.objects.filter(course=course_id).all()
+        course_id = self.request.query_params.get('course')
+        course_slug = self.request.query_params.get('course__slug')
+        if course_id is None and course_slug is None:
+            raise ValidationError(detail='No course id or slug provided')
+        modules = Module.objects.all()
+        if course_id is not None:
+            modules = modules.filter(course=course_id)
+        if course_slug is not None:
+            modules = modules.filter(course__slug=course_slug)
         return modules
 
     @swagger_auto_schema(
         manual_parameters=[
-            openapi.Parameter('course', 'query',  type=openapi.TYPE_INTEGER)
+            openapi.Parameter('course', 'query',  type=openapi.TYPE_INTEGER),
+            openapi.Parameter('course__slug', 'query',  type=openapi.TYPE_STRING)
         ]
     )
     def list(self, *args, **kwargs):

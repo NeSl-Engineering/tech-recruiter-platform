@@ -15,23 +15,26 @@ class LessonViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Lesson.objects.all()
 
     def get_queryset(self):
-        queryset = Lesson.objects.all()
-        module  = self.request.query_params.get('module')
-        module = Module.objects.filter(pk=module)
+        module = self.request.query_params.get('module')
+        module_slug = self.request.query_params.get('module__slug')
+        if module is not None:
+            module = Module.objects.filter(pk=module)
+        else:
+            module =  Module.objects.filter(slug=module_slug)
         if not module.exists():
             raise exceptions.NotFound('Модуль с указанным id не найден.')
         module = module.first()
         if module.is_demo:
-            return queryset
+            return module.lessons.all() 
         course = module.course
         enroll = Enroll.objects.filter(user=self.request.user, course=course)
         # if enroll exists it means course was paid
         if not enroll.exists():
             raise exceptions.PermissionDenied('Курс не оплачен')
-        return queryset
+        return module.lessons.all()
 
     def filter_queryset(self, queryset):
-        module  = self.request.query_params.get('module')
+        module = self.request.query_params.get('module')
         if module is not None:
             queryset = queryset.filter(module=module)
         return queryset
@@ -42,15 +45,21 @@ class LessonViewSet(viewsets.ReadOnlyModelViewSet):
                 'module',
                 'query',
                 type=openapi.TYPE_INTEGER,
-                required=True
+            ),
+            openapi.Parameter(             
+                'module__slug',
+                'query',
+                type=openapi.TYPE_STRING,
             )
         ]
     )
     def list(self, *args, **kwargs):
-        module  = self.request.query_params.get('module')
-        if module is None:
+        module = self.request.query_params.get('module')
+        module_slug = self.request.query_params.get('module__slug')
+        if module is None and module_slug is None:
             return Response(
-                {'detail': 'Не указан id модуля'},
+                {'detail': 'Не указан id или slug модуля'},
                 status=status.HTTP_400_BAD_REQUEST
             )
         return super().list(*args, **kwargs)
+

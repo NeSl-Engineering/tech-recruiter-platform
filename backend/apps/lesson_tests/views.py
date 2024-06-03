@@ -4,7 +4,7 @@ from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 
 from .models import LessonTest, Answer
-from .serializers import LessonTestSerializer, AnswerSerializer
+from .serializers import LessonTestSerializer, SolutionSerializer
 
 
 class LessonTestViewSet(viewsets.ReadOnlyModelViewSet):
@@ -25,33 +25,18 @@ class LessonTestViewSet(viewsets.ReadOnlyModelViewSet):
         return queryset
 
 
-class AnswerViewSet(
-    mixins.CreateModelMixin,
-    viewsets.GenericViewSet
-):
-    serializer_class = AnswerSerializer
-    queryset = Answer.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+class SolutionViewSet(viewsets.GenericViewSet):
+    serializer_class = SolutionSerializer
 
-    @swagger_auto_schema(
-        request_body=AnswerSerializer(many=True)
-    )
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(
+    def create(self, request):
+        print(request.data)
+        serializer = SolutionSerializer(
             data=request.data,
-            many=True,
             context={'request': request}
         )
-        if serializer.is_valid():
-            serializer.create(serializer.validated_data)
-            headers = self.get_success_headers(serializer.data)
-            return Response(
-                serializer.data,
-                status=status.HTTP_201_CREATED,
-                headers=headers
-            )
-        return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
-        )
+        print(serializer.initial_data, flush=True)
+        print(serializer.is_valid())
+        print(serializer.errors)
+        print(serializer.data, flush=True)
+        return Response()
 

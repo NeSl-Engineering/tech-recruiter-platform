@@ -57,13 +57,33 @@ class Option(models.Model):
         verbose_name_plural = 'Варианты ответов'
 
 
-class Answer(models.Model):
+class Solution(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         verbose_name='Пользователь',
-        related_name='answers'
+        related_name='solutions'
     )
+    test = models.ForeignKey(
+        LessonTest,
+        on_delete=models.CASCADE,
+        related_name='solutions',
+        verbose_name='Тест'
+    )
+
+    class Meta:
+        db_table = 'test_solutions'
+        verbose_name = 'Решение теста от пользователя'
+        verbose_name = 'Решения тестов от пользователя'
+        constraints = [
+            models.UniqueConstraint(
+                fields=('user', 'test'),
+                name='unique_user_test'
+            )
+        ]
+
+
+class Answer(models.Model):
     question = models.ForeignKey(
         Question,
         on_delete=models.CASCADE,
@@ -73,7 +93,13 @@ class Answer(models.Model):
     option = models.ForeignKey(
         Option,
         on_delete=models.CASCADE,
-        verbose_name='',
+        verbose_name='Вариант',
+        related_name='answers'
+    )
+    solution = models.ForeignKey(
+        Solution,
+        on_delete=models.CASCADE,
+        verbose_name='Решение',
         related_name='answers'
     )
 

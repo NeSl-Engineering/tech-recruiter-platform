@@ -24,6 +24,11 @@ class Post(models.Model):
         verbose_name='Заголовок'
     )
     content = CKEditor5Field(verbose_name='Содержание')
+    image = models.ImageField(
+        verbose_name='Обложка',
+        upload_to='blog_posts',
+        null=True
+    )
     tags = models.ManyToManyField(
         Tag,
         related_name='posts',

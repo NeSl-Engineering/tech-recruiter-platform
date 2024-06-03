@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
+from lessons.models import Material
 from .models import Category, Course, Module
 
 
@@ -20,8 +21,14 @@ class CourseAdminConfig(admin.ModelAdmin):
         ''')
 
 
+class MaterialInline(admin.TabularInline):
+    model = Material
+    extra = 0
+
+
 class ModuleAdminConfig(admin.ModelAdmin):
     list_display = ['title', 'course', 'ordinal_number']
+    inlines = [MaterialInline]
 
 
 admin.site.register(Category)

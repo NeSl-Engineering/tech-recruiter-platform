@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from lessons.serializers import MaterialSerializer
 from .models import (
     Category,
     Course,
@@ -8,6 +9,7 @@ from .models import (
 
 
 class ModuleSerializer(serializers.ModelSerializer):
+    materials = MaterialSerializer(many=True)
 
     class Meta:
         model = Module

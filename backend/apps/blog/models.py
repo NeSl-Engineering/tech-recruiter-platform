@@ -34,6 +34,7 @@ class Post(models.Model):
         related_name='posts',
         verbose_name='Тэги'
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'posts'

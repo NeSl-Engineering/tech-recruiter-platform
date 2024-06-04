@@ -5,7 +5,7 @@ from .serializers import PostSerializer, TagSerializer
 
 
 class PostViewSet(ReadOnlyModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.order_by('created_at').all()
     serializer_class = PostSerializer
 
 

@@ -1,4 +1,5 @@
 from django.db.models import query
+from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
@@ -15,14 +16,22 @@ class LessonTestViewSet(viewsets.ReadOnlyModelViewSet):
             .prefetch_related('questions') \
             .prefetch_related('questions__options') \
             .all()
-        module = self.request.GET.get('module')
+        lesson = self.request.GET.get('lesson')
         try:
-            module = int(module)
+            lesson = int(lesson)
         except TypeError:
             pass
         else:
-            queryset = queryset.filter(module=module)
+            queryset = queryset.filter(lesson=lesson)
         return queryset
+
+    @swagger_auto_schema(
+        manual_parameters=[
+            openapi.Parameter('lesson', 'query',  type=openapi.TYPE_STRING)
+        ]
+    )
+    def list(self, *args, **kwargs):
+        return super().list(*args, **kwargs)
 
 
 class SolutionViewSet(viewsets.GenericViewSet):

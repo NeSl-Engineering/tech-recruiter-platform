@@ -56,8 +56,6 @@ class ModuleViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         course_id = self.request.query_params.get('course')
         course_slug = self.request.query_params.get('course__slug')
-        if course_id is None and course_slug is None:
-            raise ValidationError(detail='No course id or slug provided')
         modules = Module.objects.all()
         if course_id is not None:
             modules = modules.filter(course=course_id)
@@ -72,5 +70,9 @@ class ModuleViewSet(viewsets.ReadOnlyModelViewSet):
         ]
     )
     def list(self, *args, **kwargs):
+        course_id = self.request.query_params.get('course')
+        course_slug = self.request.query_params.get('course__slug')
+        if course_id is None and course_slug is None:
+            raise ValidationError(detail='No course id or slug provided')
         return super().list(*args, **kwargs)
 

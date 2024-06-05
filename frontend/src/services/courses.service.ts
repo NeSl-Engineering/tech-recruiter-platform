@@ -18,6 +18,13 @@ class CourseService {
 		)
 		return response?.data
 	}
+
+	async getCoursesSlug(slug: string) {
+		const response = await axiosWithAuth.get<ICourse>(
+			`${this.BASE_URL}/${slug}/`
+		)
+		return response?.data
+	}
 }
 
 export const courseService = new CourseService()

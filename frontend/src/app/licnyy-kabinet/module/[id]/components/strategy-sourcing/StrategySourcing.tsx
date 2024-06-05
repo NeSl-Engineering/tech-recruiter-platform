@@ -31,7 +31,7 @@ const StrategySourcing = ({
 				{data?.map((item, index: any) => (
 					<li
 						key={index}
-						className={`${styles.item} ${item?.seen ? styles.seen : ''} ${
+						className={`${styles.item} ${item ? styles.seen : ''} ${
 							isDropdown === index ? styles.open : ''
 						}`}
 					>

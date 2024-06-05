@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
-import Loader from '@/components/ui/Loader'
+import Loader from '@/components/ui/loader/Loader'
 import { forgotPasswordService } from '@/services/forgot-password.service'
 import { IResendOtp } from '@/types/types'
 import { useMutation } from '@tanstack/react-query'

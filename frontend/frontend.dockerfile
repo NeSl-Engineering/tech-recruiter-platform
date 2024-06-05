@@ -4,5 +4,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm i --loglevel verbose
 COPY . .
+RUN npm run build
+RUN npm install -g pm2
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+
+ENTRYPOINT ["pm2", "start", "npm", "-", "name", "\"tech-recruiter\"", "-", "start"]
+

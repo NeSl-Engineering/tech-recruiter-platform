@@ -70,6 +70,8 @@ export interface ICourse {
 	is_infinite?: boolean
 	cover_image?: string
 	category?: number
+	slug?: string
+	is_paid?: boolean
 }
 
 export interface ICourses {
@@ -86,7 +88,53 @@ export interface IChangePassword {
 
 export interface ILesson {
 	id: number
+	title: string
 	video: string
-	ordinal_number: number
+	slug: string
 	module: number
+	ordinal_number: number
+}
+
+export interface IBlog {
+	id: number
+	tags: string[]
+	title: string
+	content: string
+	image: string
+}
+
+export interface IBlogTag {
+	id: number
+	title: string
+	posts: IBlog[]
+}
+
+export interface ILessonTestOption {
+	id: number
+	content: string
+	question: number
+}
+
+export interface ILessonTestQuestion {
+	id: number
+	content: string
+	image: string
+	lesson_test: number
+	options: ILessonTestOption[]
+}
+
+export interface ILessonTest {
+	id: number
+	lesson: number
+	questions: ILessonTestQuestion[]
+}
+
+export interface ILessonTestMutateOption {
+	question: number
+	option: number
+}
+
+export interface ILessonTestMutate {
+	answers: ILessonTestMutateOption[]
+	test: number
 }

@@ -13,13 +13,14 @@ const ProgressBlock = ({ data }: { data?: ICourse }) => {
 			<h1 className={styles.title}>{data?.title}</h1>
 			<ProgressBar />
 			<div className={styles.buttons}>
+				{data?.is_paid === true && <div></div>}
 				<Button
 					blueTransparent
-					onClick={() => router.push(`${LK_PAGES.PLAN}/${data?.id}`)}
+					onClick={() => router.push(`${LK_PAGES.COURSE}/${data?.slug}`)}
 				>
-					Открыть демо-главу
+					{data?.is_paid === true ? 'Открыть' : 'Открыть демо-главу'}
 				</Button>
-				<Button>Купить полный доступ</Button>
+				{data?.is_paid === false && <Button>Купить полный доступ</Button>}
 			</div>
 		</div>
 	)

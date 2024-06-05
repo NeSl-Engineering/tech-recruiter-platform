@@ -2,26 +2,36 @@
 
 import { Button } from '@/components/ui/buttons/Button'
 import IconUI from '@/components/ui/icon/Icon'
+import { IModule } from '@/types/module.types'
+import { ILesson } from '@/types/types'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { StrategySourcingData } from './strategy-sourcing.data'
 import styles from './StrategySourcing.module.scss'
 
-const StrategySourcing = () => {
+const StrategySourcing = ({
+	data,
+	dataModule
+}: {
+	data?: ILesson[]
+	dataModule?: IModule
+}) => {
 	const [isDropdown, setIsDropdown] = useState(false)
 
 	const handleClickDropdown = (index: any) => {
 		setIsDropdown(index)
 	}
 
+	const router = useRouter()
+
 	return (
 		<div className={styles.StrategySourcing}>
-			<h1 className={styles.title}>Стратегия сорсинга кандидатов</h1>
+			<h1 className={styles.title}>{dataModule?.title}</h1>
 			<p className={styles.description}>Освоить базовые навыки легко.</p>
 			<ul className={styles.list}>
-				{StrategySourcingData.map((item, index: any) => (
+				{data?.map((item, index: any) => (
 					<li
 						key={index}
-						className={`${styles.item} ${item.seen ? styles.seen : ''} ${
+						className={`${styles.item} ${item?.seen ? styles.seen : ''} ${
 							isDropdown === index ? styles.open : ''
 						}`}
 					>
@@ -43,11 +53,19 @@ const StrategySourcing = () => {
 						>
 							<li className={styles.subItem} onClick={e => e.stopPropagation()}>
 								<div className={styles.video}>
-									<img src={item.video} alt={item.title} />
+									{/* <img src={item.video} alt={item.title} /> */}
+									<video src={item.video} controls></video>
 								</div>
 							</li>
 							<div className={styles.buttonWrapper}>
-								<Button widthFull> Пройти тесты </Button>
+								<Button
+									widthFull
+									onClick={() =>
+										router.push(`/licnyy-kabinet/lesson/${item.id}`)
+									}
+								>
+									Пройти тесты
+								</Button>
 							</div>
 						</ul>
 					</li>

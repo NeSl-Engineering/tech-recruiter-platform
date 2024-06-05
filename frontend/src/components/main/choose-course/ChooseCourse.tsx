@@ -3,13 +3,13 @@
 import { BASE_IMAGE_URL } from '@/api/interceptors'
 import IconUI from '@/components/ui/icon/Icon'
 import Transition from '@/components/ui/transitions/Transition'
+import { courseCategoriesService } from '@/services/courses-categories.service'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import styles from './ChooseCourse.module.scss'
 import ChooseCourseButtonShimmer from './components/shimmers/ChooseCourseButtonShimmer'
 import ChooseCourseShimmer from './components/shimmers/ChooseCourseShimmer'
 import { useCourses } from './hooks/useCourses'
-import { courseCategoriesService } from '@/services/courses-categories.service'
 
 const ChooseCourse = () => {
 	const { dataCourses, isLoadingCourses, refetchCourses } = useCourses()
@@ -76,7 +76,7 @@ const ChooseCourse = () => {
 											<div key={course.id} className={styles.item}>
 												<div className={styles.image_default}>
 													<img
-														src={`${BASE_IMAGE_URL}/${course.cover_image.slice(
+														src={`${BASE_IMAGE_URL}/${course.cover_image?.slice(
 															43
 														)}`}
 														alt={course.title}

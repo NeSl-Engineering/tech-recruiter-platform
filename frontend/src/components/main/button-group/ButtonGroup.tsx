@@ -1,27 +1,33 @@
 'use client'
 
+import { IBlogTag } from '@/types/types'
 import { useState } from 'react'
-import { buttonGroupData } from './ButtonGroup.data'
 import styles from './ButtonGroup.module.scss'
 
-const ButtonGroup = () => {
-	const [selected, setSelected] = useState<number>(1)
+const ButtonGroup = ({ data }: { data?: IBlogTag[] }) => {
+	const [selected, setSelected] = useState<any>(null)
 
 	const handleClick = (e: any) => {
-		setSelected(e.toString())
-
+		setSelected(e)
 		setTimeout(() => {}, 0)
 	}
+
 	return (
 		<div className={styles.buttonGroup}>
 			<div className='__container'>
 				<div className={styles.row}>
-					{buttonGroupData?.map((item, index) => (
+					<button
+						className={`${styles.button} ${selected > 0 ? '' : styles.active}`}
+						onClick={() => setSelected(null)}
+					>
+						Все статьи
+					</button>
+					{data?.map(item => (
 						<button
-							key={index}
-							onClick={() => handleClick(index)}
+							key={item.id}
+							onClick={() => handleClick(item.id)}
 							className={`${styles.button} ${
-								index === Number(selected) ? styles.active : ''
+								item.id === selected ? styles.active : ''
 							}`}
 						>
 							{item.title}

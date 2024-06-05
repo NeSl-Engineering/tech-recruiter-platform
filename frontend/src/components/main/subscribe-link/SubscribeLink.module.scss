@@ -16,6 +16,9 @@
 			line-height: 22px;
 			a {
 				@apply text-blue-400;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}

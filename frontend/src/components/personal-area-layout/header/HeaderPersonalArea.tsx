@@ -8,7 +8,7 @@ import { removeFromStorage } from '@/services/auth-token.service'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SearchedData from './components/SearchedData/SearchedData'
 import styles from './HeaderPersonalArea.module.scss'
 import { useProfile } from './hooks/useProfile'
@@ -16,7 +16,6 @@ import { useSearch } from './hooks/useSearch'
 const HeaderPersonalArea = () => {
 	const router = useRouter()
 	const [query, setQuery] = useState<string>('')
-	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
 	const [isSearchDropdown, setIsSearchDropdown] = useState(false)
 
 	const {
@@ -35,10 +34,6 @@ const HeaderPersonalArea = () => {
 	const { data, isLoading } = useProfile()
 	const { dataSearch, isLoadingSearch, refetch } = useSearch(query)
 
-	// const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-	// 	setSearchQuery(event.target.value)
-	// }
-
 	const handleKeyUp = (e: any) => {
 		setIsSearchDropdown(true)
 		if (e.target.value === '') {
@@ -46,23 +41,10 @@ const HeaderPersonalArea = () => {
 		}
 	}
 
-	useEffect(() => {
-		if (timeoutId) {
-			clearTimeout(timeoutId)
-		}
-
-		const newTimeoutId = setTimeout(() => {
-			refetch()
-		}, 2000)
-
-		setTimeoutId(newTimeoutId)
-
-		return () => clearTimeout(newTimeoutId)
-	}, [query, refetch])
-
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(event.target.value)
 	}
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.searchWrapper}>

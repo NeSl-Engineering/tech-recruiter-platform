@@ -5,5 +5,5 @@ export const NO_INDEX_PAGE = {
 	}
 }
 
-export const SITE_NAME = 'TECH RECRUITER'
+export const SITE_NAME = '| TECH RECRUITER'
 export const PERSONAL_AREA_NAME = '| Личный кабинет'

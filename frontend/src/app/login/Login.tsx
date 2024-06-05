@@ -32,7 +32,7 @@ const Login = () => {
 	})
 
 	const { mutate: mutateLogin } = useMutation({
-		mutationKey: ['login'],
+		mutationKey: ['profile'],
 		mutationFn: (data: IAuthLogin) => authService.login(data),
 		onError() {
 			toast.error('Не правильный пароль или э-мейл!')

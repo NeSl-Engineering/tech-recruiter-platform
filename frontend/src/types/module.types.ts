@@ -17,6 +17,5 @@ export interface IModule {
 	ordinal_number: number
 	id: number
 	course: number
-	// is_seen: boolean
-	// is_open: boolean
+	slug: string
 }

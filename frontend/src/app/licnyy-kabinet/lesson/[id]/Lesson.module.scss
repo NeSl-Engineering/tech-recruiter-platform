@@ -1,0 +1,41 @@
+.Lesson {
+	.title {
+		font-size: 39px;
+		@apply text-black font-bold mb-3;
+	}
+
+	.block {
+		@apply bg-white rounded-[10px] py-5 mb-4;
+	}
+
+	.blockTitle {
+		@apply text-[15px] font-bold px-5 mb-1;
+	}
+
+	.options {
+		@apply flex flex-col gap-1;
+	}
+
+	.option {
+		@apply py-2 flex justify-between items-center transition px-5 cursor-pointer;
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+	}
+
+	.name {
+		@apply text-base font-normal;
+	}
+
+	.emptyCircle {
+		@apply w-[15px] h-[15px] border border-solid border-blue-400 rounded-[50%] flex justify-center items-center;
+		.selectedCircleBg {
+			opacity: 0;
+		}
+		&.selected {
+			.selectedCircleBg {
+				@apply w-[9px] h-[9px] rounded-[50%] bg-blue-400 opacity-100;
+			}
+		}
+	}
+}

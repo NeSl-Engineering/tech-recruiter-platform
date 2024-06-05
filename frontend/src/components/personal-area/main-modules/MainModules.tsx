@@ -14,7 +14,7 @@ const MainModules = ({ data, id }: { data?: IModule[]; id: string }) => {
 				{data?.map((item, index) => (
 					<li key={index} className={styles.item}>
 						<Link
-							href={`${LK_PAGES.PLAN}/${id}/${item.id}`}
+							href={`${LK_PAGES.MODULE}/${item.slug}`}
 							className={styles.link}
 						>
 							<div className={styles.left}>

@@ -1,8 +1,8 @@
-import React from 'react'
+import { Button } from '@/components/ui/buttons/Button'
+import IconUI from '@/components/ui/icon/Icon'
 import styles from './PresentationModuleId.module.scss'
 import { modules } from './presentations.data'
-import IconUI from '@/components/ui/icon/Icon'
-import { Button } from '@/components/ui/buttons/Button'
+import { ICourse } from '@/types/types'
 
 const PresentationModuleId = () => {
 	return (

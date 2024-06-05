@@ -45,7 +45,7 @@ const ChangePassword = () => {
 	// }, [data])
 
 	const onSubmit: SubmitHandler<IChangePassword> = data => {
-		putProfile(data)
+		// putProfile(data)
 		toast.success('Успешно!')
 		reset()
 	}

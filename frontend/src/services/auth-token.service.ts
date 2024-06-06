@@ -12,12 +12,19 @@ export const getAccessToken = () => {
 
 export const saveTokenStorage = (accessToken: string) => {
 	Cookies.set(EnumTokens.ACCESS_TOKEN, `Bearer ${accessToken}`, {
-		domain: 'localhost',
+		domain: '158.160.89.94',
+		// secure: true,
 		sameSite: 'strict',
 		expires: 1
 	})
 }
 
 export const removeFromStorage = () => {
-	Cookies.remove(EnumTokens.ACCESS_TOKEN)
+	Cookies.remove(EnumTokens.ACCESS_TOKEN), {
+		domain: '158.160.89.94',
+		// secure: true,
+		sameSite: 'Strict',
+		path: '/',
+		expires: 1
+	}
 }

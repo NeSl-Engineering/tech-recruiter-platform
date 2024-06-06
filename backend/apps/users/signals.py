@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import send_mail
 from django.dispatch import receiver
 from django.template.loader import render_to_string
@@ -14,9 +15,6 @@ def password_reset_token_created(
     **kwargs
 ):
     user = reset_password_token.user
-    print(instance)
-    print(dir(reset_password_token))
-    print(reset_password_token.key)
     context = {
         'token': reset_password_token.key,
         'first_name': user.profile.first_name,
@@ -28,8 +26,9 @@ def password_reset_token_created(
     )
     send_mail(
         'Password Reset',
-        message,
-        'nazar@gmail.com',
+        '',
+        settings.EMAIL_HOST,
         [user.email],
+        html_message=message
     )
 

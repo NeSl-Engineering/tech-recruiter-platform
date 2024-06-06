@@ -1,3 +1,4 @@
+'use client'
 import CaseAnalysis from '@/components/main/case-analysis/CaseAnalysis'
 import ChooseCourse from '@/components/main/choose-course/ChooseCourse'
 import CommunityTelegram from '@/components/main/community-telegram/CommunityTelegram'
@@ -11,14 +12,16 @@ import SubscribeLink from '@/components/main/subscribe-link/SubscribeLink'
 import TimeTable from '@/components/main/time-table/TimeTable'
 import TitleSearch from '@/components/main/title-search/TitleSearch'
 import styles from './Home.module.scss'
+import { useCourses } from './licnyy-kabinet/home/hooks/useCourses'
 
 const Home = () => {
+	const { data } = useCourses()
 	return (
 		<div className={styles.home}>
 			<TitleSearch />
 			<OurCompany />
 			<FavouriteCompanies />
-			<MapCourses />
+			<MapCourses data={data} />
 			<ChooseCourse />
 			<TimeTable />
 			<CaseAnalysis />

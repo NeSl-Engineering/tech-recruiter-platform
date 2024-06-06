@@ -1,18 +1,22 @@
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework import status 
+from drf_yasg import openapi
+from drf_yasg.utils import serializers, swagger_auto_schema
+from rest_framework import status, permissions
 from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.routers import Response
 from rest_framework.views import APIView
 
+from .models import User
 from .otp import OTP
 from .serializers import (
     EmailVerificationSerializer,
     OTPResendSerializer,
     ProfileSerializer,
-    RegistrationSerializer
+    RegistrationSerializer,
+    UsernameSerializer,
+    PasswordUpdateSerializer
 )
 
 
@@ -103,6 +107,44 @@ class ProfileAPIView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+class UsernameAPIView(APIView):
+
+    @swagger_auto_schema(
+        query_serializer=UsernameSerializer(),
+        responses={200: openapi.Schema('is_valid', type=openapi.TYPE_BOOLEAN)}
+    )
+    def get(self, request):
+        serializer = UsernameSerializer(data=request.GET)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        username = serializer.data.get('username')
+        username_valid = not User.objects.filter(username=username).exists()
+        return Response(username_valid)
+
+
+class PasswordUpdateAPIView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    @swagger_auto_schema(
+        request_body=PasswordUpdateSerializer(),
+        response={200: openapi.Schema('detail', type=openapi.TYPE_STRING)}
+    )
+    def post(self, request):
+        print(request.data, flush=True)
+        serializer = PasswordUpdateSerializer(
+            data=request.data,
+            context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"detail": "Ok"})
+
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST

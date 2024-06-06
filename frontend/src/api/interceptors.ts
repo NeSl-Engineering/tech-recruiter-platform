@@ -3,7 +3,7 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import { getAccessToken } from '@/services/auth-token.service'
 
 const options: CreateAxiosDefaults = {
-	baseURL: 'http://158.160.89.94:8000/api',
+	baseURL: 'http://158.160.89.94/api',
 	headers: {
 		'Content-Type': 'application/json',
 		Authorization: getAccessToken()
@@ -11,7 +11,7 @@ const options: CreateAxiosDefaults = {
 }
 
 const optionsFile: CreateAxiosDefaults = {
-	baseURL: 'http://158.160.89.94:8000/api',
+	baseURL: 'http://158.160.89.94/api',
 	headers: {
 		'Content-Type': 'multipart/form-data',
 		Authorization: getAccessToken()

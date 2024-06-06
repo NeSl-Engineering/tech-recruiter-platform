@@ -3,7 +3,7 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import { getAccessToken } from '@/services/auth-token.service'
 
 const options: CreateAxiosDefaults = {
-	baseURL: 'http://localhost:8000/api',
+	baseURL: process.env.NEXT_PUBLIC_PATH,
 	headers: {
 		'Content-Type': 'application/json',
 		Authorization: getAccessToken()
@@ -11,13 +11,13 @@ const options: CreateAxiosDefaults = {
 }
 
 const optionsFile: CreateAxiosDefaults = {
-	baseURL: 'http://localhost:8000/api',
+	baseURL: process.env.NEXT_PUBLIC_PATH,
 	headers: {
 		'Content-Type': 'multipart/form-data',
 		Authorization: getAccessToken()
 	}
 }
-export const BASE_IMAGE_URL = 'http://localhost:9000/tech-recruiter/media'
+export const BASE_IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL
 
 const axiosClassic = axios.create(options)
 const axiosWithFile = axios.create(optionsFile)

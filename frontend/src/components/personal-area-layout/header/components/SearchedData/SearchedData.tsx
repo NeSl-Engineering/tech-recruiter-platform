@@ -7,10 +7,12 @@ import styles from './SearchedData.module.scss'
 
 const SearchedData = ({
 	data,
-	isLoading
+	isLoading,
+	close
 }: {
 	data?: ISearch
 	isLoading: boolean
+	close: () => void
 }) => {
 	return (
 		<div className={styles.SearchedData}>
@@ -19,62 +21,85 @@ const SearchedData = ({
 			) : (
 				<div className={styles.courses}>
 					<ul className={styles.list}>
-					{data?.courses.length || data?.modules.length || data?.posts.length ?(
-						<>	{data?.courses.length ? (
+						{data?.courses.length ||
+						data?.modules.length ||
+						data?.posts.length ? (
 							<>
-								{data?.courses.map(item => (
-									<li className={styles.itemWrapper}>
-										<h1 className={styles.title}>Курсы</h1>
-										<Link href='/licnyy-kabinet/home' className={styles.item}>
-											<div className={styles.sourcing}>
-												<h2 className={styles.titleSourcing}>{item.title}</h2>
-												<ProgressBar />
-											</div>
-											<div className={styles.navigation}>
-												<IconUI icon='arrowRight' />
-											</div>
-										</Link>
-									</li>
-								))}
+								{' '}
+								{data?.courses.length ? (
+									<>
+										{data?.courses.map(item => (
+											<li className={styles.itemWrapper}>
+												<h1 className={styles.title}>Курсы</h1>
+												<Link
+													href={`/licnyy-kabinet/course/${item.slug}`}
+													className={styles.item}
+													onClick={close}
+												>
+													<div className={styles.sourcing}>
+														<h2 className={styles.titleSourcing}>
+															{item.title}
+														</h2>
+														<ProgressBar />
+													</div>
+													<div className={styles.navigation}>
+														<IconUI icon='arrowRight' />
+													</div>
+												</Link>
+											</li>
+										))}
+									</>
+								) : null}
+								{data?.modules.length ? (
+									<>
+										{data?.modules.map(item => (
+											<li className={styles.item}>
+												<h1 className={styles.title}>Модули</h1>
+												<Link
+													href='/licnyy-kabinet/home'
+													className={styles.item}
+												>
+													<div className={styles.sourcing}>
+														<h2 className={styles.titleSourcing}>
+															{item.title}
+														</h2>
+														<ProgressBar />
+													</div>
+													<div className={styles.navigation}>
+														<IconUI icon='arrowRight' />
+													</div>
+												</Link>
+											</li>
+										))}
+									</>
+								) : null}
+								{data?.posts.length ? (
+									<>
+										{data?.posts.map(item => (
+											<li className={styles.item}>
+												<h1 className={styles.title}>Посты</h1>
+												<Link
+													href='/licnyy-kabinet/home'
+													className={styles.item}
+												>
+													<div className={styles.sourcing}>
+														<h2 className={styles.titleSourcing}>
+															{item.title}
+														</h2>
+														<ProgressBar />
+													</div>
+													<div className={styles.navigation}>
+														<IconUI icon='arrowRight' />
+													</div>
+												</Link>
+											</li>
+										))}
+									</>
+								) : null}
 							</>
-						) : null}
-						{data?.modules.length ? (
-							<>
-								{data?.modules.map(item => (
-									<li className={styles.item}>
-										<h1 className={styles.title}>Модули</h1>
-										<Link href='/licnyy-kabinet/home' className={styles.item}>
-											<div className={styles.sourcing}>
-												<h2 className={styles.titleSourcing}>{item.title}</h2>
-												<ProgressBar />
-											</div>
-											<div className={styles.navigation}>
-												<IconUI icon='arrowRight' />
-											</div>
-										</Link>
-									</li>
-								))}
-							</>
-						) : null}
-						{data?.posts.length ? (
-							<>
-								{data?.posts.map(item => (
-									<li className={styles.item}>
-										<h1 className={styles.title}>Посты</h1>
-										<Link href='/licnyy-kabinet/home' className={styles.item}>
-											<div className={styles.sourcing}>
-												<h2 className={styles.titleSourcing}>{item.title}</h2>
-												<ProgressBar />
-											</div>
-											<div className={styles.navigation}>
-												<IconUI icon='arrowRight' />
-											</div>
-										</Link>
-									</li>
-								))}
-							</>
-						) : null}</>
-					): 'Пусто...'}
+						) : (
+							<div className={styles.empty}>'Пусто...'</div>
+						)}
 					</ul>
 				</div>
 			)}

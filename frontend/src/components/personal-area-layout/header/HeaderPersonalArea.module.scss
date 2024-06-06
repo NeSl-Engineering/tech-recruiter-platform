@@ -27,7 +27,13 @@
 		@apply flex items-center;
 	}
 	.img {
-		@apply w-[65px] h-[65px] relative mr-3;
+		@apply w-[65px] h-[65px] relative mr-3 flex justify-center items-center bg-blue-50 rounded-[50%];
+		img {
+			@apply rounded-[50%];
+		}
+		h2 {
+			@apply text-[20px] text-gray font-bold;
+		}
 	}
 
 	.content {

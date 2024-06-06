@@ -6,7 +6,13 @@ import { ICourse } from '@/types/types'
 import { useRouter } from 'next/navigation'
 import styles from './ProgressBlock.module.scss'
 
-const ProgressBlock = ({ data }: { data?: ICourse }) => {
+const ProgressBlock = ({
+	data,
+	orderClick
+}: {
+	data?: ICourse
+	orderClick?: () => void
+}) => {
 	const router = useRouter()
 	return (
 		<div className={styles.ProgressBlock}>
@@ -14,13 +20,24 @@ const ProgressBlock = ({ data }: { data?: ICourse }) => {
 			<ProgressBar />
 			<div className={styles.buttons}>
 				{data?.is_paid === true && <div></div>}
-				<Button
-					blueTransparent
-					onClick={() => router.push(`${LK_PAGES.COURSE}/${data?.slug}`)}
-				>
-					{data?.is_paid === true ? 'Открыть' : 'Открыть демо-главу'}
-				</Button>
-				{data?.is_paid === false && <Button>Купить полный доступ</Button>}
+				{data?.is_paid === true ? (
+					<Button
+						onClick={() => router.push(`${LK_PAGES.COURSE}/${data?.slug}`)}
+					>
+						Открыть курс
+					</Button>
+				) : (
+					<Button
+						blueTransparent
+						onClick={() => router.push(`${LK_PAGES.COURSE}/${data?.slug}`)}
+					>
+						Открыть демо-главу
+					</Button>
+				)}
+
+				{data?.is_paid === false && (
+					<Button onClick={orderClick}>Купить полный доступ</Button>
+				)}
 			</div>
 		</div>
 	)

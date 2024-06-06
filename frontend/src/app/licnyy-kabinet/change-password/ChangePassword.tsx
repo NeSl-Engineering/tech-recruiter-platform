@@ -2,29 +2,50 @@
 
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
+import { profileService } from '@/services/profile.service'
 import { IChangePassword } from '@/types/types'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import styles from './ChangePassword.module.scss'
-import { useProfile } from './hooks/useProfile'
-import { usePutProfile } from './hooks/useProfileCreate'
 
 const ChangePassword = () => {
+	const queryClient = useQueryClient()
 	const [isError, setIsError] = useState(false)
-	const { putProfile, isSuccess } = usePutProfile()
-	const { data, isLoading, refetch } = useProfile()
-	console.log(data)
+	const router = useRouter()
 
 	const {
 		register,
 		handleSubmit,
 		reset,
 		getValues,
+		watch,
 		formState: { errors }
 	} = useForm<IChangePassword>({
 		mode: 'onChange'
 	})
+
+	const { mutate: putProfile, isSuccess } = useMutation({
+		mutationKey: ['profile'],
+		mutationFn: (data: IChangePassword) => profileService.putProfile(data),
+		onSuccess() {
+			queryClient.invalidateQueries({
+				queryKey: ['profile']
+			})
+			toast.success('Успешно изменено!')
+			reset()
+			setTimeout(() => {
+				router.back()
+			}, 1000)
+		},
+		onError() {
+			toast.error('Ошибка!')
+		}
+	})
+
+	const password = watch('new_password')
 
 	const [passwordEye, setPasswordEye] = useState(false)
 	const [confirmPasswordEye, setConfirmPasswordEye] = useState(false)
@@ -37,36 +58,30 @@ const ChangePassword = () => {
 		setConfirmPasswordEye(!confirmPasswordEye)
 	}
 
-	// useEffect(() => {
-	// 	setAvatar(`${data?.avatar}`)
-	// 	setValue('fullName', data?.fullName)
-	// 	setValue('phoneNumber', data?.phoneNumber)
-	// 	setValue('role', data?.role)
-	// }, [data])
-
 	const onSubmit: SubmitHandler<IChangePassword> = data => {
-		// putProfile(data)
-		toast.success('Успешно!')
-		reset()
+		const { confirmPassword, ...rest } = data
+		const dto = { ...rest }
+		putProfile(dto)
 	}
 
 	return (
 		<div className={styles.changePassword}>
+			<Toaster position='top-right' />
 			<h1 className={styles.title}>Изменить пароль</h1>
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 				<Field
 					id='first_name'
-					label='Имя'
+					label='Старый пароль'
 					placeholder='Николай'
 					standardStyle
 					{...register('old_password', {
-						required: 'Укажите имя!'
+						required: 'Укажите cтарый пароль!'
 					})}
 					errorsMessage={errors.old_password && errors.old_password?.message}
 					state={errors.old_password || (isError && 'error')}
 				/>
 				<Field
-					id='password'
+					id='new_password'
 					label='Пароль'
 					placeholder='Пароль'
 					standardStyle
@@ -74,17 +89,17 @@ const ChangePassword = () => {
 					isPasswordIcon
 					passwordEye={passwordEye}
 					handlePasswordClick={handlePasswordClick}
-					{...register('password', {
+					{...register('new_password', {
 						required: 'Укажите пароль!',
 						minLength: {
 							value: 8,
 							message: 'Пароль должен содержать минимум 8 символов!'
 						}
 					})}
-					errorsMessage={errors.password && errors.password?.message}
-					state={errors.password && 'error'}
+					errorsMessage={errors.new_password && errors.new_password?.message}
+					state={errors.new_password && 'error'}
 				/>
-				{errors.password && <>{errors.password.root}</>}
+				{errors.new_password && <>{errors.new_password.root}</>}
 				<Field
 					id='confirmPassword'
 					label='Повторите пароль'
@@ -96,7 +111,7 @@ const ChangePassword = () => {
 					handlePasswordClick={handleConfirmPasswordClick}
 					{...register('confirmPassword', {
 						required: 'Укажите пароль подтверждения!',
-						validate: value => value === 'password' || 'Пароли не совпадают!'
+						validate: value => value === password || 'Пароли не совпадают!'
 					})}
 					errorsMessage={
 						errors.confirmPassword && errors.confirmPassword?.message

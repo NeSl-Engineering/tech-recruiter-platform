@@ -11,7 +11,8 @@ from users.views import (
     EmailVerificationAPIView,
     OTPResendAPIView,
     RegistrationAPIView,
-    ProfileAPIView
+    ProfileAPIView,
+    UsernameAPIView
 )
 from courses.views import (
     CategoryViewSet,
@@ -42,6 +43,7 @@ urlpatterns = [
     path('auth/resend-otp/', OTPResendAPIView.as_view(), name='resend-otp'),
     path('auth/verify-email/', EmailVerificationAPIView.as_view(), name='verify_email'),
     path('auth/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('users/username-valid', UsernameAPIView.as_view(), name='username-valid'),
     path('orders/notifications/', OrderNotificationAPIView.as_view(), name='order-notification'),
     path('profile/', ProfileAPIView.as_view(), name='profile'),
     path('search/', SearchAPIView.as_view(), name='search'),

@@ -33,9 +33,10 @@ class OTP:
         )
         send_mail(
             "Email Activation",
-            message,
-            "nazar@gmail.com",
-            [email]
+            '',
+            settings.EMAIL_HOST,
+            [email],
+            html_message=message
         )
 
 

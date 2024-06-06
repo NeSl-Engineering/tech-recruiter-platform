@@ -129,3 +129,7 @@ class OTPResendSerializer(serializers.Serializer):
             self.user.profile.last_name
         )
 
+
+class UsernameSerializer(serializers.Serializer):
+    username = serializers.CharField()
+

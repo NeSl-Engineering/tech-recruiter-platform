@@ -129,3 +129,20 @@ class OTPResendSerializer(serializers.Serializer):
             self.user.profile.last_name
         )
 
+
+class UsernameSerializer(serializers.Serializer):
+    username = serializers.CharField()
+
+
+class PasswordUpdateSerializer(serializers.Serializer):
+    old_password = serializers.CharField()
+    new_password = serializers.CharField()
+
+    def validate_old_password(self, value):
+        if not self.context['request'].user.check_password(value):
+            raise ValidationError("Старый пароль неверный")
+
+    def save(self):
+        self.context['request'].user.set_password(self.validated_data.get('new_password'))
+        self.context['request'].user.save()
+

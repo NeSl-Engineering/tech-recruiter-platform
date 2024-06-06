@@ -21,13 +21,11 @@ const PersonalAreaHome = () => {
 			mode: 'onSubmit'
 		})
 
-	const [paymentUrl, setPaymentUrl] = useState<string>('')
 
 	const postOrder = async (data: IOrder): Promise<IOrder> => {
 		try {
 			const response = await axiosWithAuth.post(`/orders/`, data)
 			console.log(response)
-			setPaymentUrl(response.data.payment_url)
 			return response.data
 		} catch (error) {
 			if (axios.isAxiosError(error) && error.response) {

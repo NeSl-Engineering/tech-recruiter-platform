@@ -4,7 +4,7 @@ import styles from './CorporativeLearning.module.scss'
 
 const CorporativeLearning = () => {
 	return (
-		<div className={styles.CorporativeLearning}>
+		<div className={styles.CorporativeLearning} id='corporative'>
 			<Transition>
 				<div className='__container'>
 					<h1>Корпоративное обучение и тренинги</h1>

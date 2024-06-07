@@ -13,7 +13,7 @@ const SidebarPersonalArea = () => {
 	return (
 		<aside className={styles.sidebar}>
 			<div className={styles.logoWrapper}>
-				<Link href='/licnyy-kabinet' className={styles.logo}>
+				<Link href='/' className={styles.logo}>
 					<Image src='/logo.svg' alt='logo' fill />
 				</Link>
 			</div>

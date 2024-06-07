@@ -14,12 +14,12 @@ export const MENU_LK: IMenuItemLK[] = [
 		name: 'План обучения',
 		arrow: false
 	},
-	{
-		icon: 'blog',
-		link: LK_PAGES.USEFUL,
-		name: 'Полезный блог',
-		arrow: true
-	},
+	// {
+	// 	icon: 'blog',
+	// 	link: LK_PAGES.USEFUL,
+	// 	name: 'Полезный блог',
+	// 	arrow: true
+	// },
 	{
 		icon: 'courses',
 		link: LK_PAGES.ALL_COURSES,
@@ -31,17 +31,17 @@ export const MENU_LK: IMenuItemLK[] = [
 		link: LK_PAGES.PROGRESS,
 		name: 'Прогресс',
 		arrow: false
-	},
-	{
-		icon: 'answer',
-		link: LK_PAGES.ANSWERS,
-		name: 'Мои ответы',
-		arrow: false
-	},
-	{
-		icon: 'answer',
-		link: LK_PAGES.PROBLEMS,
-		name: 'Сообщить о проблеме',
-		arrow: false
 	}
+	// {
+	// 	icon: 'answer',
+	// 	link: LK_PAGES.ANSWERS,
+	// 	name: 'Мои ответы',
+	// 	arrow: false
+	// },
+	// {
+	// 	icon: 'answer',
+	// 	link: LK_PAGES.PROBLEMS,
+	// 	name: 'Сообщить о проблеме',
+	// 	arrow: false
+	// }
 ]

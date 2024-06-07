@@ -10,7 +10,7 @@ import styles from './Contacts.module.scss'
 const Contacts = () => {
 	const [isCheckbox, setIsCheckbox] = useState(false)
 	return (
-		<div className={styles.contacts}>
+		<div className={styles.contacts} id='contacts'>
 			<Transition>
 				<div className='__container'>
 					<div className={styles.row}>

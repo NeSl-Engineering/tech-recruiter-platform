@@ -33,7 +33,7 @@ const ChooseCourse = () => {
 	})
 
 	return (
-		<div className={styles.ChooseCourse}>
+		<div className={styles.ChooseCourse} id='choose-courses'>
 			<Transition>
 				<div className='__container'>
 					<h1>Давайте выберем курс специально для вас</h1>

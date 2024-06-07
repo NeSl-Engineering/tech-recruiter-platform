@@ -77,7 +77,7 @@ const ChooseCourse = () => {
 												<div className={styles.image_default}>
 													<img
 														src={`${BASE_IMAGE_URL}/${course.cover_image?.slice(
-															43
+															41
 														)}`}
 														alt={course.title}
 													/>

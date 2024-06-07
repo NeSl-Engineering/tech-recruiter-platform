@@ -11,16 +11,43 @@ User = get_user_model()
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username')
+    email = serializers.CharField(source='user.email', read_only=True)
 
     class Meta:
         model = Profile
         fields = [
+            'username',
+            'email',
             'first_name',
             'last_name',
             'birth_date',
             'profile_photo',
             'telegram_nickname'
         ]
+
+    def validate_username(self, value):
+        if User.objects.filter(username=value).exists():
+            raise ValidationError(
+                'пользователь с таким username уже существует'
+            )
+        return value
+
+    def update(self, *args, **kwargs):
+        self.instance.user.username = self.initial_data.get('username')
+        self.instance.user.save()
+        for field in self.Meta.fields:
+            if field in ['username', 'emai']:
+                continue
+            setattr(
+                self.instance,
+                field,
+                self.validated_data.get(
+                    field,
+                    getattr(self.instance, field)
+                )
+            )
+        return self.instance
 
 
 class UserSerializer(serializers.ModelSerializer):

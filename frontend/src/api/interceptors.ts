@@ -17,7 +17,7 @@ const optionsFile: CreateAxiosDefaults = {
 		Authorization: getAccessToken()
 	}
 }
-export const BASE_IMAGE_URL = 'http:/158.160.89.94:9000/tech-recruiter/'
+export const BASE_IMAGE_URL = 'http:/158.160.89.94:9000/tech-recruiter'
 
 const axiosClassic = axios.create(options)
 const axiosWithFile = axios.create(optionsFile)

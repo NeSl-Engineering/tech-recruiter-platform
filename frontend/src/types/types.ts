@@ -82,8 +82,8 @@ export interface ICourses {
 
 export interface IChangePassword {
 	old_password: string
-	password: string
-	confirmPassword: string
+	new_password: string
+	confirmPassword?: string
 }
 
 export interface ILesson {
@@ -137,4 +137,9 @@ export interface ILessonTestMutateOption {
 export interface ILessonTestMutate {
 	answers: ILessonTestMutateOption[]
 	test: number
+}
+
+export interface IOrder {
+	course?: number
+	payment_url: string
 }

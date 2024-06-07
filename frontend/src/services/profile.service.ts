@@ -1,4 +1,4 @@
-import { IProfile } from '@/types/types'
+import { IChangePassword, IProfile } from '@/types/types'
 
 import { axiosWithAuth } from '@/api/interceptors'
 
@@ -10,9 +10,16 @@ class ProfileService {
 		return response?.data
 	}
 
-	async putProfile(data: IProfile): Promise<IProfile> {
-		const response = await axiosWithAuth.patch(`${this.BASE_URL}/`, data)
+	async putProfile(data: IChangePassword): Promise<IChangePassword> {
+		const response = await axiosWithAuth.post(`/users/update-password/`, data)
 		return response?.data.data
+	}
+
+	async getProfileUserNameParam(userName?: string) {
+		const response = await axiosWithAuth.get<any>(
+			`/users/username-valid/?username=${userName}`
+		)
+		return response?.data
 	}
 }
 

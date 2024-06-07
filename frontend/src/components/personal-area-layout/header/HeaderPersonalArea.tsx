@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/buttons/Button'
 import IconUI from '@/components/ui/icon/Icon'
 import { LK_PAGES } from '@/config/lk-pages-url.config'
 import { useDropdown } from '@/hooks/useDropdown'
+import { useOutside } from '@/hooks/useOutside'
 import { removeFromStorage } from '@/services/auth-token.service'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -31,11 +32,13 @@ const HeaderPersonalArea = () => {
 		router.push('/login')
 	}
 
+	const { isShow, setIsShow, ref } = useOutside(false)
 	const { data, isLoading } = useProfile()
 	const { dataSearch, isLoadingSearch, refetch } = useSearch(query)
 
 	const handleKeyUp = (e: any) => {
 		setIsSearchDropdown(true)
+		setIsShow(true)
 		if (e.target.value === '') {
 			setIsSearchDropdown(false)
 		}
@@ -47,7 +50,7 @@ const HeaderPersonalArea = () => {
 
 	return (
 		<header className={styles.header}>
-			<div className={styles.searchWrapper}>
+			<div className={styles.searchWrapper} ref={ref}>
 				<div className={styles.searchItem}>
 					<input
 						placeholder='Найти курс'
@@ -61,13 +64,25 @@ const HeaderPersonalArea = () => {
 						<Button cyanButton>Найти</Button>
 					</div>
 				</div>
-				{isSearchDropdown && (
-					<SearchedData data={dataSearch} isLoading={isLoadingSearch} />
+				{isSearchDropdown && isShow && (
+					<SearchedData
+						data={dataSearch}
+						isLoading={isLoadingSearch}
+						close={() => setIsSearchDropdown(false)}
+					/>
 				)}
 			</div>
 			<div className={styles.profile}>
 				<div className={styles.img}>
-					<Image src='/profile.svg' alt='profile' fill />
+					{data?.profile_photo !== null ? (
+						<Image src='/profile.svg' alt='profile' fill />
+					) : (
+						<h2>
+							{data?.first_name?.charAt(0)}
+
+							{data?.last_name?.charAt(0)}
+						</h2>
+					)}
 				</div>
 				<div className={styles.content}>
 					<h1>

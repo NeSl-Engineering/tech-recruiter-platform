@@ -12,12 +12,13 @@ import toast from 'react-hot-toast'
 import styles from './Profile.module.scss'
 import { useProfile } from './hooks/useProfile'
 import { usePutProfile } from './hooks/useProfileCreate'
+import { useProfileUsername } from './hooks/useProfileUsername'
 
 const Profile = () => {
 	const [isError, setIsError] = useState(false)
 	const [avatar, setAvatar] = useState('')
 	const { putProfile, isSuccess } = usePutProfile()
-	const { data, isLoading, refetch } = useProfile()
+	const { data, isLoading } = useProfile()
 
 	const {
 		register,
@@ -25,10 +26,15 @@ const Profile = () => {
 		reset,
 		getValues,
 		setValue,
+		watch,
 		formState: { errors }
 	} = useForm<IProfile>({
 		mode: 'onChange'
 	})
+
+	const { dataUsername, isLoadingUserName, refetch } = useProfileUsername(
+		watch('username')
+	)
 
 	useEffect(() => {
 		setValue('first_name', data?.first_name)

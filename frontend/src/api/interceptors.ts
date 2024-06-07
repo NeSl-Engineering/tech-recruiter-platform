@@ -17,7 +17,7 @@ const optionsFile: CreateAxiosDefaults = {
 		Authorization: getAccessToken()
 	}
 }
-export const BASE_IMAGE_URL = 'http://localhost:9000/tech-recruiter/media'
+export const BASE_IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL
 
 const axiosClassic = axios.create(options)
 const axiosWithFile = axios.create(optionsFile)

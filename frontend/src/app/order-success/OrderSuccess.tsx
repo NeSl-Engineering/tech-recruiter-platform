@@ -1,9 +1,11 @@
 'use client'
 import { Button } from '@/components/ui/buttons/Button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import styles from './OrderSuccess.module.scss'
 
 const OrderSuccess = () => {
+	const router = useRouter()
 	return (
 		<div className={styles.order}>
 			<div className={styles.logoWrapper}>
@@ -21,7 +23,9 @@ const OrderSuccess = () => {
 					главную страницу
 				</p>
 				<div className={styles.button}>
-					<Button widthFull>На главную</Button>
+					<Button widthFull onClick={() => router.push('/')}>
+						На главную
+					</Button>
 				</div>
 			</div>
 		</div>

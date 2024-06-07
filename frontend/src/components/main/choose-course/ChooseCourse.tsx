@@ -1,6 +1,5 @@
 'use client'
 
-import { BASE_IMAGE_URL } from '@/api/interceptors'
 import IconUI from '@/components/ui/icon/Icon'
 import Transition from '@/components/ui/transitions/Transition'
 import { courseCategoriesService } from '@/services/courses-categories.service'
@@ -75,12 +74,7 @@ const ChooseCourse = () => {
 										{dataId.courses.map(course => (
 											<div key={course.id} className={styles.item}>
 												<div className={styles.image_default}>
-													<img
-														src={`${BASE_IMAGE_URL}/${course.cover_image?.slice(
-															43
-														)}`}
-														alt={course.title}
-													/>
+													<img src={course.cover_image} alt={course.title} />
 												</div>
 												<div className={styles.content}>
 													<h2>{course.title}</h2>

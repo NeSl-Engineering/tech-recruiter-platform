@@ -12,6 +12,7 @@
 }
 
 body {
+	scroll-behavior: smooth;
 	&::-webkit-scrollbar {
 		width: 5px;
 		height: 4px;

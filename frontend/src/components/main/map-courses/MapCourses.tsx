@@ -24,7 +24,6 @@ const MapCourses = ({ data }: { data?: ICourse[] }) => {
 	const postOrder = async (data: IOrder): Promise<IOrder> => {
 		try {
 			const response = await axiosWithAuth.post(`/orders/`, data)
-			console.log(response)
 			setPaymentUrl(response.data.payment_url)
 			return response.data
 		} catch (error) {
@@ -71,7 +70,7 @@ const MapCourses = ({ data }: { data?: ICourse[] }) => {
 	return (
 		<>
 			<Toaster position='top-right' />
-			<div className={styles.MapCourses}>
+			<div className={styles.MapCourses} id='map-courses'>
 				<Transition>
 					<div className='__container'>
 						<h1>

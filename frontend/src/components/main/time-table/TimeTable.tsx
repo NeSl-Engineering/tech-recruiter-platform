@@ -12,7 +12,7 @@ const TimeTable = () => {
 	return (
 		<div className={styles.TimeTable}>
 			<Transition>
-				<div className='__container'>
+				<div className='__container' id='master-class'>
 					<h1>Time-table что бы не пропустить наши события</h1>
 					<div className={styles.buttons}>
 						{buttonTimeTable.map((item, index: any) => (

@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 
 export function useBlog() {
 	const {
-		data: dataBlog,
-		isLoading: isLoadingBlog,
+		data: data,
+		isLoading: isLoading,
 		refetch,
 		isError
 	} = useQuery({
@@ -12,5 +12,5 @@ export function useBlog() {
 		queryFn: () => blogService.getBlog()
 	})
 
-	return { dataBlog, isLoadingBlog, refetch, isError }
+	return { data, isLoading, refetch, isError }
 }

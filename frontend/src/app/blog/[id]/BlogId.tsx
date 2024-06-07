@@ -10,12 +10,7 @@ import BlogIdShimmer from './components/shimmers/BlogIdShimmer'
 const BlogId = ({ params }: { params: { id: string } }) => {
 	const { dataBlog, isLoadingBlog } = useBlogId(params.id)
 	const { data, isLoading } = useBlog()
-
-	if (data && data.length >= 2) {
-		// Extracting the first two objects
-		let firstTwoObjects = data.slice(0, 2)
-	}
-
+	
 	return (
 		<div className={styles.BlogId}>
 			<div className='__container'>

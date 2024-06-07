@@ -8,5 +8,5 @@ RUN npm run build
 RUN npm install -g pm2
 EXPOSE 3000
 
-ENTRYPOINT ["pm2-runtime", "start", "npm", "--", "run", "dev"]
+ENTRYPOINT ["pm2-runtime", "start", "npm", "--", "start"]
 

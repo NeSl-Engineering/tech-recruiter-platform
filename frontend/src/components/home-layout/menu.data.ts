@@ -4,19 +4,19 @@ import type { IMenuItem } from './menu.interface'
 
 export const MENU: IMenuItem[] = [
 	{
-		link: MAIN_PAGES.AGENCY,
+		link: '/#corporative',
 		name: 'Кадровое агентство'
 	},
 	{
-		link: MAIN_PAGES.PROMOTION,
+		link: '/#map-courses',
 		name: 'Карьерное продвижение'
 	},
 	{
-		link: MAIN_PAGES.COURSES,
+		link: '/#choose-courses',
 		name: 'Курсы'
 	},
 	{
-		link: MAIN_PAGES.MASTER_CLASSES,
+		link: '/#master-class',
 		name: 'Мастер классы'
 	},
 	{
@@ -24,7 +24,7 @@ export const MENU: IMenuItem[] = [
 		name: 'Блог'
 	},
 	{
-		link: MAIN_PAGES.CONTACTS,
+		link: '/#contacts',
 		name: 'Контакты'
 	}
 ]

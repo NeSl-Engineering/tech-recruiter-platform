@@ -13,7 +13,7 @@ import { useBlogTagsId } from './hooks/useBlogTagsId'
 
 const Blog = () => {
 	const { dataTags, isLoadingTags } = useBlogTags()
-	const { dataBlog, isLoadingBlog } = useBlog()
+	const { data, isLoading } = useBlog()
 	const [selected, setSelected] = useState<any>(null)
 
 	const handleClick = (e: any) => {
@@ -51,7 +51,7 @@ const Blog = () => {
 				</div>
 			</div>
 			<BlogItems
-				data={dataBlog}
+				data={data}
 				dataTagId={dataTagsId}
 				isLoadingTagId={isLoadingTagsId}
 				isLoading={isLoadingTags}

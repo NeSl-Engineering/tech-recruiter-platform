@@ -41,6 +41,7 @@ const Profile = () => {
 		setValue('last_name', data?.last_name)
 		setValue('username', data?.username)
 		setValue('telegram_nickname', data?.telegram_nickname)
+		setValue('email', data?.email)
 	}, [data])
 
 	const onSubmit: SubmitHandler<IProfile> = data => {

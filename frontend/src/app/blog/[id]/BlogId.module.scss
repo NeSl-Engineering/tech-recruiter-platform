@@ -1,3 +1,60 @@
 .BlogId {
-	
+	margin: 40px 0;
+	font-weight: 500;
+	.row {
+		display: grid;
+		grid-template-columns: 1.3fr 0.7fr;
+		gap: 20px;
+	}
+
+	.left {
+		.image {
+			position: relative;
+			height: 424px;
+			margin-bottom: 20px;
+			img {
+				@apply rounded-[8px] h-full w-full;
+			}
+		}
+
+		.content {
+		}
+
+		.title {
+			@apply text-[39px] font-bold mb-5 leading-[45px];
+		}
+
+		.buttons {
+			@apply mb-5 flex gap-1 items-center;
+		}
+
+		.button {
+			@apply py-2 px-[26px] bg-red-350 text-white rounded-full text-center;
+			&:nth-child(even) {
+				@apply bg-yellow-400;
+			}
+		}
+	}
+
+	.description {
+		@apply text-base leading-5;
+	}
+
+	.right {
+		@apply flex flex-col gap-[60px];
+		.item {
+		}
+		.image {
+			@apply h-[295px] mb-4;
+			img {
+				@apply w-full h-full rounded-[8px] object-cover;
+			}
+		}
+		.title {
+			@apply text-[20px] leading-6 font-bold mb-2;
+		}
+		.description {
+			@apply text-base leading-5;
+		}
+	}
 }

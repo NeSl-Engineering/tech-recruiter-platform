@@ -1,9 +1,11 @@
 'use client'
 import { Button } from '@/components/ui/buttons/Button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import styles from './OrderFail.module.scss'
 
 const OrderFail = () => {
+	const router = useRouter()
 	return (
 		<div className={styles.order}>
 			<div className={styles.logoWrapper}>
@@ -20,7 +22,9 @@ const OrderFail = () => {
 					Возникли проблемы при оплате. Попробуйте немного позже.
 				</p>
 				<div className={styles.button}>
-					<Button widthFull>На главную</Button>
+					<Button widthFull onClick={() => router.push('/')}>
+						На главную
+					</Button>
 				</div>
 			</div>
 		</div>

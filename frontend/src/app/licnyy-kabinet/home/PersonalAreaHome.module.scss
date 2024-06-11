@@ -1,5 +1,10 @@
 .PersonalArea {
 	@apply relative;
+	
+	&::-webkit-scrollbar-thumb {
+		@apply bg-blue-400;
+		border-radius: 3px;
+	}
 
 	.title {
 		@apply font-bold text-[39px] mb-4;

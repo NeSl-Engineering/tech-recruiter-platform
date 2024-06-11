@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { MENU } from '../menu.data'
 import styles from './Footer.module.scss'
 import { SOCIAL_ICONS } from './social.icons'
+import { FOOTER_LINKS } from './links'
 
 const Footer = () => {
 	return (
@@ -36,9 +37,9 @@ const Footer = () => {
 						<div className={styles.listWrapper}>
 							<h2 className={styles.title}>Страницы</h2>
 							<ul>
-								{MENU.map((item, index) => (
+								{FOOTER_LINKS.map((item, index) => (
 									<li key={index}>
-										<Link href={item.link}>{item.name}</Link>
+										<Link href={item.link}>{item.title}</Link>
 									</li>
 								))}
 							</ul>

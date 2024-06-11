@@ -5,7 +5,7 @@
 	}
 
 	.about {
-		flex: 0 1 30%;
+		flex: 1 1 auto;
 	}
 
 	.logo {
@@ -36,6 +36,7 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 90px;
+		max-width: 50%;
 		.listWrapper {
 			.title {
 				font-size: 20px;

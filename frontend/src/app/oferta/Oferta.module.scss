@@ -1,0 +1,69 @@
+.Oferta {
+	margin: 50px 0;
+	.container {
+		max-width: 900px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.header {
+		@apply flex justify-end;
+		.title {
+			@apply text-right;
+		}
+	}
+
+	h1 {
+		@apply font-bold text-xl leading-8 mb-9;
+	}
+
+	.body {
+		.bodyTitle {
+			@apply text-center;
+		}
+		p {
+			@apply font-light text-xl leading-8 mb-8;
+		}
+		a {
+			@apply font-light text-xl leading-8 text-blue-400;
+			&:hover {
+				@apply underline;
+			}
+		}
+	}
+
+	.haveQuestion {
+		background: linear-gradient(87.72deg, #e2e9f2 0%, #cfe4ff 99.92%);
+		@apply flex justify-between items-center gap-[50px] p-[50px] rounded-lg;
+		max-width: 1000px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		margin-left: auto;
+		margin-right: auto;
+
+		.content {
+		}
+
+		.titleContent {
+			@apply text-[39px] font-bold mb-8;
+			line-height: 47px;
+		}
+
+		.buttonWrapper {
+			width: 45%;
+			a {
+				@apply rounded-[20px] border-transparent p-6 text-base font-bold text-white  hover:opacity-80 bg-blue-400 w-full block text-center;
+				transition: 0.3s all ease-in-out;
+				border: 1px solid;
+			}
+		}
+
+		.qrCode {
+			@apply relative w-[238px] h-[238px];
+		}
+	}
+}

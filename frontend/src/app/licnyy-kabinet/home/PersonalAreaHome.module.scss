@@ -1,6 +1,6 @@
 .PersonalArea {
 	@apply relative;
-	
+
 	&::-webkit-scrollbar-thumb {
 		@apply bg-blue-400;
 		border-radius: 3px;

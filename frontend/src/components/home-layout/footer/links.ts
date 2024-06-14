@@ -1,14 +1,14 @@
 export const FOOTER_LINKS = [
 	{
-		link: '',
+		link: '/oferta',
 		title: 'Публичная оферта'
 	},
 	{
-		link: '',
+		link: '/polyt-obrab',
 		title: 'Политика в отношении обработки персональных данных'
 	},
 	{
-		link: '',
+		link: '/lic-sogl',
 		title: 'Лицензионное соглашение'
 	},
 	{

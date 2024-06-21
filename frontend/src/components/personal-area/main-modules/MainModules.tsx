@@ -26,7 +26,7 @@ const MainModules = ({ data, id }: { data?: IModule[]; id: string }) => {
 							</div>
 							<div className={styles.right}>
 								<div className={styles.progressBarWrapper}>
-									<ProgressBar />
+									{/* <ProgressBar /> */}
 								</div>
 								<div className={styles.icon}>
 									<IconUI icon='arrowRight' />

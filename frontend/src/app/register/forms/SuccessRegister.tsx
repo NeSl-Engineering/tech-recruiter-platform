@@ -26,7 +26,7 @@ const SuccessFormRegister = ({ pushNextIndex }: IFormRegister) => {
 					личный кабинет.
 				</p>
 			</div>
-			<Button>Продолжить</Button>
+			<Button onClick={() => router.push('/login')}>Продолжить</Button>
 		</form>
 	)
 }

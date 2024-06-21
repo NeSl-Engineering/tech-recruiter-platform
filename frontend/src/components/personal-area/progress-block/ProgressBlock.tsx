@@ -17,7 +17,7 @@ const ProgressBlock = ({
 	return (
 		<div className={styles.ProgressBlock}>
 			<h1 className={styles.title}>{data?.title}</h1>
-			<ProgressBar />
+			{/* <ProgressBar /> */}
 			<div className={styles.buttons}>
 				{data?.is_paid === true && <div></div>}
 				{data?.is_paid === true ? (

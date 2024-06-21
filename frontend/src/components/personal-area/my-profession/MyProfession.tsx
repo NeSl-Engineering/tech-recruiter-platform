@@ -9,7 +9,7 @@ const MyProfession = ({ data }: { data?: ICourse }) => {
 			<div className={styles.left}>
 				<h3 className={styles.subTitle}>Моя профессия</h3>
 				<h1 className={styles.title}>{data?.title}</h1>
-				<ProgressBar />
+				{/* <ProgressBar /> */}
 			</div>
 			<div className={styles.right}>
 				<Button blueTransparent>Купить предзапись</Button>

@@ -13,13 +13,13 @@ import { saveTokenStorage } from './auth-token.service'
 class AuthService {
 	private BASE_URL = '/auth'
 
-	async register(data: IAuthRegister): Promise<IAuthRegister> {
+	async register(data: IAuthRegister,) {
 		const response = await axiosWithFile.post(
 			`${this.BASE_URL}/register/`,
 			data
 		)
 
-		return response?.data.data
+		return { response }
 	}
 
 	async verifyEmail(data: IEmailVerify): Promise<IEmailVerify> {

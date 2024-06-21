@@ -1,13 +1,14 @@
 'use client'
 
+import { axiosWithFile } from '@/api/interceptors'
 import LogRegLayout from '@/components/logreg-layout/LogRegLayout'
 import stylesLayout from '@/components/logreg-layout/LogRegLayout.module.scss'
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import TransitionX from '@/components/ui/transitions/TransitionX'
-import { authService } from '@/services/auth.service'
 import { IAuthRegister } from '@/types/types'
 import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -20,6 +21,7 @@ import styles from './Register.module.scss'
 const Register = () => {
 	const router = useRouter()
 	const [isActive, setIsActive] = useState('1')
+	const [responseState, setResponseState] = useState('')
 
 	const {
 		register,
@@ -33,9 +35,36 @@ const Register = () => {
 		mode: 'onChange'
 	})
 
+	const postOrder = async (data: IAuthRegister): Promise<IAuthRegister> => {
+		try {
+			const response = await axiosWithFile.post(`/auth/register/`, data)
+			// setResponseState(response.data.payment_url)
+			return response.data
+		} catch (error) {
+			if (axios.isAxiosError(error) && error.response) {
+				const { status, data } = error.response
+				if (status === 400) {
+					toast.error(data.email[0], { duration: 2500 })
+					toast.error(data.password[0], { duration: 2500 })
+					toast.error(data.username[0], { duration: 2500 })
+				} else if (status === 400) {
+				} else if (status === 400) {
+				}
+			} else {
+				console.error('An unexpected error occurred:', error)
+			}
+			throw error
+		}
+	}
+
 	const { mutate: mutateRegister } = useMutation({
 		mutationKey: ['register'],
-		mutationFn: (data: IAuthRegister) => authService.register(data),
+		mutationFn: (data: IAuthRegister) => postOrder(data),
+		onError() {
+			setTimeout(() => {
+				window.location.reload()
+			}, 2500)
+		},
 		onSuccess() {
 			toast.success('Код подтверждения отправилось на вашу почту!')
 			reset()

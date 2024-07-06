@@ -2,7 +2,7 @@ from autoslug import AutoSlugField
 from django.db import models
 from slugify import slugify
 
-from courses.models import Module
+from courses.models import Course, Module
 
 
 class Lesson(models.Model):
@@ -10,7 +10,15 @@ class Lesson(models.Model):
         Module,
         on_delete=models.CASCADE,
         related_name='lessons',
-        verbose_name='Модуль'
+        verbose_name='Модуль',
+        null=True
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='lessons',
+        verbose_name='Курс',
+        null=True
     )
     title = models.TextField(max_length=120, null=True)
     video = models.FileField(upload_to='lessons', verbose_name='Видео')
@@ -33,6 +41,11 @@ class Lesson(models.Model):
                 fields=('module', 'ordinal_number')
             )
         ]
+
+    def __str__(self):
+        if self.module:
+            return f'{self.module}: {self.ordinal_number}'
+        return f'{self.course}: {self.ordinal_number}'
 
 
 class Material(models.Model):

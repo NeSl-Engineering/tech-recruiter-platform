@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from lessons.models import Material
-from .models import Category, Course, Module
+from .models import Affert, Category, Course, Module
 
 
 class ModuleAdminInline(admin.TabularInline):
@@ -31,6 +31,7 @@ class ModuleAdminConfig(admin.ModelAdmin):
     inlines = [MaterialInline]
 
 
+admin.site.register(Affert)
 admin.site.register(Category)
 admin.site.register(Course, CourseAdminConfig)
 admin.site.register(Module, ModuleAdminConfig)

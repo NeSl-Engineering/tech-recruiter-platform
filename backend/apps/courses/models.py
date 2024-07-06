@@ -1,4 +1,5 @@
 from autoslug import AutoSlugField
+from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 from slugify import slugify
 
@@ -19,6 +20,17 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Affert(models.Model):
+    content = CKEditor5Field(verbose_name='Содержание')
+
+    class Meta:
+        db_table = 'afferts'
+        verbose_name_plural = 'Афферты'
+
+    def __str__(self):
+        return f'Афферт Nº{self.id}'
 
 
 class Course(models.Model):
@@ -51,6 +63,13 @@ class Course(models.Model):
     cover_image = models.ImageField(
         upload_to='courses',
         verbose_name='Обложка'
+    )
+    affert = models.ForeignKey(
+        Affert,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Афферт'
     )
     slug = AutoSlugField(
         populate_from='title',

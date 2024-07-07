@@ -56,6 +56,7 @@ class Material(models.Model):
         verbose_name='Модуль'
     )
     file = models.FileField(upload_to='materials', verbose_name='Файл')
+    link = models.URLField(verbose_name='Ссылка')
 
     class Meta:
         db_table = 'materials'

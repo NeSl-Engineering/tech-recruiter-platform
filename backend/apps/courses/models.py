@@ -1,4 +1,7 @@
+import datetime
+
 from autoslug import AutoSlugField
+from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 from slugify import slugify
 
@@ -21,9 +24,22 @@ class Category(models.Model):
         return self.title
 
 
+class Affert(models.Model):
+    content = CKEditor5Field(verbose_name='Содержание')
+
+    class Meta:
+        db_table = 'afferts'
+        verbose_name_plural = 'оферты'
+        verbose_name = 'оферта'
+
+    def __str__(self):
+        return f'Оферта Nº{self.id}'
+
+
 class Course(models.Model):
     title = models.CharField(max_length=120, verbose_name='Название Курса')
-    price = models.DecimalField(
+    # Default price
+    pricex = models.DecimalField(
         max_digits=15,
         decimal_places=2,
         verbose_name='Цена'
@@ -52,6 +68,13 @@ class Course(models.Model):
         upload_to='courses',
         verbose_name='Обложка'
     )
+    affert = models.ForeignKey(
+        Affert,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Афферт'
+    )
     slug = AutoSlugField(
         populate_from='title',
         slugify=slugify,
@@ -67,6 +90,14 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def price(self):
+        now = datetime.datetime.now()
+        price_objects = self.prices.filter(start_time__lte=now, end_time__gte=now)
+        if price_objects.exists():
+            return price_objects.first().price
+        return self.pricex
 
 
 class Module(models.Model):
@@ -108,4 +139,37 @@ class Module(models.Model):
 
     def __str__(self):
         return f'{self.course}: {self.title}'
+
+
+class Price(models.Model):
+    '''
+    Course prices are diferent in specific date ranges.
+    This model represents price for a specific course in a given date range.
+    '''
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        verbose_name='Курс',
+        related_name='prices'
+    )
+    price = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        verbose_name='Цена'
+    )
+    start_time = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='Дата начала'
+    )
+    end_time = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='Дата окончания'
+    )
+
+    class Meta:
+        db_table = 'course_prices'
+        verbose_name_plural = 'Цены'
+        verbose_name = 'Цена'
 

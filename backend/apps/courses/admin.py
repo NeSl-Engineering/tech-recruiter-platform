@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from lessons.models import Material, Lesson
-from .models import Affert, Category, Course, Module
+from .models import Affert, Category, Course, Module, Price
 
 
 class ModuleAdminInline(admin.TabularInline):
@@ -17,9 +17,14 @@ class LessonAdminInline(admin.StackedInline):
     ordering = ['ordinal_number']
 
 
+class PriceAdminInline(admin.TabularInline):
+    model = Price
+    extra = 0
+
+
 class CourseAdminConfig(admin.ModelAdmin):
     list_display = ['title', 'price', 'cover']
-    inlines = [ModuleAdminInline, LessonAdminInline]
+    inlines = [ModuleAdminInline, LessonAdminInline, PriceAdminInline]
 
     def cover(self, instance):
         return mark_safe(f'''

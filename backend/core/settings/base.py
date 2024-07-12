@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "enrolls",
     "orders",
     "lesson_tests",
+    "homeworks",
     "api",
 
     "rest_framework",

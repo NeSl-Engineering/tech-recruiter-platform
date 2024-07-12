@@ -67,4 +67,5 @@ class SolutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Solution
         fields = '__all__'
+        ref_name = 'Test solution'
 

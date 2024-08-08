@@ -20,8 +20,8 @@ const MainModules = ({ data, id }: { data?: IModule[]; id: string }) => {
 							<div className={styles.left}>
 								<div className={styles.numeration}>{index + 1}</div>
 								<div className={styles.content}>
-									<h2 className={styles.itemTitle}>{item.title}</h2>
-									<h3 className={styles.author}>AUTOR BOLMALY</h3>
+									<h2 className={styles.itemTitle}>{item?.title}</h2>
+									<h3 className={styles.author}>{item?.tutor?.full_name}</h3>
 								</div>
 							</div>
 							<div className={styles.right}>

@@ -50,7 +50,6 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ModuleViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ModuleSerializer
-    permission_classes = [permissions.IsAuthenticated]
     lookup_field = 'slug'
 
     def get_queryset(self):

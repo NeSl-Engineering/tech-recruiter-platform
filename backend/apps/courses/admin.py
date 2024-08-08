@@ -40,6 +40,7 @@ class MaterialInline(admin.TabularInline):
 class ModuleAdminConfig(admin.ModelAdmin):
     list_display = ['title', 'course', 'ordinal_number']
     inlines = [MaterialInline]
+    ordering = ['course', 'ordinal_number']
 
 
 admin.site.register(Affert)

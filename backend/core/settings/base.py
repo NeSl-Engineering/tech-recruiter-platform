@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "orders",
     "lesson_tests",
     "homeworks",
+    "tutors",
     "api",
 
     "rest_framework",

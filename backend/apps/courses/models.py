@@ -5,6 +5,8 @@ from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 from slugify import slugify
 
+from tutors.models import Tutor
+
 
 class Category(models.Model):
     title = models.CharField(max_length=120)
@@ -118,6 +120,13 @@ class Module(models.Model):
     ordinal_number = models.IntegerField(
         verbose_name='Порядковый номер'
     )
+    tutor = models.ForeignKey(
+        Tutor,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name='Автор',
+        related_name='modules'
+    )
     slug = AutoSlugField(
         populate_from='title',
         slugify=slugify,
@@ -130,6 +139,7 @@ class Module(models.Model):
         db_table = 'modules'
         verbose_name = 'Модуль'
         verbose_name_plural = 'Модули'
+        ordering = ['course', 'ordinal_number']
         constraints = [
             models.UniqueConstraint(
                 fields=['course', 'ordinal_number'],
@@ -157,12 +167,12 @@ class Price(models.Model):
         decimal_places=2,
         verbose_name='Цена'
     )
-    start_time = models.DateField(
+    start_time = models.DateTimeField(
         null=True,
         blank=True,
         verbose_name='Дата начала'
     )
-    end_time = models.DateField(
+    end_time = models.DateTimeField(
         null=True,
         blank=True,
         verbose_name='Дата окончания'

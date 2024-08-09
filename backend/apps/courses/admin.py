@@ -39,7 +39,7 @@ class MaterialInline(admin.TabularInline):
 
 class ModuleAdminConfig(admin.ModelAdmin):
     list_display = ['title', 'course', 'ordinal_number']
-    inlines = [MaterialInline]
+    inlines = [MaterialInline, LessonAdminInline]
     ordering = ['course', 'ordinal_number']
 
 

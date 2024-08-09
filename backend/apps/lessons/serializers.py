@@ -13,6 +13,6 @@ class LessonSerializer(serializers.ModelSerializer):
 class MaterialSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Lesson
+        model = Material
         fields = '__all__'
 

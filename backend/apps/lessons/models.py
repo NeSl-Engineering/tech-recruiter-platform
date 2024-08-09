@@ -11,14 +11,16 @@ class Lesson(models.Model):
         on_delete=models.CASCADE,
         related_name='lessons',
         verbose_name='Модуль',
-        null=True
+        null=True,
+        blank=True
     )
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
         related_name='lessons',
         verbose_name='Курс',
-        null=True
+        null=True,
+        blank=True
     )
     title = models.TextField(max_length=120, null=True)
     video = models.FileField(upload_to='lessons', verbose_name='Видео')
@@ -54,6 +56,12 @@ class Material(models.Model):
         on_delete=models.CASCADE,
         related_name='materials',
         verbose_name='Модуль'
+    )
+    title = models.CharField(
+        'Название',
+        max_length=32,
+        null=True,
+        blank=True
     )
     file = models.FileField(
         upload_to='materials',

@@ -11,7 +11,7 @@ const TrainingPlanId = ({ params }: { params: { id: string } }) => {
 	const { dataModuleSlug, isLoadingModuleSlug } = useModuleSlug(params.id)
 	return (
 		<div className={styles.TrainingPlanId}>
-			<PresentationModuleId />
+			<PresentationModuleId data={dataModuleSlug?.materials}/>
 			<StrategySourcing data={data} dataModule={dataModuleSlug} />
 		</div>
 	)

@@ -143,3 +143,4 @@ export interface IOrder {
 	course?: number
 	payment_url: string
 }
+

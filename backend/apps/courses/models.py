@@ -75,7 +75,7 @@ class Course(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name='Афферт'
+        verbose_name='Оферта'
     )
     slug = AutoSlugField(
         populate_from='title',

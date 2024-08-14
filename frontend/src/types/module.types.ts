@@ -12,11 +12,18 @@ export interface IModuleMaterial {
 }
 
 export interface ITutor {
-	id:	number
+	id: number
 	title: string
-	full_name:	string
-	description:	string
+	full_name: string
+	description: string
 	image: string
+}
+
+export interface IPresentation {
+	id: number
+	title: string
+	file: string
+	link: string
 }
 
 export interface IModule {
@@ -27,4 +34,5 @@ export interface IModule {
 	id: number
 	course: number
 	slug: string
+	materials: IPresentation[]
 }

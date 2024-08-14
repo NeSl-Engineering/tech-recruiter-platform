@@ -16,7 +16,7 @@
 		}
 
 		.item {
-			@apply flex justify-between items-center py-2 transition rounded-4 cursor-pointer border-b border-solid border-blue-50;
+			@apply flex justify-between items-center py-2 transition rounded-4 cursor-pointer border-b border-solid border-blue-50 block;
 			&:hover {
 				background-color: rgba(0, 0, 0, 0.05);
 			}

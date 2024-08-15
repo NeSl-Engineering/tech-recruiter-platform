@@ -1,0 +1,28 @@
+.ItRecruiter {
+	@apply mb-[160px];
+	.title {
+		@apply text-[39px] font-bold mb-10;
+	}
+
+	.rows {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	.item {
+		@apply rounded-lg p-[25px];
+		border: 1px solid #919191;
+		.count {
+			@apply text-[#DFE4E8] text-[65px] font-bold mb-[10px];
+		}
+
+		.itemTitle {
+			@apply text-[24px] font-bold mb-2;
+		}
+
+		.description {
+			@apply text-[18px] font-normal text-[#001F20];
+		}
+	}
+}

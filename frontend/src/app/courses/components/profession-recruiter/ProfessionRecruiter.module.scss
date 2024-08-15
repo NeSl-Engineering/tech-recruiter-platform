@@ -1,0 +1,46 @@
+.ProfessionRecruiter {
+	@apply bg-[#FFECED] pl-10 pt-10 pr-[150px] rounded-lg flex justify-between mt-[30px] mb-[120px];
+	.content {
+		@apply mb-10;
+		.title {
+			@apply text-[#FF424E] text-[65px] font-bold leading-[79px] mb-2 w-[360px];
+		}
+
+		.description {
+			@apply font-normal text-base text-primary max-w-[360px];
+		}
+	}
+
+	.duration {
+		@apply flex justify-between max-w-[360px] mb-5;
+		.durationLeftBlock {
+		}
+
+		.durationTitle {
+			@apply mb-1 font-bold text-[15px] text-[#919191];
+		}
+
+		.durationTIme {
+			@apply font-bold text-[24px];
+		}
+	}
+
+	.buttons {
+		@apply flex flex-col max-w-[360px] gap-[12px] mb-10;
+	}
+
+	.image {
+		position: relative;
+		@apply relative w-[331px] h-[470px] bottom-0;
+		&:before {
+			content: '';
+			position: absolute;
+			top: -5%;
+			left: -17%;
+			width: 463px;
+			height: 463px;
+			background-color: #ff424e;
+			border-radius: 50%;
+		}
+	}
+}

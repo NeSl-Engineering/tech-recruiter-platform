@@ -25,6 +25,7 @@ class CourseService {
 		)
 		return response?.data
 	}
+	
 }
 
 export const courseService = new CourseService()

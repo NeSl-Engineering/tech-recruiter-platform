@@ -45,4 +45,13 @@
 	&.whiteTransparent {
 		@apply bg-transparent border-white;
 	}
+
+	&.redButton {
+		@apply bg-[#ff424e];
+	}
+
+	&.redTransparent {
+		@apply bg-transparent text-[#ff424e];
+		border: 1px solid #ff424e;
+	}
 }

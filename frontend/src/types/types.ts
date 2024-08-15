@@ -72,6 +72,25 @@ export interface ICourse {
 	category?: number
 	slug?: string
 	is_paid?: boolean
+	description?: string
+	block1_title?: string
+	block1_subtitle1?: string
+	block1_content1?: string
+	block1_subtitle2?: string
+	block1_content2?: string
+	block1_subtitle3?: string
+	block1_content3?: string
+	block1_subtitle4?: string
+	block1_content4?: string
+	block2_title?: string
+	block2_subtitle1?: string
+	block2_content1?: string
+	block2_subtitle2?: string
+	block2_content2?: string
+	block2_subtitle3?: string
+	block2_content3?: string
+	block2_subtitle4?: string
+	block2_content4?: string
 }
 
 export interface ICourses {
@@ -143,4 +162,3 @@ export interface IOrder {
 	course?: number
 	payment_url: string
 }
-

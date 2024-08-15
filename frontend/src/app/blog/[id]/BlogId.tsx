@@ -10,7 +10,7 @@ import BlogIdShimmer from './components/shimmers/BlogIdShimmer'
 const BlogId = ({ params }: { params: { id: string } }) => {
 	const { dataBlog, isLoadingBlog } = useBlogId(params.id)
 	const { data, isLoading } = useBlog()
-	
+
 	return (
 		<div className={styles.BlogId}>
 			<div className='__container'>
@@ -41,12 +41,14 @@ const BlogId = ({ params }: { params: { id: string } }) => {
 									</button>
 								))}
 							</div>
-							<p
-								className={styles.description}
-								dangerouslySetInnerHTML={{
-									__html: dataBlog?.content
-								}}
-							/>
+							{dataBlog?.content && (
+								<p
+									className={styles.description}
+									dangerouslySetInnerHTML={{
+										__html: dataBlog?.content
+									}}
+								/>
+							)}
 						</div>
 					</div>
 					<div className={styles.right}>

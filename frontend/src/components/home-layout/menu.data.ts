@@ -12,7 +12,7 @@ export const MENU: IMenuItem[] = [
 		name: 'Карьерное продвижение'
 	},
 	{
-		link: '/#choose-courses',
+		link: '/courses',
 		name: 'Курсы'
 	},
 	{

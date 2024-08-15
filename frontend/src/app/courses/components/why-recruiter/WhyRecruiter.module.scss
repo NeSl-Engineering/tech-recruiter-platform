@@ -1,0 +1,41 @@
+.WhyRecruiter {
+	.titleBlock {
+		@apply flex items-center flex-col max-w-[588px] mx-auto mb-[100px];
+	}
+
+	.title {
+		@apply mb-4 text-center text-[39px] font-bold leading-[47.7px];
+	}
+
+	.description {
+		@apply text-center  text-base leading-[21.6px];
+	}
+
+	.items {
+		@apply flex flex-col gap-[80px];
+	}
+
+	.item {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 60px;
+		align-items: center;
+		.content {
+			margin: 26px 0;
+			h1 {
+				@apply text-[39px] font-bold leading-[47.7px] mb-4;
+			}
+
+			p {
+				@apply text-base leading-[21.6px] font-normal;
+			}
+		}
+
+		.image {
+			@apply relative h-[340px];
+			img {
+				@apply rounded-[9px];
+			}
+		}
+	}
+}

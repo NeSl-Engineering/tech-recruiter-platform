@@ -35,7 +35,7 @@ const Footer = () => {
 							</ul>
 						</div>
 						<div className={styles.listWrapper}>
-							<h2 className={styles.title}>Страницы</h2>
+							<h2 className={styles.title}>Ссылки</h2>
 							<ul>
 								{FOOTER_LINKS.map((item, index) => (
 									<li key={index}>

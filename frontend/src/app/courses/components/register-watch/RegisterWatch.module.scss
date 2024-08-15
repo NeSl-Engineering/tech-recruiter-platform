@@ -1,0 +1,28 @@
+.RegisterWatch {
+	@apply bg-[#FFECED] mb-[120px];
+	.row {
+		display: grid;
+		grid-template-columns: 0.8fr 1.2fr;
+		gap: 30px;
+		align-items: flex-end;
+	}
+
+	.left {
+		@apply flex flex-col gap-5 max-w-[505px] pt-[60px];
+		h1 {
+			@apply text-[39px] leading-[47.7px] font-bold;
+		}
+
+		p {
+			@apply text-base text-[#000000] max-w-[295px];
+		}
+
+		.buttons {
+			@apply flex flex-col gap-3 max-w-[245px] mb-[60px];
+		}
+	}
+
+	.image {
+		@apply relative h-[400px];
+	}
+}

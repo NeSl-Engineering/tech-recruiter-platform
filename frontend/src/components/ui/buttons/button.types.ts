@@ -7,6 +7,8 @@ export interface ButtonProps {
 	notActive?: Boolean
 	deleteButton?: Boolean
 	widthFull?: Boolean
+	redButton?: Boolean
+	redTransparent?: Boolean
 	disabled?: boolean | undefined
 	disabledTransparent?: boolean | undefined
 	className?: string

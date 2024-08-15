@@ -40,6 +40,40 @@ class Affert(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=120, verbose_name='Название Курса')
+    description = models.TextField('Описание', null=True, blank=True)
+    # I do know this is shit code. We did not have time to think on it.
+    # The changes were made after the main structure was already built.
+
+    # The fields below are used in courses main page. Those are required by the frontend.
+    block1_title = models.CharField('Заголовок к первому блоку', max_length=64, null=True, blank=True)
+
+    block1_subtitle1 = models.CharField('Подзаголовок к первому блоку первому отделу', max_length=64, null=True, blank=True)
+    block1_content1 = models.TextField('Контент к первому блоку первому отделу', null=True, blank=True)
+
+    block1_subtitle2 = models.CharField('Подзаголовок к первому блоку второму отделу', max_length=64, null=True, blank=True)
+    block1_content2 = models.TextField('Контент к первому блоку второму отделу', null=True, blank=True)
+
+    block1_subtitle3 = models.CharField('Подзаголовок к первому блоку третьему отделу', max_length=64, null=True, blank=True)
+    block1_content3 = models.TextField('Контент к первому блоку третьему отделу', null=True, blank=True)
+
+    block1_subtitle4 = models.CharField('Подзаголовок к первому блоку четвертому отделу', max_length=64, null=True, blank=True)
+    block1_content4 = models.TextField('Контент к первому блоку четвертому отделу', null=True, blank=True)
+
+
+    block2_title = models.CharField('Заголовок ко второму блоку', max_length=64, null=True, blank=True)
+
+    block2_subtitle1 = models.CharField('Заголовок ко второму блоку первому отделу', max_length=64, null=True, blank=True)
+    block2_content1 = models.TextField('Контент к первому блоку первому отделу', null=True, blank=True)
+
+    block2_subtitle2 = models.CharField('Заголовок ко второму блоку второму отделу', max_length=64, null=True, blank=True)
+    block2_content2 = models.TextField('Контент к второму блоку второму отделу', null=True, blank=True)
+
+    block2_subtitle3 = models.CharField('Заголовок ко второму блоку третьему отделу', max_length=64, null=True, blank=True)
+    block2_content3 = models.TextField('Контент к второму блоку третьему отделу', null=True, blank=True)
+
+    block2_subtitle4 = models.CharField('Заголовок ко второму блоку четвертому отделу', max_length=64, null=True, blank=True)
+    block2_content4 = models.TextField('Контент к второму блоку четвертому отделу', null=True, blank=True)
+
     # Default price
     pricex = models.DecimalField(
         max_digits=15,

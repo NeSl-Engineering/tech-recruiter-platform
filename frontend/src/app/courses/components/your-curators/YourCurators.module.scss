@@ -1,0 +1,36 @@
+.YourCurators {
+	@apply mb-[80px];
+	.title {
+		@apply text-[39px] font-bold mb-10;
+	}
+	.items {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		@apply gap-5;
+	}
+
+	.item {
+		.image {
+			@apply relative w-[221px] h-[314px] mx-auto;
+			&:before {
+				content: '';
+				@apply absolute bottom-0 -left-[40%] w-[400px] h-[256px] bg-[#E5F1FF];
+			}
+		}
+		.content {
+			@apply mt-3;
+		}
+
+		.curator {
+			@apply text-[24px] font-bold text-[#005BBC] mb-1 text-center;
+		}
+
+		.title {
+			@apply text-[15px] font-bold text-[#001F20] mb-4 text-center max-w-[250px] mx-auto;
+		}
+
+		.description {
+			@apply text-base leading-[21.6px] font-normal text-[#919191] text-center max-w-[344px] mx-auto;
+		}
+	}
+}

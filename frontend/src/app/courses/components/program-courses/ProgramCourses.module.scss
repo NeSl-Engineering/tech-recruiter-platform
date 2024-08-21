@@ -1,0 +1,56 @@
+.ProgramCourses {
+	margin-bottom: 120px;
+	.title {
+		@apply text-[39px] font-bold mb-10;
+	}
+
+	.modules {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.module {
+		padding: 25px 20px;
+		background: #e5f1ff;
+		border-radius: 4px;
+		&.bgRed {
+			background-color: #ff424e;
+			.boxTitle {
+				color: #fff;
+			}
+		}
+	}
+
+	.box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.boxTitle {
+		font-size: 24px;
+		font-weight: 700;
+		color: #005bbc;
+		&.boxTitleOpened {
+			margin-bottom: 18px;
+		}
+	}
+
+	.plus {
+		transition: all 0.2s;
+	}
+
+	.close {
+		transform: rotate(180deg);
+	}
+
+	.moduleList {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		.moduleListItem {
+			font-size: 16px;
+		}
+	}
+}

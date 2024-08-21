@@ -1,0 +1,22 @@
+.WatchVideo {
+	padding: 40px 0;
+	background-color: #ffeced;
+	@apply mb-[100px];
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 120px;
+	}
+
+	.title {
+		@apply text-[39px] font-bold;
+	}
+
+	.video {
+		height: 341px;
+		iframe {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

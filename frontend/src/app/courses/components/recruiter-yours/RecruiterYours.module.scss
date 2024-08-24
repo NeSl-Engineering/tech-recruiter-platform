@@ -1,0 +1,43 @@
+.RecruiterYours {
+	@apply bg-[#FFECED] mb-[70px] overflow-y-hidden;
+	.row {
+		display: grid;
+		grid-template-columns: 0.8fr 1.2fr;
+		gap: 30px;
+		align-items: flex-end;
+	}
+
+	.left {
+		@apply flex flex-col gap-5 max-w-[505px] pt-[60px];
+		h1 {
+			@apply text-[39px] leading-[47.7px] font-bold;
+		}
+
+		p {
+			@apply text-base text-[#000000] max-w-[505px];
+		}
+
+		h3 {
+			@apply font-bold;
+		}
+
+		.buttons {
+			@apply flex flex-col gap-3 max-w-[245px] mb-[60px];
+		}
+	}
+
+	.image {
+		@apply relative h-[400px] -bottom-[30px];
+		&:before {
+			content: '';
+			position: absolute;
+			left: 12%;
+			bottom: -35%;
+			width: 560px;
+			height: 560px;
+			border-radius: 50%;
+			background-color: #919191;
+			opacity: 0.08;
+		}
+	}
+}

@@ -1,0 +1,36 @@
+.ScheduleCourses {
+	@apply mb-[80px];
+	.title {
+		@apply mb-4 text-center text-[39px] font-bold leading-[47.7px];
+	}
+
+	.row {
+	}
+
+	.items {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+
+	.weekItem {
+		@apply p-[10px] pb-[20px];
+		border-right: 1px solid #919191;
+		border-bottom: 1px solid #919191;
+		.title {
+			@apply text-[20px] text-[#005BBC] font-bold text-left leading-6;
+		}
+	}
+
+	.item {
+		@apply p-[10px] pb-[20px];
+		border-right: 1px solid #919191;
+		border-bottom: 1px solid #919191;
+		.title {
+			@apply text-[20px] text-[#919191] font-bold mb-2 text-left leading-6;
+		}
+
+		.description {
+			@apply text-base text-[#005BBC];
+		}
+	}
+}

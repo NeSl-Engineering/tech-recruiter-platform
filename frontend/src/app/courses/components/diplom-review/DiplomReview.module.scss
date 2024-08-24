@@ -1,0 +1,11 @@
+.DiplomReview {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	@apply mb-[120px];
+	h1 {
+		@apply text-[39px] leading-[47.7px] font-bold;
+	}
+	.image {
+		@apply h-[400px];
+	}
+}

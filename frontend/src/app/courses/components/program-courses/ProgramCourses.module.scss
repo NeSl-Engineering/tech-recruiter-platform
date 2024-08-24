@@ -19,6 +19,9 @@
 			.boxTitle {
 				color: #fff;
 			}
+			.moduleListItem {
+				color: #fff;
+			}
 		}
 	}
 
@@ -42,7 +45,8 @@
 	}
 
 	.close {
-		transform: rotate(180deg);
+		transform: rotate(45deg);
+		transition: all 0.2s;
 	}
 
 	.moduleList {

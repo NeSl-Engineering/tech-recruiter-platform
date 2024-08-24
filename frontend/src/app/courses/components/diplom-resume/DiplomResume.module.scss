@@ -1,0 +1,47 @@
+.DiplomResume {
+	@apply mb-[80px];
+	.titleBlock {
+		@apply mb-10 max-w-[400px];
+		h1 {
+			@apply text-[39px] leading-[47.7px] font-bold mb-3;
+		}
+		p {
+			@apply text-base;
+		}
+	}
+	.items {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	.item {
+		background-color: #ffeced;
+		padding: 25px;
+		border-radius: 8px;
+		flex: 1 0 calc(33.333% - 60px);
+		&:nth-child(4) {
+			grid-column: span 2;
+		}
+		&:nth-child(5) {
+			grid-column: span 2;
+		}
+		h2 {
+			font-size: 65px;
+			font-weight: 700;
+			margin-bottom: 8px;
+			color: #919191;
+			opacity: 0.3;
+		}
+
+		h1 {
+			font-weight: 700;
+			font-size: 24px;
+			margin-bottom: 8px;
+		}
+
+		p {
+			font-size: 18px;
+		}
+	}
+}

@@ -151,6 +151,10 @@ class Module(models.Model):
         default=False,
         verbose_name='Демо'
     )
+    is_open = models.BooleanField(
+        default=False,
+        verbose_name='Открытый'
+    )
     ordinal_number = models.IntegerField(
         verbose_name='Порядковый номер'
     )

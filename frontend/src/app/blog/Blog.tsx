@@ -38,13 +38,13 @@ const Blog = () => {
 						</button>
 						{dataTags?.map(item => (
 							<button
-								key={item?.id}
-								onClick={() => handleClick(item?.id)}
+								key={item.id}
+								onClick={() => handleClick(item.id)}
 								className={`${buttonGroupStyles.button} ${
-									item?.id === selected ? buttonGroupStyles.active : ''
+									item.id === selected ? buttonGroupStyles.active : ''
 								}`}
 							>
-								{item?.title}
+								{item.title}
 							</button>
 						))}
 					</div>

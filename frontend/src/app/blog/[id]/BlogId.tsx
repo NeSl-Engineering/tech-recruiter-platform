@@ -10,7 +10,11 @@ import BlogIdShimmer from './components/shimmers/BlogIdShimmer'
 const BlogId = ({ params }: { params: { id: string } }) => {
 	const { dataBlog, isLoadingBlog } = useBlogId(params.id)
 	const { data, isLoading } = useBlog()
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 21deae507e16294134c3821cc23474e3e0b6ffa7
 	return (
 		<div className={styles.BlogId}>
 			<div className='__container'>
@@ -41,6 +45,7 @@ const BlogId = ({ params }: { params: { id: string } }) => {
 									</button>
 								))}
 							</div>
+<<<<<<< HEAD
 							{dataBlog?.content && (
 								<p
 									className={styles.description}
@@ -49,6 +54,14 @@ const BlogId = ({ params }: { params: { id: string } }) => {
 									}}
 								/>
 							)}
+=======
+							<p
+								className={styles.description}
+								dangerouslySetInnerHTML={{
+									__html: dataBlog?.content
+								}}
+							/>
+>>>>>>> 21deae507e16294134c3821cc23474e3e0b6ffa7
 						</div>
 					</div>
 					<div className={styles.right}>

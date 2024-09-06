@@ -25,10 +25,7 @@ class CourseService {
 		)
 		return response?.data
 	}
-<<<<<<< HEAD
 	
-=======
->>>>>>> 21deae507e16294134c3821cc23474e3e0b6ffa7
 }
 
 export const courseService = new CourseService()
